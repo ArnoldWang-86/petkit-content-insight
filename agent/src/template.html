@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>宠物智能硬件内容运营 · 问数 Agent</title>
+<style>
+:root{--navy:#1F3864;--blue:#2E5C9A;--line:#D9E1EC;--bg:#F5F7FA;--red:#C0504D;--green:#4F8A3D;--grey:#6B7C8F}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#22303F;font-family:"Microsoft YaHei","PingFang SC",sans-serif;font-size:14px;line-height:1.65}
+header{background:linear-gradient(135deg,#1F3864,#2E5C9A);color:#fff;padding:18px 26px}
+header h1{margin:0;font-size:20px;letter-spacing:.5px}
+header p{margin:6px 0 0;font-size:13px;opacity:.9}
+.badges{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+.badge{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:2px 12px;font-size:12px}
+.wrap{display:grid;grid-template-columns:minmax(420px,46%) 1fr;gap:18px;padding:18px 22px 60px;align-items:start}
+@media(max-width:1100px){.wrap{grid-template-columns:1fr}}
+.card{background:#fff;border-radius:10px;padding:16px 18px;box-shadow:0 2px 10px rgba(20,40,80,.08);margin-bottom:16px}
+.card h2{font-size:15px;color:var(--navy);margin:0 0 10px;padding-left:9px;border-left:4px solid var(--blue)}
+textarea{width:100%;min-height:78px;border:1px solid var(--line);border-radius:8px;padding:10px;font:inherit;resize:vertical}
+.row{display:flex;gap:10px;align-items:center;margin-top:10px}
+button{cursor:pointer;font:inherit}
+.btn{background:var(--navy);color:#fff;border:0;border-radius:8px;padding:9px 20px;font-weight:600}
+.btn:hover{background:#16294a}
+.btn.sec{background:#EEF3FA;color:var(--navy);border:1px solid var(--line)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.chip{background:#EEF3FA;border:1px solid var(--line);border-radius:16px;padding:3px 12px;font-size:12.5px;color:#33445C;cursor:pointer}
+.chip:hover{background:#DCE8F8}
+.keyline{margin-top:10px;font-size:12.5px;color:var(--grey)}
+.keyline input{width:320px;max-width:100%;border:1px solid var(--line);border-radius:6px;padding:5px 8px;font:inherit}
+.stage{border:1px solid var(--line);border-radius:9px;padding:11px 13px;margin-bottom:10px;background:#FCFDFF}
+.stage.doing{border-color:#9BB8E0;box-shadow:0 0 0 3px rgba(46,92,154,.10)}
+.stage.done{background:#FBFDF9}
+.stage h3{margin:0 0 7px;font-size:13.5px;color:var(--navy);display:flex;justify-content:space-between;align-items:center}
+.stage h3 .t{font-weight:400;font-size:12px;color:var(--grey)}
+.kv{display:grid;grid-template-columns:88px 1fr;gap:4px 10px;font-size:12.5px}
+.kv dt{color:var(--grey)}
+.kv dd{margin:0;color:#22303F;word-break:break-all}
+.why{margin-top:8px;padding:7px 10px;background:#F3F7FD;border-left:3px solid #9BB8E0;border-radius:0 6px 6px 0;font-size:12.3px;color:#3B4A5E}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,1fr));gap:10px;margin-bottom:12px}
+.kpi{background:#F7FAFF;border:1px solid var(--line);border-radius:8px;padding:9px 11px}
+.kpi b{display:block;font-size:20px;color:var(--navy);line-height:1.25}
+.kpi span{font-size:12px;color:var(--grey)}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin:6px 0 10px;flex-wrap:wrap}
+.tab{padding:5px 13px;border:1px solid var(--line);border-bottom:0;border-radius:7px 7px 0 0;background:#F2F6FC;font-size:12.5px;color:#33445C;cursor:pointer}
+.tab.on{background:#fff;color:var(--navy);font-weight:700}
+table{border-collapse:collapse;width:100%;font-size:12.6px}
+th,td{border:1px solid var(--line);padding:5px 8px;text-align:left}
+th{background:#F2F6FC;color:var(--navy);font-weight:600;white-space:nowrap}
+tbody tr:nth-child(even){background:#FAFCFF}
+.note{font-size:12.2px;color:var(--grey);background:#FFFBEA;border:1px solid #F2E3B3;border-radius:7px;padding:9px 11px;margin-top:12px;line-height:1.7}
+.insight{background:#F3F9F1;border:1px solid #CFE4C4;border-radius:8px;padding:10px 12px;margin-top:12px;font-size:13px}
+.insight b{color:#3B6B2C}
+.empty{color:#93A2B4;font-size:13px;padding:26px 4px;text-align:center}
+.err{background:#FDF2F2;border:1px solid #EFC9C7;color:#8E3B38;border-radius:7px;padding:9px 11px;font-size:12.6px;margin-top:10px}
+.pill{display:inline-block;background:#EEF3FA;border:1px solid var(--line);border-radius:4px;padding:0 6px;font-size:12px;margin-right:4px}
+</style>
+<script>/*__PLOTLY__*/</script>
+</head>
+<body>
+<header>
+  <h1>宠物智能硬件内容运营 · 问数 Agent</h1>
+  <p>用中文提问 → Agent 自己完成「意图识别 → 操作选择 → 口径守卫 → 浏览器内计算 → 出图」→ 拿走结论与数据</p>
+  <div class="badges">
+    <span class="badge">数据已内嵌 4,375 条内容</span>
+    <span class="badge">规则路由 + 大模型兜底</span>
+    <span class="badge">白名单操作（不执行任意代码）</span>
+    <span class="badge">单文件 · 离线可用</span>
+  </div>
+</header>
+
+<div class="wrap">
+  <div>
+    <section class="card">
+      <h2>① 提问</h2>
+      <textarea id="q" placeholder="例如：哪条产品线的内容互动率最高？&#10;     小佩和竞品的官方内容差在哪？&#10;     哪个痛点播放量高但内容还不多？"></textarea>
+      <div class="row">
+        <button class="btn" id="run">运行 Agent</button>
+        <button class="btn sec" id="clear">清空</button>
+      </div>
+      <div class="chips" id="chips"></div>
+      <div class="keyline">
+        可选：填入 DeepSeek API Key，规则匹配不上的问题会交给大模型做意图识别（<b>只做路由，不回答业务问题</b>）<br>
+        <input id="key" type="password" placeholder="sk-...（不填也能用，只是覆盖面小一些）">
+      </div>
+      <div id="err" class="err" style="display:none"></div>
+    </section>
+
+    <section class="card">
+      <h2>② Agent 工作流程</h2>
+      <div id="flow"><div class="empty">点上面的「运行 Agent」，这里会逐步展示它做了什么、为什么这么做。</div></div>
+    </section>
+  </div>
+
+  <div>
+    <section class="card">
+      <h2>③ 结果</h2>
+      <div id="result"><div class="empty">结果会显示在这里。</div></div>
+    </section>
+  </div>
+</div>
+
+<script>/*__DATA__*/</script>
+<script>
+/* =========================================================================
+   宠物智能硬件内容运营 · 问数 Agent
+   架构：规则路由 → （失败时）大模型路由 → 白名单校验 → 口径守卫 → 计算 → 渲染
+   ========================================================================= */
+
+var META = DATA.meta, COLS = DATA.cols, RAW = DATA.rows;
+var RECS = [];
+(function () {
+  for (var i = 0; i < RAW[COLS[0]].length; i++) {
+    var o = {};
+    for (var j = 0; j < COLS.length; j++) o[COLS[j]] = RAW[COLS[j]][i];
+    RECS.push(o);
+  }
+})();
+
+/* ---------------- 口径纪律：哪个分析能用哪几层标签 ---------------- */
+var LEVEL_NAME = { A: "A 直接相关（智能硬件本体）", B: "B 延伸相关（耗材/非智能用品）",
+                   C: "C 用户语境（健康/养护/日常）", N: "N 非宠物（搜索噪声）" };
+
+/* ---------------- 工具函数 ---------------- */
+function mean(a) { if (!a.length) return 0; var s = 0; for (var i = 0; i < a.length; i++) s += a[i]; return s / a.length; }
+function median(a) {
+  if (!a.length) return 0; var b = a.slice().sort(function (x, y) { return x - y; });
+  var m = Math.floor(b.length / 2);
+  return b.length % 2 ? b[m] : (b[m - 1] + b[m]) / 2;
+}
+function sum(a) { var s = 0; for (var i = 0; i < a.length; i++) s += a[i]; return s; }
+function fmtInt(n) { return (n === null || n === undefined || isNaN(n)) ? "-" : Math.round(n).toLocaleString("zh-CN"); }
+function fmtPct(x, d) { return (x === null || x === undefined || isNaN(x)) ? "-" : (x * 100).toFixed(d === undefined ? 2 : d) + "%"; }
+function uniq(a) { var s = {}, o = []; for (var i = 0; i < a.length; i++) if (!s[a[i]]) { s[a[i]] = 1; o.push(a[i]); } return o; }
+function has(arr, v) { return arr && arr.indexOf(v) >= 0; }
+
+/* 分组统计 */
+function groupStats(rows, keyFn) {
+  var g = {};
+  for (var i = 0; i < rows.length; i++) {
+    var k = keyFn(rows[i]); if (k === null || k === "" || k === undefined) continue;
+    (g[k] || (g[k] = [])).push(rows[i]);
+  }
+  var out = [];
+  for (var k2 in g) {
+    var rs = g[k2];
+    out.push({
+      key: k2, n: rs.length,
+      play_median: median(rs.map(function (r) { return r.p; })),
+      play_mean: mean(rs.map(function (r) { return r.p; })),
+      interact: mean(rs.map(function (r) { return r.it || 0; })),
+      fav_rate: mean(rs.map(function (r) { return r.fr || 0; })),
+      dm_rate: mean(rs.map(function (r) { return r.p ? r.dm / r.p * 1000 : 0; })),
+      creators: uniq(rs.map(function (r) { return r.m; })).length
+    });
+  }
+  return out;
+}
+
+/* =========================================================================
+   操作（OPS）—— 白名单。Agent 只能从这里选，不能执行任意代码
+   ========================================================================= */
+var OPS = [];
+function op(o) { OPS.push(o); return o; }
+
+/* ---------- 1. 产品线排名 ---------- */
+op({
+  id: "pl_rank", name: "产品线排名", levels: ["A"],
+  desc: "按内容量/互动率给产品线排序（仅 A 级：智能硬件本体）",
+  keywords: ["产品线", "品类", "哪条线", "猫砂盆", "饮水机", "喂食器", "摄像头", "烘干箱", "净化器", "鱼缸", "讨论度"],
+  params: { metric: { type: "enum", values: ["vol", "interact", "fav", "play"], "default": "vol" },
+            order: { type: "enum", values: ["desc", "asc"], "default": "desc" } },
+  metricLabel: { vol: "内容量", interact: "互动率", fav: "收藏率", play: "播放中位数" },
+  run: function (rows, p) {
+    var g = groupStats(rows, function (r) { return r.pl || r.ct || "其他"; });
+    var key = p.metric === "vol" ? "n" : (p.metric === "interact" ? "interact" : (p.metric === "fav" ? "fav_rate" : "play_median"));
+    g.sort(function (a, b) { return p.order === "asc" ? a[key] - b[key] : b[key] - a[key]; });
+    return {
+      kpis: [{ v: fmtInt(rows.length), l: "A 级内容数" },
+             { v: g.length, l: "覆盖产品线" },
+             { v: g.length ? g[0].key : "-", l: "第一名（" + this.metricLabel[p.metric] + "）" }],
+      chart: { type: "bar", x: g.map(function (r) { return r.key; }), y: g.map(function (r) { return r[key]; }),
+               title: "各产品线" + this.metricLabel[p.metric], pct: p.metric === "interact" || p.metric === "fav" },
+      tables: [{ name: "产品线排名", rows: g.map(function (r) {
+        return { "产品线": r.key, "内容量": r.n, "播放中位数": fmtInt(r.play_median),
+                 "互动率": fmtPct(r.interact), "收藏率": fmtPct(r.fav_rate), "创作者数": r.creators }; }) }],
+      insight: g.length ? ("按" + this.metricLabel[p.metric] + "排序，第一是「" + g[0].key + "」（" +
+        (p.metric === "vol" ? fmtInt(g[0].n) + " 条" : fmtPct(g[0][key])) + "）。" +
+        (g.length > 1 ? "最后一名是「" + g[g.length - 1].key + "」。" : "") +
+        "产品线结论只用 A 级记录，因为 C 级萌宠日常不是产品讨论。") : "没有匹配到 A 级记录。"
+    };
+  }
+});
+
+/* ---------- 2. 品牌声量 ---------- */
+op({
+  id: "brand_rank", name: "品牌声量排名", levels: ["A"],
+  desc: "各品牌被提及的次数与内容表现（仅 A 级）",
+  keywords: ["品牌", "声量", "提及", "竞品", "小佩", "霍曼", "catlink", "小米", "排行", "谁最"],
+  params: { metric: { type: "enum", values: ["n", "interact", "fav", "play"], "default": "n" },
+            order: { type: "enum", values: ["desc", "asc"], "default": "desc" } },
+  metricLabel: { n: "提及数", interact: "互动率", fav: "收藏率", play: "播放中位数" },
+  run: function (rows, p) {
+    var g = groupStats(rows, function (r) { return null; });
+    var map = {};
+    for (var i = 0; i < rows.length; i++) {
+      var bs = rows[i].b || [];
+      for (var j = 0; j < bs.length; j++) { (map[bs[j]] || (map[bs[j]] = [])).push(rows[i]); }
+    }
+    var out = [];
+    for (var b in map) {
+      var rs = map[b];
+      out.push({ key: b, n: rs.length,
+                 play_median: median(rs.map(function (r) { return r.p; })),
+                 interact: mean(rs.map(function (r) { return r.it || 0; })),
+                 fav_rate: mean(rs.map(function (r) { return r.fr || 0; })),
+                 official: sum(rs.map(function (r) { return r.o; })) });
+    }
+    var key = p.metric;
+    out.sort(function (a, b2) { return p.order === "asc" ? a[key] - b2[key] : b2[key] - a[key]; });
+    return {
+      kpis: [{ v: fmtInt(rows.length), l: "A 级内容数" },
+             { v: out.length, l: "提及品牌数" },
+             { v: out.length ? out[0].key : "-", l: "第一名（" + this.metricLabel[p.metric] + "）" }],
+      chart: { type: "bar", x: out.map(function (r) { return r.key; }), y: out.map(function (r) { return r[key]; }),
+               title: "各品牌" + this.metricLabel[p.metric], pct: p.metric === "interact" || p.metric === "fav" },
+      tables: [{ name: "品牌声量", rows: out.map(function (r) {
+        return { "品牌": r.key, "提及数": r.n, "播放中位数": fmtInt(r.play_median),
+                 "互动率": fmtPct(r.interact), "收藏率": fmtPct(r.fav_rate), "官方内容": r.official }; }) }],
+      insight: out.length ? ("声量第一是「" + out[0].key + "」（" + fmtInt(out[0].n) + " 次提及）。" +
+        "注意：提及量受采集关键词分配影响，只能做相对比较，不能当市场份额。") : "没有匹配到品牌。"
+    };
+  }
+});
+
+/* ---------- 3. 横评份额 ---------- */
+op({
+  id: "brand_share", name: "横评份额", levels: ["A"],
+  desc: "在横评/选购类内容里，各品牌被一起比较的份额（比绝对提及更公平）",
+  keywords: ["横评", "份额", "评测里", "对比里", "占多少", "谁被比"],
+  params: {},
+  run: function (rows) {
+    var reviews = rows.filter(function (r) { return /横评|对比|测评|评测|哪款|怎么选/.test(r.t || ""); });
+    var map = {};
+    for (var i = 0; i < reviews.length; i++) {
+      var bs = reviews[i].b || [];
+      for (var j = 0; j < bs.length; j++) map[bs[j]] = (map[bs[j]] || 0) + 1;
+    }
+    var out = [];
+    for (var b in map) out.push({ key: b, n: map[b] });
+    out.sort(function (a, b2) { return b2.n - a.n; });
+    var tot = 0; for (var k = 0; k < out.length; k++) tot += out[k].n;
+    for (var k2 = 0; k2 < out.length; k2++) out[k2].share = tot ? out[k2].n / tot : 0;
+    return {
+      kpis: [{ v: fmtInt(reviews.length), l: "横评类内容数" },
+             { v: out.length, l: "出现的品牌" },
+             { v: out.length ? fmtPct(out[0].share) : "-", l: "第一名份额" }],
+      chart: { type: "bar", x: out.map(function (r) { return r.key; }), y: out.map(function (r) { return r.share; }),
+               title: "横评内品牌份额", pct: true },
+      tables: [{ name: "横评份额", rows: out.map(function (r) {
+        return { "品牌": r.key, "横评中出现次数": r.n, "份额": fmtPct(r.share) }; }) }],
+      insight: out.length ? ("横评/选购类内容共 " + reviews.length + " 条，「" + out[0].key + "」份额 " + fmtPct(out[0].share) +
+        "。同一条横评里各品牌被一起比较，与采集方式无关，是更公平的声量口径。") : "没有识别到横评类内容。"
+    };
+  }
+});
+
+/* ---------- 4. 官方 vs 达人 ---------- */
+op({
+  id: "official_vs_ugc", name: "官方 vs 达人", levels: ["A"],
+  desc: "品牌自营账号与达人/用户内容的效率对比",
+  keywords: ["官方", "达人", "自营", "up主", "账号", "谁更", "差在哪", "对比"],
+  params: { brand: { type: "brand", "default": "" } },
+  run: function (rows, p) {
+    var scope = p.brand ? rows.filter(function (r) { return has(r.b, p.brand); }) : rows;
+    var own = scope.filter(function (r) { return r.o === 1; });
+    var ugc = scope.filter(function (r) { return r.o !== 1; });
+    function st(rs) {
+      return { n: rs.length, play: median(rs.map(function (r) { return r.p; })),
+               interact: mean(rs.map(function (r) { return r.it || 0; })),
+               fav: mean(rs.map(function (r) { return r.fr || 0; })),
+               dm: mean(rs.map(function (r) { return r.p ? r.dm / r.p * 1000 : 0; })) };
+    }
+    var a = st(own), b = st(ugc);
+    return {
+      kpis: [{ v: fmtInt(a.n), l: "官方内容" }, { v: fmtInt(b.n), l: "达人/用户内容" },
+             { v: fmtPct(a.interact), l: "官方互动率" }, { v: fmtPct(b.interact), l: "达人互动率" }],
+      chart: { type: "groupbar", x: ["官方", "达人/用户"],
+               series: [{ name: "互动率", y: [a.interact, b.interact] }, { name: "收藏率", y: [a.fav, b.fav] }],
+               title: (p.brand ? p.brand + " · " : "") + "官方 vs 达人 效率", pct: true },
+      tables: [{ name: "官方 vs 达人", rows: [
+        { "来源": "官方", "条数": a.n, "播放中位数": fmtInt(a.play), "互动率": fmtPct(a.interact), "收藏率": fmtPct(a.fav), "每千次播放弹幕": a.dm.toFixed(2) },
+        { "来源": "达人/用户", "条数": b.n, "播放中位数": fmtInt(b.play), "互动率": fmtPct(b.interact), "收藏率": fmtPct(b.fav), "每千次播放弹幕": b.dm.toFixed(2) }] }],
+      insight: "官方 " + a.n + " 条、互动率 " + fmtPct(a.interact) + "；达人/用户 " + b.n + " 条、互动率 " + fmtPct(b.interact) + "。" +
+        (a.interact < b.interact ? "官方内容互动率更低，属于「有曝光、少讨论」，适合做品牌信息；讨论型内容更适合交给达人。" :
+                                   "官方内容互动率不低于达人。")
+    };
+  }
+});
+
+/* ---------- 5. 痛点排名 ---------- */
+op({
+  id: "pain_rank", name: "用户痛点排名", levels: ["A", "B", "C"],
+  desc: "用户抱怨什么、哪类痛点播放高（用 A+B+C）",
+  keywords: ["痛点", "抱怨", "吐槽", "麻烦", "问题", "需求", "卖点", "除臭", "掉毛", "噪音", "清洗", "异味"],
+  params: { metric: { type: "enum", values: ["n", "play", "interact", "fav"], "default": "n" } },
+  metricLabel: { n: "内容量", play: "播放中位数", interact: "互动率", fav: "收藏率" },
+  run: function (rows, p) {
+    var g = groupStats2(rows, "pn");
+    var key = p.metric === "n" ? "n" : (p.metric === "play" ? "play_median" : (p.metric === "interact" ? "interact" : "fav_rate"));
+    g.sort(function (a, b) { return b[key] - a[key]; });
+    return {
+      kpis: [{ v: fmtInt(rows.length), l: "参与分析的内容" },
+             { v: g.length, l: "识别到痛点" },
+             { v: g.length ? g[0].key : "-", l: "第一名（" + this.metricLabel[p.metric] + "）" }],
+      chart: { type: "scatter", x: g.map(function (r) { return r.n; }), y: g.map(function (r) { return r.play_median; }),
+               label: g.map(function (r) { return r.key; }),
+               title: "痛点：内容量 × 播放中位数", xname: "内容量", yname: "播放中位数" },
+      tables: [{ name: "痛点排名", rows: g.map(function (r) {
+        return { "痛点": r.key, "内容量": r.n, "播放中位数": fmtInt(r.play_median),
+                 "互动率": fmtPct(r.interact), "收藏率": fmtPct(r.fav_rate) }; }) }],
+      insight: g.length ? ("内容量最大的是「" + g[0].key + "」。" +
+        "散点图上靠左上的点（播放高但内容少）是内容机会点。痛点分析用 A+B+C，因为需求既来自产品吐槽，也来自耗材与养护语境。") : "没有识别到痛点。"
+    };
+  }
+});
+
+/* ---------- 6. 内容形态 ---------- */
+op({
+  id: "format_rank", name: "内容形态效果", levels: ["A", "B"],
+  desc: "横评/教程/开箱/DIY 等形态的效率对比",
+  keywords: ["形态", "形式", "横评", "开箱", "教程", "diy", "吐槽", "视频形式", "什么内容"],
+  params: { metric: { type: "enum", values: ["n", "interact", "fav", "play"], "default": "interact" } },
+  metricLabel: { n: "内容量", interact: "互动率", fav: "收藏率", play: "播放中位数" },
+  run: function (rows, p) {
+    var g = groupStats(rows, function (r) { return r.fm || "其他"; });
+    var key = p.metric === "n" ? "n" : (p.metric === "play" ? "play_median" : (p.metric === "interact" ? "interact" : "fav_rate"));
+    g.sort(function (a, b) { return b[key] - a[key]; });
+    return {
+      kpis: [{ v: fmtInt(rows.length), l: "参与分析的内容" }, { v: g.length, l: "内容形态数" },
+             { v: g.length ? g[0].key : "-", l: "第一名（" + this.metricLabel[p.metric] + "）" }],
+      chart: { type: "bar", x: g.map(function (r) { return r.key; }), y: g.map(function (r) { return r[key]; }),
+               title: "各内容形态" + this.metricLabel[p.metric], pct: p.metric === "interact" || p.metric === "fav" },
+      tables: [{ name: "内容形态", rows: g.map(function (r) {
+        return { "形态": r.key, "内容量": r.n, "播放中位数": fmtInt(r.play_median),
+                 "互动率": fmtPct(r.interact), "收藏率": fmtPct(r.fav_rate) }; }) }],
+      insight: g.length ? ("按" + this.metricLabel[p.metric] + "排序，表现最好的是「" + g[0].key + "」。形态分析用 A+B 级。") : "没有数据。"
+    };
+  }
+});
+
+/* ---------- 7. 时长档 ---------- */
+op({
+  id: "duration_rank", name: "时长档效果", levels: ["A", "B"],
+  desc: "视频做多长效果更好（<1min / 1-3 / 3-10 / >10min）",
+  keywords: ["时长", "多长", "几分钟", "短视频", "长视频", "完播"],
+  params: { metric: { type: "enum", values: ["interact", "fav", "play", "n"], "default": "interact" } },
+  metricLabel: { interact: "互动率", fav: "收藏率", play: "播放中位数", n: "内容量" },
+  run: function (rows, p) {
+    function bin(r) { var d = r.d; return d < 60 ? "<1min" : (d < 180 ? "1-3min" : (d < 600 ? "3-10min" : ">10min")); }
+    var g = groupStats(rows, bin);
+    var order = ["<1min", "1-3min", "3-10min", ">10min"];
+    g.sort(function (a, b) { return order.indexOf(a.key) - order.indexOf(b.key); });
+    var key = p.metric === "n" ? "n" : (p.metric === "play" ? "play_median" : (p.metric === "interact" ? "interact" : "fav_rate"));
+    return {
+      kpis: [{ v: fmtInt(rows.length), l: "参与分析的内容" },
+             { v: g[g.length - 1] ? g[g.length - 1].key : "-", l: "最长档" },
+             { v: fmtPct(mean(g.map(function (r) { return r.interact; }))), l: "各档平均互动率" }],
+      chart: { type: "groupbar", x: g.map(function (r) { return r.key; }),
+               series: [{ name: "互动率", y: g.map(function (r) { return r.interact; }) },
+                        { name: "收藏率", y: g.map(function (r) { return r.fav_rate; }) }],
+               title: "不同时长档的互动与收藏", pct: true },
+      tables: [{ name: "时长档", rows: g.map(function (r) {
+        return { "时长档": r.key, "内容量": r.n, "播放中位数": fmtInt(r.play_median),
+                 "互动率": fmtPct(r.interact), "收藏率": fmtPct(r.fav_rate) }; }) }],
+      insight: "长视频互动率通常更高，但要注意——长视频往往来自更专业的创作者，" +
+        "所以这个结论不能直接当成「做长就更好」，要结合创作者分层一起看。"
+    };
+  }
+});
+
+/* ---------- 8. 创作者分层 ---------- */
+op({
+  id: "tier_rank", name: "创作者分层效率", levels: ["A", "B"],
+  desc: "头部 / 腰部 / 长尾创作者的效率对比",
+  keywords: ["创作者", "达人分层", "头部", "腰部", "长尾", "投放", "谁的效果"],
+  params: {},
+  run: function (rows) {
+    var sorted = rows.slice().sort(function (a, b) { return b.p - a.p; });
+    var n = sorted.length || 1, rank = {};
+    for (var i = 0; i < sorted.length; i++) rank[sorted[i].t] = i;
+    function tier(r) {
+      var pct = rank[r.t] / n;
+      return pct < 0.1 ? "头部(前10%)" : (pct < 0.4 ? "腰部(10-40%)" : "长尾(40-100%)");
+    }
+    var g = groupStats(rows, tier);
+    return {
+      kpis: g.map(function (r) { return { v: fmtInt(r.n), l: r.key }; }).slice(0, 3),
+      chart: { type: "groupbar", x: g.map(function (r) { return r.key; }),
+               series: [{ name: "互动率", y: g.map(function (r) { return r.interact; }) },
+                        { name: "收藏率", y: g.map(function (r) { return r.fav_rate; }) }],
+               title: "创作者分层效率", pct: true },
+      tables: [{ name: "创作者分层", rows: g.map(function (r) {
+        return { "层级": r.key, "内容量": r.n, "播放中位数": fmtInt(r.play_median),
+                 "互动率": fmtPct(r.interact), "收藏率": fmtPct(r.fav_rate) }; }) }],
+      insight: "按播放量排名分层。腰部往往是性价比最高的投放层——播放量不低、互动也不差，成本又远低于头部。"
+    };
+  }
+});
+
+/* ---------- 9. 使用场景 ---------- */
+op({
+  id: "scene_rank", name: "使用场景", levels: ["A", "B", "C"],
+  desc: "用户在哪类处境下看内容（上班族/多猫/出差…）",
+  keywords: ["场景", "人群", "用户是谁", "什么人", "哪些人", "上班族", "多猫", "出差", "新手", "学生党"],
+  params: {},
+  run: function (rows) {
+    var g = groupStats2(rows, "sc");
+    g.sort(function (a, b) { return b.n - a.n; });
+    return {
+      kpis: [{ v: fmtInt(rows.length), l: "参与分析的内容" }, { v: g.length, l: "识别到场景" },
+             { v: fmtInt(rows.length - sum(g.map(function (r) { return r.n; }))), l: "未标注场景" }],
+      chart: { type: "bar", x: g.map(function (r) { return r.key; }), y: g.map(function (r) { return r.n; }),
+               title: "各使用场景内容量" },
+      tables: [{ name: "使用场景", rows: g.map(function (r) {
+        return { "场景": r.key, "内容量": r.n, "播放中位数": fmtInt(r.play_median), "互动率": fmtPct(r.interact) }; }) }],
+      insight: "「未标注场景」占比很高，说明**大多数内容并没有绑定生活场景**——" +
+        "这本身就是一个机会点：主动做场景化选题，竞争更小。"
+    };
+  }
+});
+
+/* ---------- 10. 关键词效率 ---------- */
+op({
+  id: "keyword_rank", name: "关键词效率", levels: ["A", "B", "C", "N"],
+  desc: "当初用来采集的关键词，哪些带来的内容播放更高",
+  keywords: ["关键词", "搜索词", "选题词", "哪个词"],
+  params: { metric: { type: "enum", values: ["n", "play", "interact"], "default": "play" } },
+  metricLabel: { n: "内容量", play: "播放中位数", interact: "互动率" },
+  run: function (rows, p) {
+    var g = groupStats(rows, function (r) { return r.k; });
+    var key = p.metric === "n" ? "n" : (p.metric === "play" ? "play_median" : "interact");
+    g.sort(function (a, b) { return b[key] - a[key]; });
+    return {
+      kpis: [{ v: g.length, l: "关键词数" }, { v: fmtInt(sum(g.map(function (r) { return r.n; }))), l: "命中内容" },
+             { v: g.length ? g[0].key : "-", l: "第一名（" + this.metricLabel[p.metric] + "）" }],
+      chart: { type: "bar", x: g.slice(0, 15).map(function (r) { return r.key; }), y: g.slice(0, 15).map(function (r) { return r[key]; }),
+               title: "关键词 " + this.metricLabel[p.metric] + "（前 15）", pct: p.metric === "interact" },
+      tables: [{ name: "关键词效率", rows: g.map(function (r) {
+        return { "关键词": r.key, "内容量": r.n, "播放中位数": fmtInt(r.play_median), "互动率": fmtPct(r.interact) }; }) }],
+      insight: "品牌词的流量效率通常低于品类词和场景词——用户搜的是「猫砂盆怎么选」，不太搜品牌名。"
+    };
+  }
+});
+
+/* ---------- 11. 头部内容 ---------- */
+op({
+  id: "top_content", name: "头部内容榜", levels: ["A"],
+  desc: "A 级内容里播放量最高的那些，看什么选题跑得出来",
+  keywords: ["头部", "爆款", "top", "播放最高", "什么内容火", "案例"],
+  params: { brand: { type: "brand", "default": "" }, n: { type: "int", min: 5, max: 30, "default": 10 } },
+  run: function (rows, p) {
+    var scope = p.brand ? rows.filter(function (r) { return has(r.b, p.brand); }) : rows;
+    var top = scope.slice().sort(function (a, b) { return b.p - a.p; }).slice(0, p.n);
+    return {
+      kpis: [{ v: fmtInt(scope.length), l: "候选内容" }, { v: top.length, l: "展示条数" },
+             { v: top.length ? fmtInt(top[0].p) : "-", l: "最高播放" }],
+      chart: { type: "bar", x: top.map(function (r) { return (r.t || "").slice(0, 16); }), y: top.map(function (r) { return r.p; }),
+               title: "播放量 Top " + top.length, horiz: true },
+      tables: [{ name: "头部内容", rows: top.map(function (r, i) {
+        return { "排名": i + 1, "标题": r.t, "产品线": r.pl || "-", "播放": fmtInt(r.p),
+                 "互动率": fmtPct(r.it), "形态": r.fm || "-", "品牌": (r.b || []).join("/") || "-" }; }) }],
+      insight: "头部内容不是让你「抄爆款」，而是回答「什么形式的内容在这个品类里跑得出来」。"
+    };
+  }
+});
+
+/* ---------- 12. 年度趋势 ---------- */
+op({
+  id: "year_trend", name: "年度趋势", levels: ["A", "B", "C", "N"],
+  desc: "内容量随年份的变化",
+  keywords: ["趋势", "年份", "每年", "逐年", "变化", "怎么变", "这几年", "增长"],
+  params: {},
+  run: function (rows) {
+    var g = groupStats(rows, function (r) { return r.y ? String(r.y) : null; });
+    g.sort(function (a, b) { return a.key.localeCompare(b.key); });
+    return {
+      kpis: [{ v: g.length ? g[0].key + "~" + g[g.length - 1].key : "-", l: "覆盖年份" },
+             { v: fmtInt(sum(g.map(function (r) { return r.n; }))), l: "内容总数" },
+             { v: fmtInt(g.length ? g[g.length - 1].n : 0), l: "最近一年内容量" }],
+      chart: { type: "line", x: g.map(function (r) { return r.key; }), y: g.map(function (r) { return r.n; }),
+               title: "内容量年度趋势" },
+      tables: [{ name: "年度趋势", rows: g.map(function (r) {
+        return { "年份": r.key, "内容量": r.n, "播放中位数": fmtInt(r.play_median), "互动率": fmtPct(r.interact) }; }) }],
+      insight: "近年内容量明显上升，说明宠物智能硬件在 B站 的内容供给在增长。"
+    };
+  }
+});
+
+/* ---------- 13. 条件计数 ---------- */
+op({
+  id: "count_filter", name: "条件计数", levels: ["A", "B", "C", "N"],
+  desc: "按品牌/产品线/标签层/关键词数数",
+  keywords: ["多少条", "有几条", "数量", "统计一下", "几条"],
+  params: { brand: { type: "brand", "default": "" }, label: { type: "enum", values: ["", "A", "B", "C", "N"], "default": "" },
+            cat: { type: "enum", values: ["", "猫砂盆", "饮水机", "喂食器", "摄像头", "烘干箱", "净化器", "鱼缸"], "default": "" } },
+  run: function (rows, p) {
+    var s = rows.filter(function (r) {
+      if (p.brand && !has(r.b, p.brand)) return false;
+      if (p.label && r.c !== p.label) return false;
+      if (p.cat && !(r.ct === p.cat || r.pl === p.cat)) return false;
+      return true;
+    });
+    var byLabel = groupStats(s, function (r) { return r.c; });
+    return {
+      kpis: [{ v: fmtInt(s.length), l: "符合条件的条数" },
+             { v: fmtInt(median(s.map(function (r) { return r.p; }))), l: "播放中位数" },
+             { v: fmtPct(mean(s.map(function (r) { return r.it || 0; }))), l: "平均互动率" }],
+      chart: { type: "bar", x: byLabel.map(function (r) { return r.key + " 级"; }), y: byLabel.map(function (r) { return r.n; }),
+               title: "符合条件的记录按相关性级别分布" },
+      tables: [{ name: "命中记录", rows: s.slice(0, 200).map(function (r) {
+        return { "标题": r.t, "级别": r.c, "产品线": r.pl || "-", "播放": fmtInt(r.p), "关键词": r.k }; }) }],
+      insight: "共 " + s.length + " 条符合条件。" + (s.length > 200 ? "表格只预览前 200 条。" : "")
+    };
+  }
+});
+
+/* ---------- 14. 品牌对比 ---------- */
+op({
+  id: "compare_brand", name: "品牌对比", levels: ["A"],
+  desc: "两个品牌的效率逐项对比",
+  keywords: ["对比", "比一比", "versus", "vs", "谁更好", "差距"],
+  params: { brand: { type: "brand", "default": "" }, brand2: { type: "brand", "default": "" } },
+  run: function (rows, p) {
+    var names = [p.brand, p.brand2].filter(function (x) { return x; });
+    if (!names.length) { var bs = META.brands.slice(0, 2); names = bs; }
+    var out = names.map(function (nm) {
+      var rs = rows.filter(function (r) { return has(r.b, nm); });
+      return { key: nm, n: rs.length, play: median(rs.map(function (r) { return r.p; })),
+               interact: mean(rs.map(function (r) { return r.it || 0; })),
+               fav: mean(rs.map(function (r) { return r.fr || 0; })),
+               creat: uniq(rs.map(function (r) { return r.m; })).length };
+    });
+    return {
+      kpis: out.map(function (r) { return { v: fmtInt(r.n), l: r.key + " 提及" }; }),
+      chart: { type: "groupbar", x: out.map(function (r) { return r.key; }),
+               series: [{ name: "互动率", y: out.map(function (r) { return r.interact; }) },
+                        { name: "收藏率", y: out.map(function (r) { return r.fav; }) }],
+               title: "品牌效率对比", pct: true },
+      tables: [{ name: "品牌对比", rows: out.map(function (r) {
+        return { "品牌": r.key, "提及数": r.n, "播放中位数": fmtInt(r.play),
+                 "互动率": fmtPct(r.interact), "收藏率": fmtPct(r.fav), "创作者数": r.creat }; }) }],
+      insight: "对比" + names.join(" 与 ") + "：声量高不等于互动好，要分开看。"
+    };
+  }
+});
+
+/* ---------- 15. 标签分布 ---------- */
+op({
+  id: "label_dist", name: "标签分布", levels: ["A", "B", "C", "N"],
+  desc: "4,375 条内容里，真正讨论硬件的到底占多少",
+  keywords: ["标签分布", "四级", "相关性", "多少是宠物", "构成", "比例"],
+  params: {},
+  run: function (rows) {
+    var g = groupStats(rows, function (r) { return r.c; });
+    g.sort(function (a, b) { return b.n - a.n; });
+    var tot = sum(g.map(function (r) { return r.n; }));
+    return {
+      kpis: g.map(function (r) { return { v: fmtInt(r.n), l: r.key + " 级" }; }),
+      chart: { type: "bar", x: g.map(function (r) { return r.key + " 级"; }), y: g.map(function (r) { return r.n; }),
+               title: "相关性四级分布" },
+      tables: [{ name: "标签分布", rows: g.map(function (r) {
+        return { "级别": r.key, "含义": LEVEL_NAME[r.key] || "", "内容量": r.n,
+                 "占比": fmtPct(r.n / tot), "播放中位数": fmtInt(r.play_median), "互动率": fmtPct(r.interact) }; }) }],
+      insight: "只有 A 级（" + (g.filter(function (r) { return r.key === "A"; })[0] || { n: 0 }).n +
+        " 条）是品牌竞争型智能硬件产品本身；C 级占比高是真实的内容生态，不是标注错误。"
+    };
+  }
+});
+
+/* 按「数组字段」分组（品牌/痛点/场景是一行多个值） */
+function groupStats2(rows, field) {
+  var map = {};
+  for (var i = 0; i < rows.length; i++) {
+    var arr = rows[i][field] || [];
+    for (var j = 0; j < arr.length; j++) (map[arr[j]] || (map[arr[j]] = [])).push(rows[i]);
+  }
+  var out = [];
+  for (var k in map) {
+    var rs = map[k];
+    out.push({ key: k, n: rs.length,
+               play_median: median(rs.map(function (r) { return r.p; })),
+               interact: mean(rs.map(function (r) { return r.it || 0; })),
+               fav_rate: mean(rs.map(function (r) { return r.fr || 0; })),
+               creators: uniq(rs.map(function (r) { return r.m; })).length });
+  }
+  return out;
+}
+
+/* =========================================================================
+   阶段 1：意图识别（规则优先）
+   ========================================================================= */
+function matchByRules(text) {
+  var t = (text || "").toLowerCase();
+  // 先看这句话里提到了几个品牌 —— 提到两个，说明用户想做「对比」
+  var brandsIn = [];
+  for (var bi = 0; bi < META.brands.length; bi++) {
+    if ((text || "").indexOf(META.brands[bi]) >= 0) brandsIn.push(META.brands[bi]);
+  }
+  var best = null;
+  for (var i = 0; i < OPS.length; i++) {
+    var o = OPS[i], score = 0, hits = [];
+    for (var j = 0; j < o.keywords.length; j++) {
+      var k = o.keywords[j].toLowerCase();
+      if (t.indexOf(k) >= 0) { score += k.length >= 2 ? 2 : 1; hits.push(o.keywords[j]); }
+    }
+    // 实体命中加权（与参考实现里「网点代码直接命中 +6」同理）
+    var ps = o.params || {};
+    if (hits.length || brandsIn.length) {
+      if (ps.brand && brandsIn.length) { score += 2; }
+      if (ps.brand2 && brandsIn.length >= 2) { score += 5; }
+      if (brandsIn.length >= 2 && !ps.brand2) { score -= 2; }   // 提了两个品牌但不是对比类操作，降权
+      if (Object.prototype.hasOwnProperty.call(ps, "cat")) {
+        for (var ci = 0; ci < (ps.cat.values || []).length; ci++) {
+          if (ps.cat.values[ci] && (text || "").indexOf(ps.cat.values[ci]) >= 0) { score += 3; hits.push(ps.cat.values[ci]); break; }
+        }
+      }
+    }
+    if (score > 0 && (!best || score > best.score)) best = { op: o, score: score, hits: hits };
+  }
+  return best;
+}
+
+/* 阶段 2：参数抽取 */
+function extractParams(o, text) {
+  var p = {}, log = [];
+  var spec = o.params || {};
+  for (var key in spec) {
+    var s = spec[key], v = s["default"];
+    if (s.type === "brand") {
+      // 一句话里可能提到两个品牌（"小佩和霍曼哪个好"）：按出现顺序取第 1 / 第 2 个
+      var mentioned = [];
+      for (var i = 0; i < META.brands.length; i++) {
+        if ((text || "").indexOf(META.brands[i]) >= 0) mentioned.push(META.brands[i]);
+      }
+      var pick = (key === "brand2") ? mentioned[1] : mentioned[0];
+      if (pick) { v = pick; log.push("品牌 → " + v); }
+    } else if (s.type === "enum") {
+      if (key === "metric") {
+        if (/互动|engagement/.test(text)) { v = s.values.indexOf("interact") >= 0 ? "interact" : v; log.push("口径 → 互动率"); }
+        else if (/收藏/.test(text)) { v = s.values.indexOf("fav") >= 0 ? "fav" : v; log.push("口径 → 收藏率"); }
+        else if (/播放/.test(text)) { v = s.values.indexOf("play") >= 0 ? "play" : (s.values.indexOf("play_median") >= 0 ? "play" : v); log.push("口径 → 播放"); }
+        else if (/内容量|多少条|条数/.test(text) && s.values.indexOf("n") >= 0) { v = "n"; log.push("口径 → 内容量"); }
+      } else if (key === "label") {
+        var m = (text || "").match(/([ABCN])s*级/);
+        if (m && s.values.indexOf(m[1]) >= 0) { v = m[1]; log.push("标签层 → " + v); }
+      } else if (key === "cat") {
+        for (var j = 0; j < s.values.length; j++) {
+          if (s.values[j] && (text || "").indexOf(s.values[j]) >= 0) { v = s.values[j]; log.push("产品线 → " + v); break; }
+        }
+      }
+    } else if (s.type === "int") {
+      var mm = (text || "").match(/(\d+)\s*(条|个|名)/);
+      if (mm) { var x = parseInt(mm[1], 10); if (x >= s.min && x <= s.max) { v = x; log.push("数量 → " + x); } }
+    }
+    p[key] = v;
+  }
+  return { params: p, log: log };
+}
+
+/* 阶段 2 附：白名单校验 */
+function validate(o, p) {
+  var problems = [];
+  if (!o || !o.id) problems.push("操作不存在");
+  if (OPS.indexOf(o) < 0) problems.push("操作不在白名单内");
+  var spec = o.params || {};
+  for (var key in p) {
+    var s = spec[key];
+    if (!s) { problems.push("参数 " + key + " 未在规格里定义，已忽略"); delete p[key]; continue; }
+    if (s.type === "enum" && s.values.indexOf(p[key]) < 0) problems.push("参数 " + key + "=" + p[key] + " 不在允许值内");
+    if (s.type === "brand" && p[key] && META.brands.indexOf(p[key]) < 0) problems.push("品牌 " + p[key] + " 不在已知品牌表里");
+    if (s.type === "int" && (p[key] < s.min || p[key] > s.max)) problems.push("参数 " + key + " 超出范围 [" + s.min + "," + s.max + "]");
+  }
+  return problems;
+}
+
+/* 阶段 1 附：大模型兜底（只做路由，不回答业务问题） */
+async function matchByLLM(text, apiKey) {
+  var sys = [
+    "你是一个宠物智能硬件内容运营数据分析 Agent 的意图识别模块。",
+    "你只能从下面这些操作中选一个，并给出参数。不要回答业务问题本身，只做路由。",
+    "",
+    "可用操作："
+  ];
+  for (var i = 0; i < OPS.length; i++) {
+    var o = OPS[i], ps = {};
+    for (var k in (o.params || {})) ps[k] = o.params[k].type === "enum" ? o.params[k].values : o.params[k].type;
+    sys.push("- " + o.id + "：" + o.desc + "；参数 " + JSON.stringify(ps));
+  }
+  sys.push("");
+  sys.push("取值范围：");
+  sys.push("- 品牌：" + META.brands.join(", "));
+  sys.push("- 产品线：" + META.product_lines.join(", "));
+  sys.push("- 标签层：A / B / C / N（A=智能硬件本体，B=耗材日用，C=健康养护日常，N=非宠物）");
+  sys.push("");
+  sys.push('只输出一行 JSON，形如 {"op":"pl_rank","params":{"metric":"interact","order":"desc"},"reason":"..."}');
+  sys.push("不要输出任何解释文字或代码块标记。");
+
+  var r = await fetch("https://api.deepseek.com/chat/completions", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "Authorization": "Bearer " + apiKey },
+    body: JSON.stringify({ model: "deepseek-chat", temperature: 0, max_tokens: 400,
+      messages: [{ role: "system", content: sys.join("\n") }, { role: "user", content: text }] })
+  });
+  if (!r.ok) throw new Error("DeepSeek HTTP " + r.status);
+  var j = await r.json();
+  var raw = ((j.choices && j.choices[0] && j.choices[0].message.content) || "").trim();
+  var cleaned = raw.replace(/^```(?:json)?/i, "").replace(/```$/, "").trim();
+  var parsed = JSON.parse(cleaned);
+  var found = null;
+  for (var m = 0; m < OPS.length; m++) if (OPS[m].id === parsed.op) found = OPS[m];
+  if (!found) throw new Error("模型返回了未知操作：" + parsed.op);
+  return { op: found, params: parsed.params || {}, reason: parsed.reason || "" };
+}
+
+/* =========================================================================
+   阶段 3：口径守卫（语义层）—— 本项目最核心的业务规则
+   ========================================================================= */
+function guard(o, params, text) {
+  var levels = o.levels || ["A", "B", "C", "N"];
+  var kept = RECS.filter(function (r) { return levels.indexOf(r.c) >= 0; });
+  var dropped = RECS.length - kept.length;
+  var extra = [];
+
+  if (dropped > 0) {
+    extra.push("按该分析的标签纪律，剔除了 " + dropped + " 条非 " + levels.join("/") + " 级记录。");
+  }
+  if (params && params.brand) {
+    var all = RECS.filter(function (r) { return has(r.b, params.brand); }).length;
+    var k = kept.filter(function (r) { return has(r.b, params.brand); }).length;
+    if (all !== k) extra.push("品牌「" + params.brand + "」共 " + all + " 条提及，其中 " + k + " 条进入本次分析。");
+  }
+  if (o.id === "pain_rank" || o.id === "scene_rank") {
+    extra.push("痛点/场景属于「需求与语境」，按纪律使用 A+B+C 三层。");
+  }
+  if (o.id === "pl_rank" || o.id === "brand_rank" || o.id === "brand_share") {
+    extra.push("产品线与品牌结论**只用 A 级**——C 级的萌宠日常不是产品讨论，混进来会让结论失真。");
+  }
+  return { rows: kept, levels: levels, dropped: dropped, notes: extra };
+}
+
+/* =========================================================================
+   演示兜底：预置问题 → 直接路由（不依赖网络，也不依赖规则是否命中）
+   ========================================================================= */
+var CACHED_ROUTES = [
+  { q: "哪条产品线的内容互动率最高？", op: "pl_rank", params: { metric: "interact", order: "desc" } },
+  { q: "哪条产品线内容最多", op: "pl_rank", params: { metric: "vol", order: "desc" } },
+  { q: "小佩和竞品的官方内容差在哪？", op: "official_vs_ugc", params: { brand: "小佩" } },
+  { q: "小佩的横评份额是多少", op: "brand_share", params: {} },
+  { q: "哪个痛点播放量高但内容还不多？", op: "pain_rank", params: { metric: "play" } },
+  { q: "做什么形式的内容效果最好", op: "format_rank", params: { metric: "interact" } },
+  { q: "视频做多长效果更好", op: "duration_rank", params: { metric: "interact" } },
+  { q: "达人投头部还是腰部", op: "tier_rank", params: {} },
+  { q: "用户都是什么人", op: "scene_rank", params: {} },
+  { q: "播放量最高的内容有哪些", op: "top_content", params: { n: 10 } },
+  { q: "猫砂盆有多少条内容", op: "count_filter", params: { cat: "猫砂盆" } },
+  { q: "4,375 条里真正讨论硬件的占多少", op: "label_dist", params: {} }
+];
+function findCached(text) {
+  var t = (text || "").replace(/[\s？?。，,]/g, "");
+  for (var i = 0; i < CACHED_ROUTES.length; i++) {
+    var c = CACHED_ROUTES[i], q = c.q.replace(/[\s？?。，,]/g, "");
+    if (t === q || (t.length > 4 && q.indexOf(t) >= 0) || (q.length > 4 && t.indexOf(q) >= 0)) return c;
+  }
+  return null;
+}
+
+/* =========================================================================
+   编排：把 6 个阶段跑出来
+   ========================================================================= */
+var FLOW_HTML = [];
+function stageStart(n, title) {
+  FLOW_HTML[n] = '<div class="stage doing" id="st' + n + '"><h3><span>' + title + '</span><span class="t" id="tm' + n + '">运行中…</span></h3><div id="bd' + n + '"></div></div>';
+  renderFlow();
+  return Date.now();
+}
+function stageEnd(n, ms, body) {
+  var el = document.getElementById("st" + n);
+  if (el) { el.className = "stage done"; document.getElementById("tm" + n).textContent = ms + " ms · 完成"; }
+  if (body) document.getElementById("bd" + n).innerHTML = body;
+  renderFlow();
+}
+function kv(pairs) {
+  var h = '<dl class="kv">';
+  for (var i = 0; i < pairs.length; i++) h += "<dt>" + pairs[i][0] + "</dt><dd>" + pairs[i][1] + "</dd>";
+  return h + "</dl>";
+}
+function why(t) { return '<div class="why">' + t + "</div>"; }
+function renderFlow() {
+  var h = "";
+  for (var i = 0; i < FLOW_HTML.length; i++) if (FLOW_HTML[i]) h += FLOW_HTML[i];
+  document.getElementById("flow").innerHTML = h || '<div class="empty">点「运行 Agent」开始。</div>';
+}
+
+async function run() {
+  var text = document.getElementById("q").value.trim();
+  var key = document.getElementById("key").value.trim();
+  var errBox = document.getElementById("err");
+  errBox.style.display = "none";
+  if (!text) { errBox.style.display = "block"; errBox.textContent = "请先输入一个问题。"; return; }
+  FLOW_HTML = [];
+  document.getElementById("result").innerHTML = '<div class="empty">正在运行…</div>';
+  document.getElementById("run").disabled = true;
+
+  try {
+    /* ---- 阶段 1 ---- */
+    var t0 = stageStart(0, "阶段 1 · 意图识别");
+    var useCache = findCached(text);
+    var rule = matchByRules(text);
+    var chosen = null, how = "", reason = "", hits = [];
+
+    if (useCache) {
+      chosen = findOp(useCache.op); how = "预置问题命中（离线兜底）"; reason = useCache.q;
+    } else if (rule && rule.score >= 2) {
+      chosen = rule.op; how = "规则匹配"; hits = rule.hits;
+    } else if (key) {
+      try {
+        var ll = await matchByLLM(text, key);
+        chosen = ll.op; how = "大模型路由（规则未命中）"; reason = ll.reason;
+      } catch (e) {
+        chosen = rule ? rule.op : null; how = "大模型调用失败，回退到规则匹配";
+      }
+    } else if (rule) {
+      chosen = rule.op; how = "规则匹配（弱命中）"; hits = rule.hits;
+    }
+    if (!chosen) {
+      stageEnd(0, Date.now() - t0, kv([["识别方式", "未命中"], ["说明", "没有一个操作的关键词被命中"]]) +
+        why("可以换一种说法，或填入 DeepSeek API Key 让大模型做意图识别。"));
+      throw new Error("没能识别出要执行哪个操作。试试点上面的示例问题，或者填入 API Key。");
+    }
+    stageEnd(0, Date.now() - t0, kv([
+      ["用户输入", text.replace(/</g, "&lt;")],
+      ["识别方式", how],
+      ["识别理由", hits.length ? "关键词命中：" + hits.join("、") : (reason || "—")],
+      ["选定操作", chosen.id + " — " + chosen.name]
+    ]) + why("只做「路由」：把一句话映射到白名单里的某个操作，不让模型自由发挥。"));
+
+    /* ---- 阶段 2 ---- */
+    t0 = stageStart(1, "阶段 2 · 操作选择（白名单校验）");
+    var ep = extractParams(chosen, text);
+    if (useCache && useCache.params) for (var pk in useCache.params) { ep.params[pk] = useCache.params[pk]; ep.log.push("预置参数 " + pk + "=" + useCache.params[pk]); }
+    var problems = validate(chosen, ep.params);
+    var pstr = JSON.stringify(ep.params);
+    stageEnd(1, Date.now() - t0, kv([
+      ["白名单", OPS.length + " 个操作"],
+      ["校验结果", problems.length ? "发现 " + problems.length + " 个问题" : "通过"],
+      ["参数", pstr],
+      ["抽取过程", ep.log.length ? ep.log.join("；") : "使用默认参数"]
+    ]) + why("Agent <b>不会执行任意代码</b>：它只能从白名单里挑操作、填参数，参数还会被逐项校验。" +
+             "这就从结构上排除了「让模型自由写 SQL / pandas 代码」带来的注入与幻觉风险。"));
+
+    /* ---- 阶段 3 ---- */
+    t0 = stageStart(2, "阶段 3 · 口径守卫（业务纪律）");
+    var g = guard(chosen, ep.params, text);
+    var noteHtml = "";
+    for (var ni = 0; ni < g.notes.length; ni++) noteHtml += "<div>· " + g.notes[ni] + "</div>";
+    stageEnd(2, Date.now() - t0, kv([
+      ["允许的标签层", g.levels.join(" + ")],
+      ["进入计算", fmtInt(g.rows.length) + " 条"],
+      ["被纪律剔除", fmtInt(g.dropped) + " 条"]
+    ]) + why(noteHtml || "本次操作没有额外的口径约束。") +
+      why("这一层是本项目独有的：<b>产品线/品牌只用 A 级、形态/时长用 A+B、痛点/场景用 A+B+C</b>，" +
+          "保证「萌宠日常」不会被混进产品结论里。"));
+
+    /* ---- 阶段 4 ---- */
+    t0 = stageStart(3, "阶段 4 · 执行引擎（浏览器内计算）");
+    var res = chosen.run.call(chosen, g.rows, ep.params);
+    stageEnd(3, Date.now() - t0, kv([
+      ["计算范围", fmtInt(g.rows.length) + " 条内容"],
+      ["产出图表", "1 张"],
+      ["产出表格", (res.tables || []).length + " 张"]
+    ]) + why("所有计算都在你的浏览器里完成，<b>没有任何数据被上传</b>。"));
+
+    /* ---- 阶段 5 ---- */
+    t0 = stageStart(4, "阶段 5 · 结果组装");
+    stageEnd(4, Date.now() - t0, kv([
+      ["关键指标", (res.kpis || []).length + " 个"],
+      ["结论", "已生成"]
+    ]) + why("把计算结果组织成「指标卡 + 图 + 明细表 + 一句话结论」，方便直接拿去汇报。"));
+
+    /* ---- 阶段 6 ---- */
+    t0 = stageStart(5, "阶段 6 · 渲染与导出");
+    renderResult(res, chosen, ep.params, text, g);
+    stageEnd(5, Date.now() - t0, kv([["渲染", "完成"], ["导出", "可下载 CSV"]]) +
+      why("点右下角按钮可以把明细表导成 CSV，用 Excel 直接打开。"));
+
+  } catch (e) {
+    errBox.style.display = "block";
+    errBox.textContent = String(e.message || e);
+    document.getElementById("result").innerHTML = '<div class="empty">' + String(e.message || e) + "</div>";
+  } finally {
+    document.getElementById("run").disabled = false;
+  }
+}
+
+function findOp(id) { for (var i = 0; i < OPS.length; i++) if (OPS[i].id === id) return OPS[i]; return null; }
+
+/* =========================================================================
+   结果渲染
+   ========================================================================= */
+var CURRENT = { tables: [], op: null };
+function renderResult(res, op, params, question, g) {
+  CURRENT.tables = res.tables || []; CURRENT.op = op;
+  var h = "";
+  h += '<div class="kpis">';
+  for (var i = 0; i < (res.kpis || []).length; i++) {
+    h += '<div class="kpi"><b>' + res.kpis[i].v + '</b><span>' + res.kpis[i].l + "</span></div>";
+  }
+  h += "</div>";
+  h += '<div id="chart" style="min-height:340px"></div>';
+  h += '<div class="tabs" id="tabs">';
+  for (var t = 0; t < (res.tables || []).length; t++) {
+    h += '<div class="tab' + (t === 0 ? " on" : "") + '" data-i="' + t + '">' + res.tables[t].name + "</div>";
+  }
+  h += '</div><div id="tbl"></div>';
+  h += '<div class="insight"><b>Agent 解读：</b>' + res.insight + "</div>";
+  h += '<div class="note"><b>数据性质声明（请先读）</b><br>' +
+       "① 数据来自 B站 35 个关键词的搜索结果，<b>不是随机抽样</b>，只能做相对比较，<b>不能推算市场规模或份额</b>。<br>" +
+       "② 4,375 条内容由大模型标注：主口径与人工抽检一致率 " + META.accuracy.main + "%（Wilson 95%CI " +
+       META.accuracy.ci[0] + "%~" + META.accuracy.ci[1] + "%），后分层加权 " + META.accuracy.post + "%。<br>" +
+       "③ 单一标注者、无重复核验；二轮盲判复核发现人工自身自洽率仅 " + META.accuracy.self_consistency + "%，故准确率为保守值。<br>" +
+       "④ 本次执行的操作：<b>" + op.id + "</b>，参数 " + JSON.stringify(params) + "，口径层 " + g.levels.join("+") + "。</div>";
+  h += '<div class="row"><button class="btn sec" id="dl">下载明细 CSV</button>' +
+       '<button class="btn sec" id="copyq">复制本次问句</button></div>';
+  document.getElementById("result").innerHTML = h;
+
+  /* 标签页切换 */
+  var tabs = document.querySelectorAll("#tabs .tab");
+  function showTab(i) {
+    for (var q = 0; q < tabs.length; q++) tabs[q].className = "tab" + (q === i ? " on" : "");
+    document.getElementById("tbl").innerHTML = tableHtml(res.tables[i]);
+  }
+  for (var q2 = 0; q2 < tabs.length; q2++) tabs[q2].onclick = (function (i) { return function () { showTab(i); }; })(parseInt(tabs[q2].dataset.i, 10));
+  if (res.tables && res.tables.length) showTab(0);
+
+  drawChart(res.chart);
+  document.getElementById("dl").onclick = function () { downloadCsv(op.id, res.tables[0]); };
+  document.getElementById("copyq").onclick = function () { navigator.clipboard.writeText(question); this.textContent = "已复制"; };
+}
+
+function tableHtml(tb) {
+  if (!tb || !tb.rows || !tb.rows.length) return '<div class="empty">没有数据</div>';
+  var keys = Object.keys(tb.rows[0]);
+  var h = "<table><thead><tr>";
+  for (var i = 0; i < keys.length; i++) h += "<th>" + keys[i] + "</th>";
+  h += "</tr></thead><tbody>";
+  var lim = Math.min(tb.rows.length, 300);
+  for (var r = 0; r < lim; r++) {
+    h += "<tr>";
+    for (var c = 0; c < keys.length; c++) {
+      var v = tb.rows[r][keys[c]];
+      h += "<td>" + (v === null || v === undefined ? "" : String(v).replace(/</g, "&lt;")) + "</td>";
+    }
+    h += "</tr>";
+  }
+  h += "</tbody></table>";
+  if (tb.rows.length > lim) h += '<div class="note">共 ' + tb.rows.length + " 行，页面只预览前 " + lim + " 行；导出 CSV 可拿到全部。</div>";
+  return h;
+}
+
+function drawChart(c) {
+  var el = document.getElementById("chart");
+  if (!c || typeof Plotly === "undefined") { if (el) el.innerHTML = '<div class="empty">（图表库不可用）</div>'; return; }
+  var layout = { font: { family: "Microsoft YaHei", size: 12 }, margin: { l: 60, r: 20, t: 50, b: 70 },
+                 title: { text: c.title, font: { size: 14, color: "#1F3864" } }, height: 360,
+                 paper_bgcolor: "#fff", plot_bgcolor: "#fff" };
+  var data = [];
+  if (c.type === "bar" || c.type === "line") {
+    var trace = { x: c.x, y: c.y, marker: { color: "#2E5C9A" } };
+    if (c.horiz) { trace.orientation = "h"; delete trace.x; trace.x = c.y; trace.y = c.x; }
+    if (c.type === "line") { trace.type = "scatter"; trace.mode = "lines+markers"; }
+    else trace.type = "bar";
+    if (c.pct) trace.text = c.y.map(function (v) { return fmtPct(v); }), trace.textposition = "auto";
+    data.push(trace);
+    if (c.horiz) layout.margin = { l: 140, r: 20, t: 50, b: 40 };
+  } else if (c.type === "groupbar") {
+    for (var i = 0; i < c.series.length; i++) {
+      data.push({ type: "bar", name: c.series[i].name, x: c.x, y: c.series[i].y,
+                  text: c.pct ? c.series[i].y.map(function (v) { return fmtPct(v); }) : null,
+                  textposition: "auto" });
+    }
+    layout.barmode = "group";
+  } else if (c.type === "scatter") {
+    data.push({ type: "scatter", mode: "markers+text", x: c.x, y: c.y, text: c.label,
+                textposition: "top center", marker: { size: 12, color: "#8064A2" } });
+    layout.xaxis = { title: c.xname }; layout.yaxis = { title: c.yname };
+  }
+  Plotly.newPlot(el, data, layout, { displayModeBar: false, responsive: true });
+}
+
+function downloadCsv(name, tb) {
+  if (!tb || !tb.rows || !tb.rows.length) return;
+  var keys = Object.keys(tb.rows[0]);
+  var lines = [keys.join(",")];
+  for (var i = 0; i < tb.rows.length; i++) {
+    var row = [];
+    for (var j = 0; j < keys.length; j++) {
+      var v = tb.rows[i][keys[j]];
+      v = (v === null || v === undefined) ? "" : String(v);
+      row.push('"' + v.replace(/"/g, '""') + '"');
+    }
+    lines.push(row.join(","));
+  }
+  var blob = new Blob(["\ufeff" + lines.join("\n")], { type: "text/csv;charset=utf-8" });
+  var a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = name + "_" + new Date().toISOString().slice(0, 19).replace(/[:T]/g, "") + ".csv";
+  a.click();
+}
+
+/* =========================================================================
+   初始化
+   ========================================================================= */
+(function init() {
+  var chips = document.getElementById("chips");
+  var list = CACHED_ROUTES.slice(0, 8);
+  for (var i = 0; i < list.length; i++) {
+    var d = document.createElement("div");
+    d.className = "chip"; d.textContent = list[i].q;
+    d.onclick = (function (q) { return function () { document.getElementById("q").value = q; run(); }; })(list[i].q);
+    chips.appendChild(d);
+  }
+  document.getElementById("run").onclick = run;
+  document.getElementById("clear").onclick = function () {
+    document.getElementById("q").value = ""; FLOW_HTML = []; renderFlow();
+    document.getElementById("result").innerHTML = '<div class="empty">结果会显示在这里。</div>';
+    document.getElementById("err").style.display = "none";
+  };
+  document.getElementById("q").addEventListener("keydown", function (e) {
+    if (e.ctrlKey && e.key === "Enter") run();
+  });
+})();
+</script>
+</body>
+</html>

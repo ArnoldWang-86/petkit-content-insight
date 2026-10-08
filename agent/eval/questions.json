@@ -1,0 +1,163 @@
+[
+  {
+    "q": "哪条产品线内容最多",
+    "op": "pl_rank",
+    "params": {
+      "metric": "vol"
+    }
+  },
+  {
+    "q": "哪条产品线的内容互动率最高",
+    "op": "pl_rank",
+    "params": {
+      "metric": "interact"
+    }
+  },
+  {
+    "q": "各产品线的收藏率对比",
+    "op": "pl_rank",
+    "params": {
+      "metric": "fav"
+    }
+  },
+  {
+    "q": "产品线讨论度排名",
+    "op": "pl_rank",
+    "params": {}
+  },
+  {
+    "q": "小佩的声量怎么样",
+    "op": "brand_rank",
+    "params": {}
+  },
+  {
+    "q": "品牌提及量排名",
+    "op": "brand_rank",
+    "params": {}
+  },
+  {
+    "q": "帮我看下霍曼的声量",
+    "op": "brand_rank",
+    "params": {}
+  },
+  {
+    "q": "横评里哪个品牌的份额最高",
+    "op": "brand_share",
+    "params": {}
+  },
+  {
+    "q": "横评份额是多少",
+    "op": "brand_share",
+    "params": {}
+  },
+  {
+    "q": "小佩官方和达人差在哪",
+    "op": "official_vs_ugc",
+    "params": {
+      "brand": "小佩"
+    }
+  },
+  {
+    "q": "霍曼的官方内容表现如何",
+    "op": "official_vs_ugc",
+    "params": {
+      "brand": "霍曼"
+    }
+  },
+  {
+    "q": "用户最常抱怨什么",
+    "op": "pain_rank",
+    "params": {}
+  },
+  {
+    "q": "哪个痛点播放量最高",
+    "op": "pain_rank",
+    "params": {
+      "metric": "play"
+    }
+  },
+  {
+    "q": "痛点里互动率最高的是哪个",
+    "op": "pain_rank",
+    "params": {
+      "metric": "interact"
+    }
+  },
+  {
+    "q": "什么形式的内容效果最好",
+    "op": "format_rank",
+    "params": {}
+  },
+  {
+    "q": "横评类内容的表现如何",
+    "op": "format_rank",
+    "params": {}
+  },
+  {
+    "q": "视频做多长效果更好",
+    "op": "duration_rank",
+    "params": {}
+  },
+  {
+    "q": "长视频和短视频哪个互动高",
+    "op": "duration_rank",
+    "params": {}
+  },
+  {
+    "q": "头部达人和腰部哪个划算",
+    "op": "tier_rank",
+    "params": {}
+  },
+  {
+    "q": "投放该找什么样的创作者",
+    "op": "tier_rank",
+    "params": {}
+  },
+  {
+    "q": "用户都是些什么人",
+    "op": "scene_rank",
+    "params": {}
+  },
+  {
+    "q": "上班族养猫的内容多吗",
+    "op": "scene_rank",
+    "params": {}
+  },
+  {
+    "q": "哪个关键词带来的内容播放最高",
+    "op": "keyword_rank",
+    "params": {
+      "metric": "play"
+    }
+  },
+  {
+    "q": "播放量最高的内容有哪些",
+    "op": "top_content",
+    "params": {}
+  },
+  {
+    "q": "猫砂盆有多少条内容",
+    "op": "count_filter",
+    "params": {
+      "cat": "猫砂盆"
+    }
+  },
+  {
+    "q": "小佩和霍曼哪个互动更好",
+    "op": "compare_brand",
+    "params": {
+      "brand": "小佩",
+      "brand2": "霍曼"
+    }
+  },
+  {
+    "q": "4,375 条里真正讨论硬件的占多少",
+    "op": "label_dist",
+    "params": {}
+  },
+  {
+    "q": "内容量这几年怎么变的",
+    "op": "year_trend",
+    "params": {}
+  }
+]

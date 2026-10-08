@@ -11,7 +11,7 @@
 
 | 交付物 | 打开方式 |
 |---|---|
-| 📊 **交互式看板** | 双击 `results/看板.html`（单文件、断网可用、12 张可交互图表） |
+| 📊 **交互式看板** | 在线看：**https://arnoldwang-86.github.io/petkit-content-insight/** ；本地双击 `docs/index.html` |
 | 📄 **运营方案报告** | `results/运营方案_宠物智能硬件内容运营.docx` |
 | 📘 **项目说明书** | `docs/项目说明书.docx`（含方法、结论、局限） |
 
@@ -68,7 +68,9 @@ B站 35 个关键词 × 10 页  →  8,792 行原始数据（含一次补采）
 
 ```
 宠物智能硬件用户洞察/
-├── results/              ★ 交付物：看板.html / 运营方案.docx / 13 个分析 CSV
+├── docs/
+│   └── index.html        ★ 交互式看板（同时是 GitHub Pages 首页）
+├── results/              ★ 交付物：运营方案.docx / 13 个分析 CSV
 ├── data/
 │   ├── raw/              原始采集数据（8,792 行）★不可删
 │   └── clean/            清洗后数据 + 标注结果（labeled.jsonl）

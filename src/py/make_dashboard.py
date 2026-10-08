@@ -16,7 +16,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from pipeline_common import ROOT, RESULTS
 
-OUT = os.path.join(RESULTS, "看板.html")
+OUT = os.path.join(ROOT, "docs", "index.html")   # 放 docs/ 下，GitHub Pages 才能直接在线打开
 FONT = dict(family="Microsoft YaHei, SimHei, sans-serif", size=13)
 PALETTE = ["#2E5C9A", "#C0504D", "#9BBB59", "#8064A2", "#4BACC6", "#F79646", "#7F7F7F"]
 
@@ -173,7 +173,7 @@ def main():
 
     with open(OUT, "w", encoding="utf-8") as f:
         f.write(html)
-    print("已生成 results/看板.html（%.1f MB，双击即可打开，断网可用）" % (os.path.getsize(OUT) / 1048576.0))
+    print("已生成 docs/index.html（%.1f MB，双击即可打开，断网可用）" % (os.path.getsize(OUT) / 1048576.0))
     print("图表数：%d" % len(figs))
     return 0
 

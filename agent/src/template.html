@@ -52,10 +52,12 @@ tbody tr:nth-child(even){background:#FAFCFF}
 .insight{background:#F3F9F1;border:1px solid #CFE4C4;border-radius:8px;padding:10px 12px;margin-top:12px;font-size:13px}
 .insight b{color:#3B6B2C}
 .empty{color:#93A2B4;font-size:13px;padding:26px 4px;text-align:center}
+.chartbox{background:#FCFDFF;border:1px solid var(--line);border-radius:9px;padding:10px 14px 6px;margin-bottom:12px}
+.charttitle{font-size:13px;color:var(--navy);font-weight:700;margin:2px 0 6px}
 .err{background:#FDF2F2;border:1px solid #EFC9C7;color:#8E3B38;border-radius:7px;padding:9px 11px;font-size:12.6px;margin-top:10px}
 .pill{display:inline-block;background:#EEF3FA;border:1px solid var(--line);border-radius:4px;padding:0 6px;font-size:12px;margin-right:4px}
 </style>
-<script>/*__PLOTLY__*/</script>
+<script>/*__XLSX__*/</script>
 </head>
 <body>
 <header>
@@ -943,42 +945,67 @@ function findOp(id) { for (var i = 0; i < OPS.length; i++) if (OPS[i].id === id)
    结果渲染
    ========================================================================= */
 var CURRENT = { tables: [], op: null };
+
+function noteHtml(op, params, g) {
+  var notes = "";
+  for (var i = 0; i < g.notes.length; i++) notes += "<div>· " + g.notes[i] + "</div>";
+  return '<div class="note" style="margin-top:0"><b>数据性质声明（请先读）</b><br>' +
+    "① 数据来自 B站 35 个关键词的搜索结果，<b>不是随机抽样</b>，只能做相对比较，<b>不能推算市场规模或份额</b>。<br>" +
+    "② 4,375 条内容由大模型标注：主口径与人工抽检一致率 <b>" + META.accuracy.main + "%</b>（Wilson 95%CI " +
+    META.accuracy.ci[0] + "%~" + META.accuracy.ci[1] + "%），后分层加权 " + META.accuracy.post + "%。<br>" +
+    "③ 单一标注者、无重复核验；二轮盲判复核发现人工自身自洽率仅 " + META.accuracy.self_consistency + "%，故准确率为保守值。<br>" +
+    "④ 本次执行的操作：<b>" + op.id + "</b>，参数 " + JSON.stringify(params) + "，口径层 " + g.levels.join("+") + "。<br><br>" +
+    "<b>口径守卫（本次执行的业务纪律）</b>" + (notes || "<div>· 本次无额外约束。</div>") + "</div>";
+}
+
 function renderResult(res, op, params, question, g) {
-  CURRENT.tables = res.tables || []; CURRENT.op = op;
+  CURRENT = { tables: res.tables || [], op: op, params: params, res: res, question: question, guard: g };
+
+  var tabsDef = [{ name: "结果解读", kind: "insight" }];
+  for (var t = 0; t < (res.tables || []).length; t++) tabsDef.push({ name: res.tables[t].name, kind: "table", i: t });
+  tabsDef.push({ name: "说明与数据性质", kind: "note" });
+
   var h = "";
   h += '<div class="kpis">';
   for (var i = 0; i < (res.kpis || []).length; i++) {
     h += '<div class="kpi"><b>' + res.kpis[i].v + '</b><span>' + res.kpis[i].l + "</span></div>";
   }
   h += "</div>";
-  h += '<div id="chart" style="min-height:340px"></div>';
+  h += '<div id="chart" class="chartbox"></div>';
   h += '<div class="tabs" id="tabs">';
-  for (var t = 0; t < (res.tables || []).length; t++) {
-    h += '<div class="tab' + (t === 0 ? " on" : "") + '" data-i="' + t + '">' + res.tables[t].name + "</div>";
+  for (var t2 = 0; t2 < tabsDef.length; t2++) {
+    h += '<div class="tab" data-i="' + t2 + '">' + tabsDef[t2].name + "</div>";
   }
   h += '</div><div id="tbl"></div>';
-  h += '<div class="insight"><b>Agent 解读：</b>' + res.insight + "</div>";
-  h += '<div class="note"><b>数据性质声明（请先读）</b><br>' +
-       "① 数据来自 B站 35 个关键词的搜索结果，<b>不是随机抽样</b>，只能做相对比较，<b>不能推算市场规模或份额</b>。<br>" +
-       "② 4,375 条内容由大模型标注：主口径与人工抽检一致率 " + META.accuracy.main + "%（Wilson 95%CI " +
-       META.accuracy.ci[0] + "%~" + META.accuracy.ci[1] + "%），后分层加权 " + META.accuracy.post + "%。<br>" +
-       "③ 单一标注者、无重复核验；二轮盲判复核发现人工自身自洽率仅 " + META.accuracy.self_consistency + "%，故准确率为保守值。<br>" +
-       "④ 本次执行的操作：<b>" + op.id + "</b>，参数 " + JSON.stringify(params) + "，口径层 " + g.levels.join("+") + "。</div>";
-  h += '<div class="row"><button class="btn sec" id="dl">下载明细 CSV</button>' +
+  h += '<div class="insight" id="insight"><b>Agent 解读：</b>' + res.insight + "</div>";
+  h += '<div class="row" style="margin-top:14px">' +
+       '<button class="btn" id="dlx">下载 Excel（含数据性质声明）</button>' +
        '<button class="btn sec" id="copyq">复制本次问句</button></div>';
+  h += '<div class="note">导出的工作簿包含三部分：<b>说明与数据性质</b>（第 1 张，必读）、' +
+       '<b>结果解读</b>、以及本次问数的全部明细表。文件名：<b id="fname"></b></div>';
   document.getElementById("result").innerHTML = h;
 
-  /* 标签页切换 */
-  var tabs = document.querySelectorAll("#tabs .tab");
-  function showTab(i) {
-    for (var q = 0; q < tabs.length; q++) tabs[q].className = "tab" + (q === i ? " on" : "");
-    document.getElementById("tbl").innerHTML = tableHtml(res.tables[i]);
-  }
-  for (var q2 = 0; q2 < tabs.length; q2++) tabs[q2].onclick = (function (i) { return function () { showTab(i); }; })(parseInt(tabs[q2].dataset.i, 10));
-  if (res.tables && res.tables.length) showTab(0);
+  document.getElementById("chart").innerHTML = svgChart(res.chart);
 
-  drawChart(res.chart);
-  document.getElementById("dl").onclick = function () { downloadCsv(op.id, res.tables[0]); };
+  function showTab(i) {
+    var tabs = document.querySelectorAll("#tabs .tab");
+    for (var q = 0; q < tabs.length; q++) tabs[q].className = "tab" + (q === i ? " on" : "");
+    var d = tabsDef[i], box = document.getElementById("tbl");
+    if (d.kind === "table") box.innerHTML = tableHtml(res.tables[d.i]);
+    else if (d.kind === "insight") box.innerHTML = '<div class="insight" style="margin-top:0"><b>Agent 结论</b><br>' + res.insight + "</div>";
+    else box.innerHTML = noteHtml(op, params, g);
+  }
+  var tabs = document.querySelectorAll("#tabs .tab");
+  for (var q2 = 0; q2 < tabs.length; q2++) {
+    tabs[q2].onclick = (function (i) { return function () { showTab(i); }; })(parseInt(tabs[q2].dataset.i, 10));
+  }
+  showTab(res.tables && res.tables.length ? 1 : 0);   // 默认展示第一张明细表（结论已在下方）
+
+  document.getElementById("fname").textContent = workbookName(op, params);
+  document.getElementById("dlx").onclick = function () {
+    try { exportExcel(op, params, res, question, g); }
+    catch (e) { alert("导出失败：" + ((e && e.message) || e)); }
+  };
   document.getElementById("copyq").onclick = function () { navigator.clipboard.writeText(question); this.textContent = "已复制"; };
 }
 
@@ -1002,54 +1029,226 @@ function tableHtml(tb) {
   return h;
 }
 
-function drawChart(c) {
-  var el = document.getElementById("chart");
-  if (!c || typeof Plotly === "undefined") { if (el) el.innerHTML = '<div class="empty">（图表库不可用）</div>'; return; }
-  var layout = { font: { family: "Microsoft YaHei", size: 12 }, margin: { l: 60, r: 20, t: 50, b: 70 },
-                 title: { text: c.title, font: { size: 14, color: "#1F3864" } }, height: 360,
-                 paper_bgcolor: "#fff", plot_bgcolor: "#fff" };
-  var data = [];
-  if (c.type === "bar" || c.type === "line") {
-    var trace = { x: c.x, y: c.y, marker: { color: "#2E5C9A" } };
-    if (c.horiz) { trace.orientation = "h"; delete trace.x; trace.x = c.y; trace.y = c.x; }
-    if (c.type === "line") { trace.type = "scatter"; trace.mode = "lines+markers"; }
-    else trace.type = "bar";
-    if (c.pct) trace.text = c.y.map(function (v) { return fmtPct(v); }), trace.textposition = "auto";
-    data.push(trace);
-    if (c.horiz) layout.margin = { l: 140, r: 20, t: 50, b: 40 };
-  } else if (c.type === "groupbar") {
-    for (var i = 0; i < c.series.length; i++) {
-      data.push({ type: "bar", name: c.series[i].name, x: c.x, y: c.series[i].y,
-                  text: c.pct ? c.series[i].y.map(function (v) { return fmtPct(v); }) : null,
-                  textposition: "auto" });
+function esc(s) { return String(s === null || s === undefined ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+function nice(v, pct) {
+  if (v === null || v === undefined || isNaN(v)) return "-";
+  if (pct) return (v * 100).toFixed(2) + "%";
+  return Math.abs(v) >= 1000 ? Math.round(v).toLocaleString("zh-CN") : (Number.isInteger(v) ? String(v) : v.toFixed(2));
+}
+/* 内联 SVG 图表：不依赖任何图表库，离线可用，体积小 */
+function svgChart(c) {
+  if (!c) return '<div class="empty">（本次没有图表）</div>';
+  var s = c.type === "groupbar" ? svgGroup(c) : (c.type === "line" ? svgLine(c) : (c.type === "scatter" ? svgScatter(c) : svgBar(c)));
+  return '<div class="charttitle">' + esc(c.title) + "</div>" + s;
+}
+function svgBar(c) {
+  var labels = c.x, vals = c.y, pct = !!c.pct;
+  if (c.horiz) {
+    var W0 = 600, bh = 20, gap = 8, padL = 116, padR = 84, padT = 12;
+    var H0 = padT + labels.length * (bh + gap) + 8;
+    var mx = Math.max.apply(null, vals.concat([1]));
+    var g0 = '<svg viewBox="0 0 ' + W0 + " " + H0 + '" width="100%" style="max-height:' + Math.min(620, H0) + 'px">';
+    for (var i = 0; i < labels.length; i++) {
+      var y = padT + i * (bh + gap), w = Math.max(1, (vals[i] / mx) * (W0 - padL - padR));
+      g0 += '<text x="' + (padL - 8) + '" y="' + (y + bh * 0.73) + '" text-anchor="end" font-size="11.5" fill="#3A4A5C">' + esc(labels[i]) + "</text>";
+      g0 += '<rect x="' + padL + '" y="' + y + '" width="' + w + '" height="' + bh + '" rx="3" fill="#2E5C9A" opacity="' +
+            (0.55 + 0.45 * (1 - i / Math.max(1, labels.length - 1))).toFixed(2) + '"/>';
+      g0 += '<text x="' + (padL + w + 7) + '" y="' + (y + bh * 0.73) + '" font-size="11.5" fill="#1F3864" font-weight="600">' + nice(vals[i], pct) + "</text>";
     }
-    layout.barmode = "group";
-  } else if (c.type === "scatter") {
-    data.push({ type: "scatter", mode: "markers+text", x: c.x, y: c.y, text: c.label,
-                textposition: "top center", marker: { size: 12, color: "#8064A2" } });
-    layout.xaxis = { title: c.xname }; layout.yaxis = { title: c.yname };
+    return g0 + "</svg>";
   }
-  Plotly.newPlot(el, data, layout, { displayModeBar: false, responsive: true });
+  var W = 600, H = 300, padL2 = 58, padR2 = 16, padT2 = 18, padB2 = 66;
+  var pw = W - padL2 - padR2, ph = H - padT2 - padB2;
+  var mx2 = Math.max.apply(null, vals.concat([1]));
+  var bw = Math.min(64, (pw / labels.length) * 0.6);
+  var g = '<svg viewBox="0 0 ' + W + " " + H + '" width="100%">';
+  for (var k = 0; k <= 4; k++) {
+    var yy = padT2 + ph * (1 - k / 4);
+    g += '<line x1="' + padL2 + '" y1="' + yy + '" x2="' + (W - padR2) + '" y2="' + yy + '" stroke="#E7EDF5"/>';
+    g += '<text x="' + (padL2 - 6) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="10.5" fill="#8B98A6">' + nice(mx2 * k / 4, pct) + "</text>";
+  }
+  for (var j = 0; j < labels.length; j++) {
+    var x = padL2 + pw * ((j + 0.5) / labels.length) - bw / 2;
+    var h = Math.max(1, (vals[j] / mx2) * ph);
+    g += '<rect x="' + x + '" y="' + (padT2 + ph - h) + '" width="' + bw + '" height="' + h + '" rx="3" fill="#2E5C9A"/>';
+    g += '<text x="' + (x + bw / 2) + '" y="' + (padT2 + ph - h - 5) + '" text-anchor="middle" font-size="10.5" fill="#1F3864" font-weight="600">' + nice(vals[j], pct) + "</text>";
+    var lb = String(labels[j]);
+    g += '<text x="' + (x + bw / 2) + '" y="' + (padT2 + ph + 16) + '" text-anchor="middle" font-size="10.5" fill="#3A4A5C">' + esc(lb.slice(0, 7)) + "</text>";
+    if (lb.length > 7) g += '<text x="' + (x + bw / 2) + '" y="' + (padT2 + ph + 28) + '" text-anchor="middle" font-size="10.5" fill="#3A4A5C">' + esc(lb.slice(7, 14)) + "</text>";
+  }
+  return g + "</svg>";
+}
+function svgGroup(c) {
+  var W = 600, H = 300, padL = 58, padR = 16, padT = 34, padB = 70;
+  var pw = W - padL - padR, ph = H - padT - padB;
+  var all = [];
+  for (var i = 0; i < c.series.length; i++) all = all.concat(c.series[i].y);
+  var mx = Math.max.apply(null, all.concat([1]));
+  var colors = ["#1F3864", "#C0504D", "#4F8A3D", "#8064A2"];
+  var g = '<svg viewBox="0 0 ' + W + " " + H + '" width="100%">';
+  for (var k = 0; k <= 4; k++) {
+    var yy = padT + ph * (1 - k / 4);
+    g += '<line x1="' + padL + '" y1="' + yy + '" x2="' + (W - padR) + '" y2="' + yy + '" stroke="#E7EDF5"/>';
+    g += '<text x="' + (padL - 6) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="10.5" fill="#8B98A6">' + nice(mx * k / 4, c.pct) + "</text>";
+  }
+  var ns = c.series.length, gw = pw / c.x.length, bw2 = Math.min(34, (gw * 0.7) / ns);
+  for (var j = 0; j < c.x.length; j++) {
+    for (var s = 0; s < ns; s++) {
+      var v = c.series[s].y[j];
+      var h = Math.max(1, (v / mx) * ph);
+      var x = padL + gw * j + gw / 2 - (ns * bw2) / 2 + s * bw2;
+      g += '<rect x="' + x + '" y="' + (padT + ph - h) + '" width="' + (bw2 - 3) + '" height="' + h + '" rx="2" fill="' + colors[s % 4] + '"/>';
+      g += '<text x="' + (x + (bw2 - 3) / 2) + '" y="' + (padT + ph - h - 4) + '" text-anchor="middle" font-size="9.5" fill="#3A4A5C">' + nice(v, c.pct) + "</text>";
+    }
+    g += '<text x="' + (padL + gw * j + gw / 2) + '" y="' + (padT + ph + 16) + '" text-anchor="middle" font-size="11" fill="#3A4A5C">' + esc(c.x[j]) + "</text>";
+  }
+  for (var s2 = 0; s2 < ns; s2++) {
+    var lx = padL + s2 * 118;
+    g += '<rect x="' + lx + '" y="10" width="11" height="11" rx="2" fill="' + colors[s2 % 4] + '"/>';
+    g += '<text x="' + (lx + 16) + '" y="19.5" font-size="11" fill="#3A4A5C">' + esc(c.series[s2].name) + "</text>";
+  }
+  return g + "</svg>";
+}
+function svgLine(c) {
+  var W = 600, H = 280, padL = 58, padR = 20, padT = 20, padB = 52;
+  var pw = W - padL - padR, ph = H - padT - padB;
+  var mx = Math.max.apply(null, c.y.concat([1]));
+  var g = '<svg viewBox="0 0 ' + W + " " + H + '" width="100%">';
+  for (var k = 0; k <= 4; k++) {
+    var yy = padT + ph * (1 - k / 4);
+    g += '<line x1="' + padL + '" y1="' + yy + '" x2="' + (W - padR) + '" y2="' + yy + '" stroke="#E7EDF5"/>';
+    g += '<text x="' + (padL - 6) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="10.5" fill="#8B98A6">' + nice(mx * k / 4, false) + "</text>";
+  }
+  var pts = [];
+  for (var i = 0; i < c.x.length; i++) {
+    pts.push([padL + pw * (c.x.length === 1 ? 0.5 : i / (c.x.length - 1)), padT + ph * (1 - c.y[i] / mx)]);
+  }
+  var d = "";
+  for (var j = 0; j < pts.length; j++) d += (j ? " L" : "M") + pts[j][0].toFixed(1) + " " + pts[j][1].toFixed(1);
+  g += '<path d="' + d + '" fill="none" stroke="#2E5C9A" stroke-width="2"/>';
+  for (var m = 0; m < pts.length; m++) {
+    g += '<circle cx="' + pts[m][0].toFixed(1) + '" cy="' + pts[m][1].toFixed(1) + '" r="3.6" fill="#fff" stroke="#2E5C9A" stroke-width="2"/>';
+    g += '<text x="' + pts[m][0].toFixed(1) + '" y="' + (pts[m][1] - 9) + '" text-anchor="middle" font-size="10" fill="#1F3864">' + nice(c.y[m], false) + "</text>";
+    g += '<text x="' + pts[m][0].toFixed(1) + '" y="' + (padT + ph + 16) + '" text-anchor="middle" font-size="10.5" fill="#3A4A5C">' + esc(c.x[m]) + "</text>";
+  }
+  return g + "</svg>";
+}
+function svgScatter(c) {
+  var W = 600, H = 340, padL = 66, padR = 30, padT = 22, padB = 54;
+  var pw = W - padL - padR, ph = H - padT - padB;
+  var mx = Math.max.apply(null, c.x.concat([1])), my = Math.max.apply(null, c.y.concat([1]));
+  var g = '<svg viewBox="0 0 ' + W + " " + H + '" width="100%">';
+  for (var k = 0; k <= 4; k++) {
+    var yy = padT + ph * (1 - k / 4);
+    g += '<line x1="' + padL + '" y1="' + yy + '" x2="' + (W - padR) + '" y2="' + yy + '" stroke="#E7EDF5"/>';
+    g += '<text x="' + (padL - 6) + '" y="' + (yy + 4) + '" text-anchor="end" font-size="10.5" fill="#8B98A6">' + nice(my * k / 4, false) + "</text>";
+  }
+  for (var i = 0; i < c.x.length; i++) {
+    var px = padL + pw * (c.x[i] / mx), py = padT + ph * (1 - c.y[i] / my);
+    g += '<circle cx="' + px.toFixed(1) + '" cy="' + py.toFixed(1) + '" r="6" fill="#8064A2" opacity="0.75"/>';
+    g += '<text x="' + px.toFixed(1) + '" y="' + (py - 10) + '" text-anchor="middle" font-size="10.5" fill="#3A4A5C">' + esc(c.label[i]) + "</text>";
+  }
+  g += '<text x="' + (padL + pw / 2) + '" y="' + (H - 14) + '" text-anchor="middle" font-size="11" fill="#6B7C8F">' + esc(c.xname || "") + "</text>";
+  g += '<text x="12" y="' + (padT + ph / 2) + '" font-size="11" fill="#6B7C8F" transform="rotate(-90 12 ' + (padT + ph / 2) + ')" text-anchor="middle">' + esc(c.yname || "") + "</text>";
+  return g + "</svg>";
 }
 
-function downloadCsv(name, tb) {
-  if (!tb || !tb.rows || !tb.rows.length) return;
-  var keys = Object.keys(tb.rows[0]);
-  var lines = [keys.join(",")];
-  for (var i = 0; i < tb.rows.length; i++) {
-    var row = [];
-    for (var j = 0; j < keys.length; j++) {
-      var v = tb.rows[i][keys[j]];
-      v = (v === null || v === undefined) ? "" : String(v);
-      row.push('"' + v.replace(/"/g, '""') + '"');
+/* 去掉 HTML 标签，Excel 里只放纯文本 */
+function plain(s) { return String(s === null || s === undefined ? "" : s).replace(/<br\s*\/?>/gi, "\n").replace(/<[^>]+>/g, ""); }
+
+function workbookName(op, params) {
+  var tag = op.id;
+  if (params && params.metric) tag += "_" + params.metric;
+  if (params && params.brand) tag += "_" + params.brand;
+  if (params && params.brand2) tag += "_vs_" + params.brand2;
+  if (params && params.cat) tag += "_" + params.cat;
+  var d = new Date(), p = function (n) { return (n < 10 ? "0" : "") + n; };
+  return "宠物智能硬件内容运营_" + tag + "_" + d.getFullYear() + p(d.getMonth() + 1) + p(d.getDate()) +
+         "_" + p(d.getHours()) + p(d.getMinutes()) + ".xlsx";
+}
+
+/* 组装一份「带数据性质声明」的 Excel 工作簿（与参考实现同模式）
+   拆成 buildWorkbook + exportExcel 两步，是为了让工作簿本身可以被自动化测试 */
+function buildWorkbook(op, params, res, question, g) {
+  if (typeof XLSX === "undefined") throw new Error("Excel 库未加载");
+  var A = META.accuracy;
+  var wb = XLSX.utils.book_new();
+
+  /* ---- 第 1 张（强制放最前）：说明与数据性质 ---- */
+  var s1 = [
+    ["宠物智能硬件内容运营 · 问数 Agent 输出", ""],
+    ["问题", plain(question)],
+    ["生成时间", new Date().toLocaleString("zh-CN")],
+    ["执行操作", op.id + " — " + op.name],
+    ["操作说明", op.desc],
+    ["参数", JSON.stringify(params)],
+    ["口径层（标签纪律）", g.levels.join(" + ")],
+    ["进入计算", g.rows.length + " 条内容"],
+    ["被纪律剔除", g.dropped + " 条内容"],
+    [],
+    ["⚠ 数据性质声明（请先读）", ""],
+    ["① 抽样方式", "数据来自 B站 35 个关键词的搜索结果，不是随机抽样。只能做相对比较，不能推算市场规模或市场份额。"],
+    ["② 标注质量", "共 " + META.n_rows + " 条内容由大模型标注：与人工分层随机抽检的一致率为 " + A.main +
+                  "%（Wilson 95% 置信区间 " + A.ci[0] + "%~" + A.ci[1] + "%），后分层加权 " + A.post + "%。"],
+    ["③ 已知噪声", "单一标注者、无重复核验；二轮盲判复核发现人工自身自洽率仅 " + A.self_consistency +
+                  "%，故上述准确率为保守值，真实区间约为 [" + A.main + "%, " + A.reviewed + "%]。"],
+    ["④ 口径纪律", "产品线与品牌结论只用 A 级（智能硬件本体）记录；痛点/场景用 A+B+C；内容形态/时长用 A+B。" +
+                  "目的是不让「萌宠日常」混进产品结论。"],
+    ["⑤ 标签层含义", "A=智能硬件本体；B=耗材/非智能用品；C=健康养护等用户语境；N=非宠物（搜索噪声）。"]
+  ];
+  for (var i = 0; i < g.notes.length; i++) s1.push(["口径守卫记录 " + (i + 1), plain(g.notes[i])]);
+  var ws1 = XLSX.utils.aoa_to_sheet(s1);
+  ws1["!cols"] = [{ wch: 20 }, { wch: 94 }];
+  XLSX.utils.book_append_sheet(wb, ws1, "说明与数据性质");
+
+  /* ---- 第 2 张：结果解读 ---- */
+  var ws2 = XLSX.utils.aoa_to_sheet([["Agent 结论"], [plain(res.insight)]]);
+  ws2["!cols"] = [{ wch: 110 }];
+  XLSX.utils.book_append_sheet(wb, ws2, "结果解读");
+
+  /* ---- 其余：每张明细表一个工作表 ---- */
+  var used = {};
+  for (var t = 0; t < (res.tables || []).length; t++) {
+    var tb = res.tables[t];
+    if (!tb.rows || !tb.rows.length) continue;
+    var keys = Object.keys(tb.rows[0]);
+    var aoa = [keys];
+    var fmts = [];   // 需要数字格式的单元格（让它成为"真数字"，能在 Excel 里排序筛选）
+    for (var r = 0; r < tb.rows.length; r++) {
+      var row = [], fr = [];
+      for (var c = 0; c < keys.length; c++) {
+        var v = tb.rows[r][keys[c]];
+        fr.push(null);
+        if (v === null || v === undefined) { v = ""; }
+        else if (typeof v === "string") {
+          if (/^-?[\d,]+(\.\d+)?%$/.test(v)) { fr[c] = '0.00"%"'; v = Number(v.replace(/[,%]/g, "")); }
+          else if (/^-?[\d,]+(\.\d+)?$/.test(v)) { fr[c] = "#,##0"; v = Number(v.replace(/,/g, "")); }
+        }
+        row.push(v);
+      }
+      aoa.push(row); fmts.push(fr);
     }
-    lines.push(row.join(","));
+    var ws = XLSX.utils.aoa_to_sheet(aoa);
+    for (var rr = 0; rr < fmts.length; rr++) {
+      for (var cc = 0; cc < fmts[rr].length; cc++) {
+        if (!fmts[rr][cc]) continue;
+        var addr = XLSX.utils.encode_cell({ r: rr + 1, c: cc });
+        if (ws[addr]) ws[addr].z = fmts[rr][cc];
+      }
+    }
+    ws["!cols"] = keys.map(function (k) { return { wch: Math.max(11, Math.min(42, k.length * 2 + 6)) }; });
+    var nm = String(tb.name || ("表" + (t + 1))).replace(/[\\\/\?\*\[\]:]/g, "").slice(0, 28) || ("表" + (t + 1));
+    while (used[nm]) nm = nm + "_";
+    used[nm] = 1;
+    XLSX.utils.book_append_sheet(wb, ws, nm);
   }
-  var blob = new Blob(["\ufeff" + lines.join("\n")], { type: "text/csv;charset=utf-8" });
-  var a = document.createElement("a");
-  a.href = URL.createObjectURL(blob);
-  a.download = name + "_" + new Date().toISOString().slice(0, 19).replace(/[:T]/g, "") + ".csv";
-  a.click();
+  return { wb: wb, filename: workbookName(op, params) };
+}
+
+function exportExcel(op, params, res, question, g) {
+  var x = buildWorkbook(op, params, res, question, g);
+  XLSX.writeFile(x.wb, x.filename);
+  return x.filename;
 }
 
 /* =========================================================================

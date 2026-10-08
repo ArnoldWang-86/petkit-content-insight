@@ -12,3 +12,6 @@ __pycache__/
 # 系统文件
 Thumbs.db
 desktop.ini
+
+# Agent 自检的临时产物
+agent/eval/_out/

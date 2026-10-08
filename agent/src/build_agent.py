@@ -32,6 +32,7 @@ PROJ = os.path.abspath(os.path.join(AGENT, ".."))
 DATA_CLEAN = os.path.join(PROJ, "data", "clean")
 
 TEMPLATE = os.path.join(HERE, "template.html")
+SHEETJS = os.path.join(AGENT, "tools", "xlsx.full.min.js")   # SheetJS（生成 .xlsx）
 OUT_HTML = os.path.join(AGENT, "运营问数Agent.html")
 
 LABELED = os.path.join(DATA_CLEAN, "labeled.jsonl")
@@ -121,26 +122,21 @@ def main():
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
     print("数据打包：%d 行 / %.2f MB（JSON）" % (data["meta"]["n_rows"], len(payload.encode("utf-8")) / 1048576))
 
-    try:
-        from plotly.offline import get_plotlyjs
-        plotly = get_plotlyjs()
+    # 图表用内联 SVG 手绘，只有 Excel 导出需要 SheetJS（和参考实现同模式）
+    xlsx = ""
+    if os.path.exists(SHEETJS):
+        with open(SHEETJS, encoding="utf-8") as f:
+            xlsx = f.read()
         # 内联 JS 时若出现字面量 </script>，会把外层 <script> 提前闭合 —— 必须转义
-        plotly = plotly.replace("</script>", "<\\/script>")
-        print("Plotly 内联：%.2f MB" % (len(plotly.encode("utf-8")) / 1048576))
-    except Exception as e:
-        print("取 Plotly 失败（改为走 CDN）：", e)
-        plotly = ""
+        xlsx = xlsx.replace("</script>", "<\\/script>")
+        print("SheetJS 内联：%.2f MB" % (len(xlsx.encode("utf-8")) / 1048576))
+    else:
+        print("警告：找不到 %s，Excel 导出将不可用" % SHEETJS)
 
     with open(TEMPLATE, encoding="utf-8") as f:
         html = f.read()
     html = html.replace("/*__DATA__*/", "window.DATA=" + payload + ";")
-    if plotly:
-        html = html.replace("/*__PLOTLY__*/", plotly)
-    else:
-        html = html.replace("/*__PLOTLY__*/",
-                            "/* plotly 未内联：需要联网时从 CDN 加载 */")
-        html = html.replace("</head>",
-                            '<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script></head>')
+    html = html.replace("/*__XLSX__*/", xlsx or "/* SheetJS 未内联 */")
 
     with open(OUT_HTML, "w", encoding="utf-8") as f:
         f.write(html)

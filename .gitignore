@@ -15,3 +15,6 @@ desktop.ini
 
 # Agent 自检的临时产物
 agent/eval/_out/
+
+# Agent 本机演示版（内嵌 API Key，绝不提交）
+agent/问数Agent_本机演示.html

@@ -1,22 +1,17 @@
 # -*- coding: utf-8 -*-
-"""build_agent.py —— 把数据与页面模板组装成**单文件**「运营问数 Agent」
+"""build_agent.py —— 组装「运营问数 Agent」
 
-交付形态
+两种产物
 --------
-agent/运营问数Agent.html —— 双击即可打开，不联网也能跑（规则路由 + 浏览器内计算）。
-勾选/填入 DeepSeek API Key 后，规则匹配不上的问题会交给大模型做意图识别。
+1) agent/问数Agent_本机演示.html
+   内嵌 DeepSeek API Key，双击就能用。**这个文件已在 .gitignore 里，永不提交。**
+2) agent/问数Agent.html
+   不含任何 Key，双击后需要自己填 Key。这个才会提交到仓库。
 
-为什么打包成单文件
+为什么必须分成两个
 ------------------
-和「平安银行运营指标监控」那个 Agent 一样：交付物要能双击打开、不需要后端。
-浏览器读不了本地文件系统，所以数据必须内嵌。
-
-打包策略（体积与表达力的权衡）
-------------------------------
-· 4,375 条记录按「列式」存储（一列一个数组），比行式 JSON 小约 40%
-· 字符串列（品牌/痛点/场景）用列表，其余用数字
-· 比率定点 4 位、时长取整
-· 图表库 Plotly 内联，保证离线与视觉一致
+Key 一旦进了公开仓库，几分钟内就会被爬虫扫走并盗用。
+所以「本机演示用」和「可以给别人看」必须是两个文件。
 
 用法： python agent/src/build_agent.py
 """
@@ -32,29 +27,40 @@ PROJ = os.path.abspath(os.path.join(AGENT, ".."))
 DATA_CLEAN = os.path.join(PROJ, "data", "clean")
 
 TEMPLATE = os.path.join(HERE, "template.html")
-SHEETJS = os.path.join(AGENT, "tools", "xlsx.full.min.js")   # SheetJS（生成 .xlsx）
-OUT_HTML = os.path.join(AGENT, "运营问数Agent.html")
+SHEETJS = os.path.join(AGENT, "tools", "xlsx.full.min.js")
+OUT_PUBLIC = os.path.join(AGENT, "问数Agent.html")            # 无 Key，提交
+OUT_LOCAL = os.path.join(AGENT, "问数Agent_本机演示.html")     # 含 Key，不提交（gitignore）
 
 LABELED = os.path.join(DATA_CLEAN, "labeled.jsonl")
 
-# 内嵌到网页的列（只留分析要用的，控制体积）
 COLS = ["t", "pl", "c", "ct", "b", "pn", "sc", "fm", "d",
         "p", "l", "f", "r", "dm", "it", "fr", "y", "o", "m", "k"]
 
-# 标注质量（来自 src/py/step5_eval.py 最近一次运行；重跑评估后请同步这里）
+# 标注质量：来自 src/py/step5_eval.py 最近一次运行；重跑评估后请同步这里
 ACCURACY = {
     "main": 88.0, "ci": [82.8, 91.8], "post": 87.3,
     "reviewed": 93.5, "self_consistency": 38.2,
-    "note": "随机 200 条分层抽样，人工抽检；自一致性投票有约 ±1.5pp 的方法方差",
 }
 
 
 def num(x, n=4):
     try:
-        v = float(x)
+        return round(float(x), n)
     except (TypeError, ValueError):
         return None
-    return round(v, n)
+
+
+def read_env_key():
+    """从项目根的 .env 读取 Key（该文件已被 gitignore）。"""
+    p = os.path.join(PROJ, ".env")
+    if not os.path.exists(p):
+        return ""
+    with open(p, encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if line.startswith("DEEPSEEK_API_KEY="):
+                return line.split("=", 1)[1].strip().strip('"').strip("'")
+    return ""
 
 
 def build_data():
@@ -92,13 +98,12 @@ def build_data():
                 s.add(v)
         return sorted(s)
 
-    n = len(recs)
     dist = {}
     for c in cols["c"]:
         dist[c] = dist.get(c, 0) + 1
 
     meta = {
-        "n_rows": n,
+        "n_rows": len(recs),
         "label_dist": dist,
         "creators": len({m for m in cols["m"] if m}),
         "accuracy": ACCURACY,
@@ -118,30 +123,42 @@ def main():
     if not os.path.exists(LABELED):
         print("找不到 %s" % LABELED)
         return 1
+
     data = build_data()
     payload = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
-    print("数据打包：%d 行 / %.2f MB（JSON）" % (data["meta"]["n_rows"], len(payload.encode("utf-8")) / 1048576))
+    print("数据打包：%d 行 / %.2f MB" % (data["meta"]["n_rows"], len(payload.encode("utf-8")) / 1048576))
 
-    # 图表用内联 SVG 手绘，只有 Excel 导出需要 SheetJS（和参考实现同模式）
-    xlsx = ""
-    if os.path.exists(SHEETJS):
-        with open(SHEETJS, encoding="utf-8") as f:
-            xlsx = f.read()
-        # 内联 JS 时若出现字面量 </script>，会把外层 <script> 提前闭合 —— 必须转义
-        xlsx = xlsx.replace("</script>", "<\\/script>")
-        print("SheetJS 内联：%.2f MB" % (len(xlsx.encode("utf-8")) / 1048576))
-    else:
-        print("警告：找不到 %s，Excel 导出将不可用" % SHEETJS)
+    with open(SHEETJS, encoding="utf-8") as f:
+        xlsx = f.read()
+    xlsx = xlsx.replace("</script>", "<\\/script>")   # 防止提前闭合 <script>
+    print("SheetJS 内联：%.2f MB" % (len(xlsx.encode("utf-8")) / 1048576))
 
     with open(TEMPLATE, encoding="utf-8") as f:
         html = f.read()
     html = html.replace("/*__DATA__*/", "window.DATA=" + payload + ";")
-    html = html.replace("/*__XLSX__*/", xlsx or "/* SheetJS 未内联 */")
+    html = html.replace("/*__XLSX__*/", xlsx)
 
-    with open(OUT_HTML, "w", encoding="utf-8") as f:
-        f.write(html)
-    print("已生成 %s（%.2f MB）" % (os.path.relpath(OUT_HTML, PROJ),
-                                os.path.getsize(OUT_HTML) / 1048576))
+    key = read_env_key()
+
+    # ---- 公开版：不含 Key ----
+    # 注意：必须用专用占位符替换，不能用 </head> ——
+    # SheetJS 源码内部也含 "...<html><head>...</head>..." 字符串，
+    # 按 </head> 替换会把 Key 注进它的字符串字面量，直接把脚本搞坏（已踩过）。
+    pub = html.replace("__AGENT_KEY__", "")
+    with open(OUT_PUBLIC, "w", encoding="utf-8") as f:
+        f.write(pub)
+    print("已生成 %s（%.2f MB，不含 Key）" % (os.path.relpath(OUT_PUBLIC, PROJ),
+                                            os.path.getsize(OUT_PUBLIC) / 1048576))
+
+    # ---- 本机演示版：内嵌 Key ----
+    if key:
+        loc = html.replace("__AGENT_KEY__", key)
+        with open(OUT_LOCAL, "w", encoding="utf-8") as f:
+            f.write(loc)
+        print("已生成 %s（%.2f MB，已内嵌 Key，该文件不会被提交，已在 .gitignore 里）" %
+              (os.path.relpath(OUT_LOCAL, PROJ), os.path.getsize(OUT_LOCAL) / 1048576))
+    else:
+        print("警告：.env 里没有 DEEPSEEK_API_KEY，跳过本机演示版")
     return 0
 
 

@@ -11,7 +11,7 @@
 
 | 交付物 | 打开方式 |
 |---|---|
-| 🤖 **运营问数 Agent** | 双击 `agent/运营问数Agent.html`（单文件、离线可用；用中文提问，它自己查数出图） |
+| 🤖 **运营问数 Agent** | 双击 `agent/问数Agent_本机演示.html`（**大模型驱动，无预置答案**：用中文提问 → 模型生成查询 → 本地执行 → 模型写结论 → 可导出 Excel） |
 | 📊 **交互式看板** | 在线看：**https://arnoldwang-86.github.io/petkit-content-insight/** ；本地双击 `docs/index.html` |
 | 📄 **运营方案报告** | `results/运营方案_宠物智能硬件内容运营.docx` |
 | 📘 **项目说明书** | `docs/项目说明书.docx`（含方法、结论、局限） |
@@ -69,10 +69,12 @@ B站 35 个关键词 × 10 页  →  8,792 行原始数据（含一次补采）
 
 ```
 宠物智能硬件用户洞察/
-├── agent/                ★ 运营问数 Agent（单文件 HTML + 评测）
-│   ├── 运营问数Agent.html  双击即用，离线可用
-│   ├── src/              页面模板 + 组装脚本
-│   └── eval/             28 条业务问题测试集 + 评测脚本（规则路径 96.4%）
+├── agent/                ★ 运营问数 Agent（大模型驱动，单文件 HTML）
+│   ├── 问数Agent_本机演示.html  已内嵌 API Key（不提交，仅本机演示用）
+│   ├── 问数Agent.html           公开版，不含 Key
+│   ├── src/                    页面模板 + 组装脚本
+│   ├── tools/                  SheetJS（浏览器内生成 xlsx）
+│   └── eval/                   端到端自检（真实调用大模型）
 ├── docs/
 │   └── index.html        ★ 交互式看板（同时是 GitHub Pages 首页）
 ├── results/              ★ 交付物：运营方案.docx / 13 个分析 CSV

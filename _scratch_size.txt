@@ -1,0 +1,29 @@
+﻿rows: 4375  raw jsonl bytes: 6989641
+columnar TSV chars: 520744  = 509 KB
+utf8 bytes: 758161 (740 KB)
+gzip: 267737 bytes
+cols: 24 -> ['bvid', 'title', 'play', 'like', 'fav', 'dm', 'reply', 'dur', 'ir', 'lr', 'fr', 'dr', 'lb', 'ct', 'pl', 'bd', 'bs', 'of', 'pn', 'sc', 'fm', 'kw', 'yp', 'th']
+  bvid       55.5 KB
+  title     114.8 KB
+  play       23.1 KB
+  like       15.1 KB
+  fav        13.7 KB
+  dm         11.0 KB
+  reply      12.0 KB
+  dur        15.6 KB
+  ir         34.2 KB
+  lr         34.2 KB
+  fr         34.2 KB
+  dr         25.8 KB
+  lb          8.5 KB
+  ct          8.5 KB
+  pl          8.5 KB
+  bd          5.4 KB
+  bs          5.3 KB
+  of          8.5 KB
+  pn          6.0 KB
+  sc          5.0 KB
+  fm          8.5 KB
+  kw         24.9 KB
+  yp         21.4 KB
+  th          8.5 KB

@@ -1,0 +1,12 @@
+﻿=== SELECT COUNT(*) AS n, AVG(du)*1.0 AS x FROM fact
+   alias=n  expr={"k":"agg","name":"COUNT","arg":null,"distinct":false,"p":null}
+   alias=x  expr={"k":"bin","op":"*","l":{"k":"agg","name":"AVG","arg":{"k":"col","name":"du"},"distinct":false,"p":null},"r":{"k":"lit","v":1}}
+   mode=grouped
+=== SELECT COUNT(*) AS n, AVG(du) AS x FROM fact
+   alias=n  expr={"k":"agg","name":"COUNT","arg":null,"distinct":false,"p":null}
+   alias=x  expr={"k":"agg","name":"AVG","arg":{"k":"col","name":"du"},"distinct":false,"p":null}
+   mode=grouped
+=== SELECT plname AS p, UD_MEDIAN(play) AS m FROM fact GROUP BY plname
+   alias=p  expr={"k":"col","name":"plname"}
+   alias=m  expr={"k":"agg","name":"UD_MEDIAN","arg":{"k":"col","name":"play"},"distinct":false,"p":null}
+   mode=grouped

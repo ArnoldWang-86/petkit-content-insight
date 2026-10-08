@@ -12,7 +12,7 @@
 | 交付物 | 打开方式 |
 |---|---|
 | 🤖 **运营问数 Agent** | 双击 `agent/问数Agent_本机演示.html`（**大模型驱动，无预置答案**：用中文提问 → 模型生成查询 → 本地执行 → 模型写结论 → 可导出 Excel） |
-| 📊 **交互式看板** | 在线看：**https://arnoldwang-86.github.io/petkit-content-insight/** ；本地双击 `docs/index.html` |
+| 📊 **交互式看板** | 在线看：**https://arnoldwang-86.github.io/petkit-content-insight/** ；本地双击 `docs/index.html`（12 张图，**每张都带一句数据算出来的结论**） |
 | 📄 **运营方案报告** | `results/运营方案_宠物智能硬件内容运营.docx` |
 | 📘 **项目说明书** | `docs/项目说明书.docx`（含方法、结论、局限） |
 

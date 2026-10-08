@@ -1,0 +1,293 @@
+﻿total rows: 4375
+
+--- fields (count) ---
+bvid                     4375
+title                    4375
+tag                      4375
+author                   4375
+mid                      4375
+typename                 4375
+play                     4375
+like                     4375
+fav                      4375
+dm                       4375
+reply                    4375
+duration_s               4375
+interact                 4375
+like_rate                4375
+fav_rate                 4375
+dm_rate                  4375
+cat                      4375
+lf_votes                 4375
+brands                   4375
+brand_strong             4375
+official                 4375
+pains                    4375
+scenes                   4375
+fmt                      4375
+_keyword                 4375
+pubdate                  4375
+pub_year                 4375
+final_label              4375
+agg_label                4375
+vote_scores              4375
+margin                   4375
+llm                      4375
+
+--- sample record ---
+bvid             str      "BV1dET16GEeX"
+title            str      "「养猫神器」全自动猫砂盆 开放式还是全封闭？养猫人狂喜！可视化、除臭、大容量，总有一款适合你！从入门到旗舰横评，这20款千万别乱买 霍曼/空气萝卜/CATLIN"
+tag              str      "除臭猫砂盆,全自动猫砂盆,猫,猫咪好物分享,智能猫砂盆,铲屎官必备,猫砂盆,懒人必备,喵星人"
+author           str      "年糕的摸鱼测评"
+mid              int      1732000
+typename         str      "数码"
+play             int      22695
+like             int      524
+fav              int      338
+dm               int      112
+reply            int      52
+duration_s       int      1026
+interact         float    0.03798193434677242
+like_rate        float    0.023088786076228242
+fav_rate         float    0.014893148270544172
+dm_rate          float    4.935007710949549
+cat              str      "猫砂盆"
+lf_votes         dict     {"LF_NOISE": {"vote": null, "hits": []}, "LF_GAME": {"vote": null, "hits": []}, "LF_SECURITY": {"vote": null, "hits": []}, "LF_BRAND": {"vote": null, "hits": ["
+brands           list     ["霍曼"]
+brand_strong     list     ["霍曼"]
+official         bool     false
+pains            list     ["异味/除臭"]
+scenes           list     ["新手养猫"]
+fmt              str      "横评/选购"
+_keyword         str      "智能猫砂盆"
+pubdate          int      1783261713
+pub_year         int      2026
+final_label      str      "A"
+agg_label        str      "A"
+vote_scores      dict     {"A": 5.6}
+margin           float    1.0
+llm              dict     {"theme": "硬件产品", "relevance": "A", "product_line": "猫砂盆", "confidence": 0.95, "reason": "智能猫砂盆横评"}
+
+--- final_label ---
+  'C'                          1476
+  'A'                          1377
+  'N'                          830
+  'B'                          692
+
+--- llm.relevance ---
+  'C'                          1476
+  'A'                          1377
+  'N'                          830
+  'B'                          692
+
+--- cat ---
+  '其他/泛宠物'                     2807
+  '猫砂盆'                        743
+  '饮水机'                        311
+  '喂食器'                        245
+  '烘干箱'                        175
+  '净化器'                        57
+  '摄像头'                        20
+  '鱼缸'                         17
+
+--- official ---
+  False                        4212
+  True                         163
+
+--- pub_year ---
+  2026                         1842
+  2025                         714
+  2024                         588
+  2023                         403
+  2022                         355
+  2021                         211
+  2020                         144
+  2019                         70
+  2018                         29
+  2017                         16
+  2016                         2
+  2015                         1
+
+--- llm.theme ---
+  '硬件产品'                       1241
+  '日常vlog'                     910
+  '非宠物'                        786
+  '非硬件选购'                      361
+  '养护科普'                       326
+  '耗材日用'                       252
+  '硬件DIY'                      214
+  '健康医疗'                       198
+  '行业资讯'                       55
+  '领养救助'                       32
+
+--- llm.product_line ---
+  ''                           3008
+  '猫砂盆'                        553
+  '饮水机'                        253
+  '喂食器'                        218
+  '烘干箱'                        139
+  '其他硬件'                       95
+  '净化器'                        56
+  '摄像头'                        42
+  '鱼缸'                         11
+
+--- fmt ---
+  '其他'                         2830
+  '横评/选购'                      793
+  '教程/指南'                      332
+  'DIY/改装'                     170
+  '使用体验/吐槽'                    131
+  '开箱/上手'                      114
+  '闲置/二手'                      5
+
+--- _keyword ---
+  '猫泌尿'                        227
+  '养狗神器'                       216
+  '猫咪不喝水'                      181
+  '宠物摄像头'                      176
+  '宠物拆家'                       172
+  '小米宠物'                       170
+  '上班族养猫'                      166
+  '宠物加热垫'                      162
+  '小佩宠物'                       160
+  '自动喂食器'                      151
+  '智能猫砂盆'                      149
+  '宠物饮水机'                      146
+  '智能猫窝'                       145
+  '宠物自动厕所'                     143
+  '猫毛满天飞'                      134
+  '宠物智能'                       131
+  '养猫神器'                       130
+  '猫咪饮水机'                      122
+  '宠物烘干箱'                      113
+  'PETKIT'                     110
+  '猫砂盆推荐'                      108
+  '宠物喂食器'                      106
+  'CATLINK'                    105
+  '猫砂盆怎么选'                     101
+  '猫砂盆异味'                      93
+  '自动猫砂盆'                      89
+  '宠物智能品牌'                     89
+  '出差喂猫'                       87
+  '猫砂盆测评'                      87
+  '自动铲屎机'                      84
+  '宠物烘干机'                      76
+  '小佩猫砂盆'                      75
+  '霍曼宠物'                       66
+  '宠物饮水机测评'                    57
+  'catlink猫砂盆'                 48
+
+--- list fields distinct values ---
+
+### brands  (11 distinct)
+  '小佩'                     315
+  '小米'                     205
+  'CATLINK'                183
+  '霍曼'                     141
+  '糯雪'                     38
+  '美的'                     33
+  '鸟语花香'                   31
+  '有陪'                     7
+  'pidan'                  2
+  '猫洁易'                    2
+  'petshy'                 1
+
+### brand_strong  (10 distinct)
+  '小佩'                     275
+  '小米'                     165
+  'CATLINK'                163
+  '霍曼'                     126
+  '美的'                     30
+  '糯雪'                     28
+  '鸟语花香'                   27
+  '有陪'                     6
+  '猫洁易'                    2
+  'petshy'                 1
+
+### pains  (12 distinct)
+  '健康监测/泌尿'                213
+  '价格/性价比'                 196
+  '异味/除臭'                  164
+  '上班族/无人值守'               153
+  '清洁/维护麻烦'                150
+  '猫毛/掉毛'                  147
+  '智能互联/APP'               145
+  '多猫/大猫适配'                100
+  '故障/安全风险'                78
+  '耗材/长期成本'                75
+  '噪音'                     45
+python.exe : D:\����\��������Ӳ���û�����\_scratch_probe.py:67: DeprecationWarning: datetime.datetime.utcfromtimestamp() 
+is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: 
+datetime.datetime.fromtimestamp(timestamp, datetime.UTC).
+所在位置 行:1 字符: 129
++ ... ew($false); & "C:\Users\Arnold\.dsh\dsh-runtimes\dsh-primary-runtime\ ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (D:\����\�������... datetime.UTC).:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  print(datetime.datetime.utcfromtimestamp(min(pd)), datetime.datetime.utcfromtimestamp(max(pd)))
+  '猫咪不接受'                  21
+
+### scenes  (5 distinct)
+  '新手养猫'                   359
+  '上班族/白天独处'               113
+  '预算敏感/学生党'               84
+  '多猫家庭'                   83
+  '出差/旅行在外'                66
+
+--- numeric ranges ---
+play         n= 4375 min=100 max=9.3187e+06 mean=119627
+like         n= 4375 min=0 max=334217 mean=3274.08
+fav          n= 4375 min=0 max=402845 mean=1255.7
+dm           n= 4375 min=0 max=99965 mean=151.609
+reply        n= 4375 min=0 max=31922 mean=159.778
+duration_s   n= 4375 min=5 max=59546 mean=355.64
+interact     n= 4375 min=0 max=0.908257 mean=0.0333968
+like_rate    n= 4375 min=0 max=0.38419 mean=0.0241244
+fav_rate     n= 4375 min=0 max=0.908257 mean=0.00927235
+dm_rate      n= 4375 min=0 max=429.119 mean=2.20135
+margin       n= 4375 min=0.0204 max=1 mean=0.724578
+
+--- pubdate range ---
+1437237001 1791344295
+2015-07-18 16:30:01 2026-10-07 03:38:15
+
+--- _keyword list ---
+  '猫泌尿'                        227
+  '养狗神器'                       216
+  '猫咪不喝水'                      181
+  '宠物摄像头'                      176
+  '宠物拆家'                       172
+  '小米宠物'                       170
+  '上班族养猫'                      166
+  '宠物加热垫'                      162
+  '小佩宠物'                       160
+  '自动喂食器'                      151
+  '智能猫砂盆'                      149
+  '宠物饮水机'                      146
+  '智能猫窝'                       145
+  '宠物自动厕所'                     143
+  '猫毛满天飞'                      134
+  '宠物智能'                       131
+  '养猫神器'                       130
+  '猫咪饮水机'                      122
+  '宠物烘干箱'                      113
+  'PETKIT'                     110
+  '猫砂盆推荐'                      108
+  '宠物喂食器'                      106
+  'CATLINK'                    105
+  '猫砂盆怎么选'                     101
+  '猫砂盆异味'                      93
+  '自动猫砂盆'                      89
+  '宠物智能品牌'                     89
+  '出差喂猫'                       87
+  '猫砂盆测评'                      87
+  '自动铲屎机'                      84
+  '宠物烘干机'                      76
+  '小佩猫砂盆'                      75
+  '霍曼宠物'                       66
+  '宠物饮水机测评'                    57
+  'catlink猫砂盆'                 48
+
+--- labels by keyword sample ---
+{"bvid": "BV1BXVU6MENW", "title": "2026年智能猫砂盆推荐｜10款自动/全自动猫砂盆大横评｜小佩/CATLINK/霍曼怎么选？新手避坑指南", "tag": "智能猫砂盆评测,智能猫砂盆推荐,自动猫砂盆推荐,自动猫砂盆测评,自动猫砂盆,全自动猫砂盆,智能猫砂盆", "author": "亦直在说", "mid": 422715643, "typename": "数码", "play": 12898, "like": 136, "fav": 137, "dm": 104, "reply": 675, "duration_s": 847, "interact": 0.021166072259265003, "like_rate": 0.010544270429523958, "fav_rate": 0.010621801829741045, "dm_rate": 8.063265622577145, "cat": "猫砂盆", "lf_votes": {"LF_NOISE": {"vote": null, "hits": []}, "LF_GAME": {"vote": null, "hits": []}, "LF_SECURITY": {"vote": null, "hits": []}, "LF_BRAND": {"vote": null, "hits": ["小佩", "霍曼", "catlink"]}, "LF_HW": {"vote": null, "hits": ["猫砂盆"]}, "LF_PET": {"vote": null, "hits": ["猫"]}, "LF_SMART": {"vote": null, "hits": ["智能", "自动", "全自动"]}, "LF_PLAIN": {"vote": null, "hits": []}, "LF_AUTO_SMART": {"vote": null, "hits": ["智能猫砂盆", "自动猫砂盆", "全自动猫砂盆"]}, "LF_PRODUCT_FOCUS": {"vote": null, "hits": ["测评", "评测", "横评", "推荐", "怎么选", "避坑"]}, "LF_PET_BEHAVIOR": {"vote": null, "hits": []}, "LF_SUPPLY": {"vote": null, "hits": []}, "LF_HEALTH": {"vote": null, "hits": []}, "LF_A_BRAND_HW": {"vote": "A", "hits": ["小佩", "霍曼", "catlink", "猫砂盆"]}, "LF_A_PET_HW_SMART": {"vote": "A"

@@ -1,0 +1,3190 @@
+{
+  "generated_at": "2026-10-07T13:14:17",
+  "sample_size": 4375,
+  "label_discipline": {
+    "产品线讨论度": {
+      "levels": [
+        "A"
+      ],
+      "n": 1377
+    },
+    "品牌声量与口碑": {
+      "levels": [
+        "A"
+      ],
+      "n": 1377
+    },
+    "用户痛点": {
+      "levels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "n": 3545
+    },
+    "内容策略": {
+      "levels": [
+        "A",
+        "B"
+      ],
+      "n": 2069
+    },
+    "场景与头部内容": {
+      "levels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "n": 3545
+    }
+  },
+  "label_distribution": {
+    "A": 1377,
+    "N": 830,
+    "C": 1476,
+    "B": 692
+  },
+  "overview": {
+    "review_count": 380,
+    "videos": 3545,
+    "creators": 2361,
+    "play_median": 5327,
+    "interact_mean": 0.0334,
+    "fav_rate": 0.0087,
+    "duration_median_min": 2.08,
+    "year_dist": {
+      "2015": 1,
+      "2016": 1,
+      "2017": 14,
+      "2018": 25,
+      "2019": 65,
+      "2020": 134,
+      "2021": 188,
+      "2022": 322,
+      "2023": 365,
+      "2024": 525,
+      "2025": 602,
+      "2026": 1303
+    }
+  },
+  "results": {
+    "by_category": {
+      "猫砂盆": {
+        "n": 560,
+        "play_median": 1963,
+        "play_mean": 14930,
+        "play_p90": 20475,
+        "interact_mean": 0.0173,
+        "interact_median": 0.0098,
+        "like_rate": 0.0109,
+        "fav_rate": 0.0064,
+        "dm_rate": 1.38,
+        "creators": 325
+      },
+      "饮水机": {
+        "n": 255,
+        "play_median": 3374,
+        "play_mean": 51268,
+        "play_p90": 68553,
+        "interact_mean": 0.0207,
+        "interact_median": 0.014,
+        "like_rate": 0.0155,
+        "fav_rate": 0.0052,
+        "dm_rate": 2.88,
+        "creators": 176
+      },
+      "喂食器": {
+        "n": 224,
+        "play_median": 2923,
+        "play_mean": 22723,
+        "play_p90": 64240,
+        "interact_mean": 0.0271,
+        "interact_median": 0.015,
+        "like_rate": 0.0191,
+        "fav_rate": 0.008,
+        "dm_rate": 4.67,
+        "creators": 192
+      },
+      "烘干箱": {
+        "n": 139,
+        "play_median": 1710,
+        "play_mean": 13001,
+        "play_p90": 26212,
+        "interact_mean": 0.0217,
+        "interact_median": 0.0125,
+        "like_rate": 0.0153,
+        "fav_rate": 0.0065,
+        "dm_rate": 1.65,
+        "creators": 103
+      },
+      "其他硬件": {
+        "n": 86,
+        "play_median": 1231,
+        "play_mean": 40052,
+        "play_p90": 66293,
+        "interact_mean": 0.0235,
+        "interact_median": 0.0118,
+        "like_rate": 0.0147,
+        "fav_rate": 0.0088,
+        "dm_rate": 0.96,
+        "creators": 70
+      },
+      "净化器": {
+        "n": 56,
+        "play_median": 9308,
+        "play_mean": 39987,
+        "play_p90": 137399,
+        "interact_mean": 0.0248,
+        "interact_median": 0.0138,
+        "like_rate": 0.0169,
+        "fav_rate": 0.0079,
+        "dm_rate": 1.25,
+        "creators": 48
+      },
+      "摄像头": {
+        "n": 39,
+        "play_median": 9722,
+        "play_mean": 141216,
+        "play_p90": 101389,
+        "interact_mean": 0.0294,
+        "interact_median": 0.0166,
+        "like_rate": 0.0215,
+        "fav_rate": 0.0078,
+        "dm_rate": 1.95,
+        "creators": 38
+      },
+      "鱼缸": {
+        "n": 11,
+        "play_median": 26586,
+        "play_mean": 56602,
+        "play_p90": 101854,
+        "interact_mean": 0.0175,
+        "interact_median": 0.0121,
+        "like_rate": 0.0111,
+        "fav_rate": 0.0064,
+        "dm_rate": 1.11,
+        "creators": 9
+      },
+      "其他/泛宠物": {
+        "n": 7,
+        "play_median": 4183,
+        "play_mean": 9138,
+        "play_p90": 24385,
+        "interact_mean": 0.0171,
+        "interact_median": 0.0151,
+        "like_rate": 0.012,
+        "fav_rate": 0.0051,
+        "dm_rate": 0.47,
+        "creators": 6
+      }
+    },
+    "by_category_cross": {
+      "口径校验_大模型vs词典": {
+        "n": 1350,
+        "agree": 1252,
+        "rate": 0.9274
+      }
+    },
+    "by_brand": [
+      {
+        "brand": "小佩",
+        "n": 301,
+        "play_median": 2541,
+        "interact_mean": 0.0137,
+        "fav_rate": 0.0046,
+        "dm_rate": 3.84,
+        "creators": 160,
+        "strong_signal": 269,
+        "weak_signal": 32,
+        "official": 78,
+        "ugc": 223,
+        "cat_dist": {
+          "猫砂盆": 147,
+          "饮水机": 59,
+          "烘干箱": 18,
+          "喂食器": 54,
+          "其他/泛宠物": 22,
+          "鱼缸": 1
+        },
+        "pain_dist": {
+          "上班族/无人值守": 6,
+          "价格/性价比": 26,
+          "健康监测/泌尿": 10,
+          "噪音": 3,
+          "多猫/大猫适配": 19,
+          "异味/除臭": 24,
+          "故障/安全风险": 9,
+          "智能互联/APP": 12,
+          "清洁/维护麻烦": 28,
+          "猫咪不接受": 3,
+          "猫毛/掉毛": 0,
+          "耗材/长期成本": 12
+        }
+      },
+      {
+        "brand": "CATLINK",
+        "n": 181,
+        "play_median": 1806,
+        "interact_mean": 0.012,
+        "fav_rate": 0.0048,
+        "dm_rate": 1.09,
+        "creators": 90,
+        "strong_signal": 162,
+        "weak_signal": 19,
+        "official": 74,
+        "ugc": 107,
+        "cat_dist": {
+          "猫砂盆": 140,
+          "饮水机": 12,
+          "喂食器": 13,
+          "其他/泛宠物": 14,
+          "烘干箱": 2
+        },
+        "pain_dist": {
+          "上班族/无人值守": 1,
+          "价格/性价比": 8,
+          "健康监测/泌尿": 4,
+          "噪音": 2,
+          "多猫/大猫适配": 8,
+          "异味/除臭": 23,
+          "故障/安全风险": 6,
+          "智能互联/APP": 16,
+          "清洁/维护麻烦": 15,
+          "猫咪不接受": 0,
+          "猫毛/掉毛": 0,
+          "耗材/长期成本": 3
+        }
+      },
+      {
+        "brand": "霍曼",
+        "n": 137,
+        "play_median": 1596,
+        "interact_mean": 0.0215,
+        "fav_rate": 0.0057,
+        "dm_rate": 7.41,
+        "creators": 92,
+        "strong_signal": 123,
+        "weak_signal": 14,
+        "official": 2,
+        "ugc": 135,
+        "cat_dist": {
+          "猫砂盆": 39,
+          "饮水机": 16,
+          "烘干箱": 42,
+          "喂食器": 37,
+          "其他/泛宠物": 1,
+          "净化器": 2
+        },
+        "pain_dist": {
+          "上班族/无人值守": 5,
+          "价格/性价比": 18,
+          "健康监测/泌尿": 0,
+          "噪音": 2,
+          "多猫/大猫适配": 14,
+          "异味/除臭": 7,
+          "故障/安全风险": 1,
+          "智能互联/APP": 4,
+          "清洁/维护麻烦": 6,
+          "猫咪不接受": 0,
+          "猫毛/掉毛": 1,
+          "耗材/长期成本": 1
+        }
+      },
+      {
+        "brand": "小米",
+        "n": 105,
+        "play_median": 5151,
+        "interact_mean": 0.0227,
+        "fav_rate": 0.0063,
+        "dm_rate": 7.48,
+        "creators": 91,
+        "strong_signal": 92,
+        "weak_signal": 13,
+        "official": 0,
+        "ugc": 105,
+        "cat_dist": {
+          "净化器": 14,
+          "饮水机": 24,
+          "喂食器": 45,
+          "烘干箱": 2,
+          "摄像头": 1,
+          "猫砂盆": 10,
+          "其他/泛宠物": 6,
+          "鱼缸": 3
+        },
+        "pain_dist": {
+          "上班族/无人值守": 4,
+          "价格/性价比": 12,
+          "健康监测/泌尿": 2,
+          "噪音": 2,
+          "多猫/大猫适配": 7,
+          "异味/除臭": 5,
+          "故障/安全风险": 0,
+          "智能互联/APP": 9,
+          "清洁/维护麻烦": 2,
+          "猫咪不接受": 0,
+          "猫毛/掉毛": 10,
+          "耗材/长期成本": 3
+        }
+      },
+      {
+        "brand": "糯雪",
+        "n": 38,
+        "play_median": 2585,
+        "interact_mean": 0.0154,
+        "fav_rate": 0.004,
+        "dm_rate": 2.58,
+        "creators": 25,
+        "strong_signal": 28,
+        "weak_signal": 10,
+        "official": 0,
+        "ugc": 38,
+        "cat_dist": {
+          "猫砂盆": 35,
+          "烘干箱": 1,
+          "饮水机": 1,
+          "喂食器": 1
+        },
+        "pain_dist": {
+          "上班族/无人值守": 1,
+          "价格/性价比": 4,
+          "健康监测/泌尿": 0,
+          "噪音": 0,
+          "多猫/大猫适配": 3,
+          "异味/除臭": 4,
+          "故障/安全风险": 1,
+          "智能互联/APP": 0,
+          "清洁/维护麻烦": 1,
+          "猫咪不接受": 0,
+          "猫毛/掉毛": 0,
+          "耗材/长期成本": 0
+        }
+      },
+      {
+        "brand": "鸟语花香",
+        "n": 31,
+        "play_median": 5029,
+        "interact_mean": 0.017,
+        "fav_rate": 0.0055,
+        "dm_rate": 2.11,
+        "creators": 19,
+        "strong_signal": 27,
+        "weak_signal": 4,
+        "official": 0,
+        "ugc": 31,
+        "cat_dist": {
+          "猫砂盆": 16,
+          "喂食器": 8,
+          "烘干箱": 7
+        },
+        "pain_dist": {
+          "上班族/无人值守": 0,
+          "价格/性价比": 7,
+          "健康监测/泌尿": 1,
+          "噪音": 0,
+          "多猫/大猫适配": 2,
+          "异味/除臭": 0,
+          "故障/安全风险": 1,
+          "智能互联/APP": 2,
+          "清洁/维护麻烦": 1,
+          "猫咪不接受": 0,
+          "猫毛/掉毛": 0,
+          "耗材/长期成本": 0
+        }
+      },
+      {
+        "brand": "美的",
+        "n": 16,
+        "play_median": 10804,
+        "interact_mean": 0.0175,
+        "fav_rate": 0.0081,
+        "dm_rate": 2.11,
+        "creators": 15,
+        "strong_signal": 15,
+        "weak_signal": 1,
+        "official": 0,
+        "ugc": 16,
+        "cat_dist": {
+          "净化器": 9,
+          "饮水机": 1,
+          "烘干箱": 1,
+          "喂食器": 4,
+          "猫砂盆": 1
+        },
+        "pain_dist": {
+          "上班族/无人值守": 0,
+          "价格/性价比": 4,
+          "健康监测/泌尿": 0,
+          "噪音": 0,
+          "多猫/大猫适配": 0,
+          "异味/除臭": 1,
+          "故障/安全风险": 0,
+          "智能互联/APP": 1,
+          "清洁/维护麻烦": 1,
+          "猫咪不接受": 0,
+          "猫毛/掉毛": 8,
+          "耗材/长期成本": 2
+        }
+      },
+      {
+        "brand": "有陪",
+        "n": 7,
+        "play_median": 4217,
+        "interact_mean": 0.0121,
+        "fav_rate": 0.0031,
+        "dm_rate": 0.47,
+        "creators": 7,
+        "strong_signal": 6,
+        "weak_signal": 1,
+        "official": 0,
+        "ugc": 7,
+        "cat_dist": {
+          "猫砂盆": 6,
+          "其他/泛宠物": 1
+        },
+        "pain_dist": {
+          "上班族/无人值守": 0,
+          "价格/性价比": 0,
+          "健康监测/泌尿": 0,
+          "噪音": 0,
+          "多猫/大猫适配": 0,
+          "异味/除臭": 1,
+          "故障/安全风险": 1,
+          "智能互联/APP": 0,
+          "清洁/维护麻烦": 0,
+          "猫咪不接受": 0,
+          "猫毛/掉毛": 0,
+          "耗材/长期成本": 0
+        }
+      },
+      {
+        "brand": "猫洁易",
+        "n": 2,
+        "play_median": 27789,
+        "interact_mean": 0.0235,
+        "fav_rate": 0.0037,
+        "dm_rate": 2.75,
+        "creators": 2,
+        "strong_signal": 2,
+        "weak_signal": 0,
+        "official": 0,
+        "ugc": 2,
+        "cat_dist": {
+          "其他/泛宠物": 1,
+          "猫砂盆": 1
+        },
+        "pain_dist": {
+          "上班族/无人值守": 0,
+          "价格/性价比": 0,
+          "健康监测/泌尿": 0,
+          "噪音": 0,
+          "多猫/大猫适配": 0,
+          "异味/除臭": 0,
+          "故障/安全风险": 0,
+          "智能互联/APP": 0,
+          "清洁/维护麻烦": 0,
+          "猫咪不接受": 0,
+          "猫毛/掉毛": 0,
+          "耗材/长期成本": 0
+        }
+      }
+    ],
+    "by_brand_cross": {
+      "official_vs_ugc": {
+        "小佩": {
+          "official": {
+            "n": 78,
+            "play_median": 10874,
+            "play_mean": 37701,
+            "play_p90": 125582,
+            "interact_mean": 0.0083,
+            "interact_median": 0.0055,
+            "like_rate": 0.0028,
+            "fav_rate": 0.0055,
+            "dm_rate": 0.02,
+            "creators": 2
+          },
+          "ugc": {
+            "n": 223,
+            "play_median": 1370,
+            "play_mean": 7535,
+            "play_p90": 16610,
+            "interact_mean": 0.0156,
+            "interact_median": 0.0081,
+            "like_rate": 0.0113,
+            "fav_rate": 0.0043,
+            "dm_rate": 5.18,
+            "creators": 158
+          }
+        },
+        "CATLINK": {
+          "official": {
+            "n": 74,
+            "play_median": 3760,
+            "play_mean": 4437,
+            "play_p90": 8342,
+            "interact_mean": 0.0083,
+            "interact_median": 0.0062,
+            "like_rate": 0.0024,
+            "fav_rate": 0.0059,
+            "dm_rate": 0.05,
+            "creators": 1
+          },
+          "ugc": {
+            "n": 107,
+            "play_median": 850,
+            "play_mean": 5962,
+            "play_p90": 13223,
+            "interact_mean": 0.0146,
+            "interact_median": 0.0093,
+            "like_rate": 0.0105,
+            "fav_rate": 0.004,
+            "dm_rate": 1.81,
+            "creators": 89
+          }
+        },
+        "霍曼": {
+          "official": {
+            "n": 2,
+            "play_median": 1627,
+            "play_mean": 1627,
+            "play_p90": 2647,
+            "interact_mean": 0.015,
+            "interact_median": 0.015,
+            "like_rate": 0.004,
+            "fav_rate": 0.011,
+            "dm_rate": 0.0,
+            "creators": 1
+          },
+          "ugc": {
+            "n": 135,
+            "play_median": 1596,
+            "play_mean": 6819,
+            "play_p90": 14982,
+            "interact_mean": 0.0216,
+            "interact_median": 0.0112,
+            "like_rate": 0.016,
+            "fav_rate": 0.0056,
+            "dm_rate": 7.52,
+            "creators": 91
+          }
+        },
+        "小米": {
+          "official": null,
+          "ugc": {
+            "n": 105,
+            "play_median": 5151,
+            "play_mean": 42868,
+            "play_p90": 83338,
+            "interact_mean": 0.0227,
+            "interact_median": 0.0129,
+            "like_rate": 0.0164,
+            "fav_rate": 0.0063,
+            "dm_rate": 7.48,
+            "creators": 91
+          }
+        },
+        "糯雪": {
+          "official": null,
+          "ugc": {
+            "n": 38,
+            "play_median": 2585,
+            "play_mean": 10353,
+            "play_p90": 32539,
+            "interact_mean": 0.0154,
+            "interact_median": 0.009,
+            "like_rate": 0.0114,
+            "fav_rate": 0.004,
+            "dm_rate": 2.58,
+            "creators": 25
+          }
+        },
+        "鸟语花香": {
+          "official": null,
+          "ugc": {
+            "n": 31,
+            "play_median": 5029,
+            "play_mean": 13209,
+            "play_p90": 44207,
+            "interact_mean": 0.017,
+            "interact_median": 0.0113,
+            "like_rate": 0.0115,
+            "fav_rate": 0.0055,
+            "dm_rate": 2.11,
+            "creators": 19
+          }
+        },
+        "美的": {
+          "official": null,
+          "ugc": {
+            "n": 16,
+            "play_median": 10804,
+            "play_mean": 45063,
+            "play_p90": 110786,
+            "interact_mean": 0.0175,
+            "interact_median": 0.014,
+            "like_rate": 0.0094,
+            "fav_rate": 0.0081,
+            "dm_rate": 2.11,
+            "creators": 15
+          }
+        },
+        "有陪": {
+          "official": null,
+          "ugc": {
+            "n": 7,
+            "play_median": 4217,
+            "play_mean": 6121,
+            "play_p90": 13249,
+            "interact_mean": 0.0121,
+            "interact_median": 0.0077,
+            "like_rate": 0.009,
+            "fav_rate": 0.0031,
+            "dm_rate": 0.47,
+            "creators": 7
+          }
+        },
+        "猫洁易": {
+          "official": null,
+          "ugc": {
+            "n": 2,
+            "play_median": 27789,
+            "play_mean": 27789,
+            "play_p90": 47577,
+            "interact_mean": 0.0235,
+            "interact_median": 0.0235,
+            "like_rate": 0.0198,
+            "fav_rate": 0.0037,
+            "dm_rate": 2.75,
+            "creators": 2
+          }
+        }
+      },
+      "brand_category_matrix": {
+        "小佩": {
+          "喂食器": 54,
+          "净化器": 0,
+          "鱼缸": 1,
+          "猫砂盆": 147,
+          "烘干箱": 18,
+          "摄像头": 0,
+          "饮水机": 59
+        },
+        "CATLINK": {
+          "喂食器": 13,
+          "净化器": 0,
+          "鱼缸": 0,
+          "猫砂盆": 140,
+          "烘干箱": 2,
+          "摄像头": 0,
+          "饮水机": 12
+        },
+        "霍曼": {
+          "喂食器": 37,
+          "净化器": 2,
+          "鱼缸": 0,
+          "猫砂盆": 39,
+          "烘干箱": 42,
+          "摄像头": 0,
+          "饮水机": 16
+        },
+        "小米": {
+          "喂食器": 45,
+          "净化器": 14,
+          "鱼缸": 3,
+          "猫砂盆": 10,
+          "烘干箱": 2,
+          "摄像头": 1,
+          "饮水机": 24
+        },
+        "糯雪": {
+          "喂食器": 1,
+          "净化器": 0,
+          "鱼缸": 0,
+          "猫砂盆": 35,
+          "烘干箱": 1,
+          "摄像头": 0,
+          "饮水机": 1
+        },
+        "鸟语花香": {
+          "喂食器": 8,
+          "净化器": 0,
+          "鱼缸": 0,
+          "猫砂盆": 16,
+          "烘干箱": 7,
+          "摄像头": 0,
+          "饮水机": 0
+        },
+        "美的": {
+          "喂食器": 4,
+          "净化器": 9,
+          "鱼缸": 0,
+          "猫砂盆": 1,
+          "烘干箱": 1,
+          "摄像头": 0,
+          "饮水机": 1
+        },
+        "有陪": {
+          "喂食器": 0,
+          "净化器": 0,
+          "鱼缸": 0,
+          "猫砂盆": 6,
+          "烘干箱": 0,
+          "摄像头": 0,
+          "饮水机": 0
+        },
+        "猫洁易": {
+          "喂食器": 0,
+          "净化器": 0,
+          "鱼缸": 0,
+          "猫砂盆": 1,
+          "烘干箱": 0,
+          "摄像头": 0,
+          "饮水机": 0
+        }
+      },
+      "share_of_voice": {
+        "counts": {
+          "小佩": 110,
+          "CATLINK": 47,
+          "霍曼": 81,
+          "小米": 54,
+          "糯雪": 29,
+          "鸟语花香": 21,
+          "美的": 11,
+          "有陪": 4,
+          "猫洁易": 2
+        },
+        "share": {
+          "小佩": 0.3064,
+          "CATLINK": 0.1309,
+          "霍曼": 0.2256,
+          "小米": 0.1504,
+          "糯雪": 0.0808,
+          "鸟语花香": 0.0585,
+          "美的": 0.0306,
+          "有陪": 0.0111,
+          "猫洁易": 0.0056
+        }
+      }
+    },
+    "pain_points": [
+      {
+        "pain": "健康监测/泌尿",
+        "n": 163,
+        "play_median": 2146,
+        "interact_mean": 0.0292,
+        "fav_rate": 0.0085,
+        "dm_rate": 6.06,
+        "creators": 99,
+        "cat_dist": {
+          "饮水机": 13,
+          "喂食器": 3,
+          "其他/泛宠物": 132,
+          "猫砂盆": 13,
+          "摄像头": 1,
+          "净化器": 1
+        },
+        "brand_dist": {
+          "CATLINK": 4,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 10,
+          "小米": 2,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 0,
+          "美的": 0,
+          "霍曼": 0,
+          "鸟语花香": 1
+        },
+        "label_dist": {
+          "A": 28,
+          "C": 88,
+          "B": 47
+        }
+      },
+      {
+        "pain": "异味/除臭",
+        "n": 160,
+        "play_median": 1131,
+        "interact_mean": 0.0198,
+        "fav_rate": 0.0063,
+        "dm_rate": 1.7,
+        "creators": 127,
+        "cat_dist": {
+          "猫砂盆": 110,
+          "其他/泛宠物": 41,
+          "烘干箱": 1,
+          "净化器": 8
+        },
+        "brand_dist": {
+          "CATLINK": 23,
+          "petshy": 1,
+          "pidan": 1,
+          "小佩": 24,
+          "小米": 5,
+          "有陪": 1,
+          "猫洁易": 0,
+          "糯雪": 4,
+          "美的": 1,
+          "霍曼": 7,
+          "鸟语花香": 0
+        },
+        "label_dist": {
+          "A": 86,
+          "B": 47,
+          "C": 27
+        }
+      },
+      {
+        "pain": "价格/性价比",
+        "n": 145,
+        "play_median": 6476,
+        "interact_mean": 0.028,
+        "fav_rate": 0.0102,
+        "dm_rate": 3.58,
+        "creators": 121,
+        "cat_dist": {
+          "猫砂盆": 38,
+          "净化器": 8,
+          "饮水机": 18,
+          "烘干箱": 16,
+          "喂食器": 12,
+          "其他/泛宠物": 53
+        },
+        "brand_dist": {
+          "CATLINK": 8,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 26,
+          "小米": 15,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 4,
+          "美的": 6,
+          "霍曼": 18,
+          "鸟语花香": 7
+        },
+        "label_dist": {
+          "A": 81,
+          "B": 55,
+          "C": 9
+        }
+      },
+      {
+        "pain": "猫毛/掉毛",
+        "n": 141,
+        "play_median": 4530,
+        "interact_mean": 0.0262,
+        "fav_rate": 0.0079,
+        "dm_rate": 4.33,
+        "creators": 120,
+        "cat_dist": {
+          "净化器": 30,
+          "饮水机": 3,
+          "猫砂盆": 3,
+          "烘干箱": 3,
+          "其他/泛宠物": 102
+        },
+        "brand_dist": {
+          "CATLINK": 0,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 1,
+          "小米": 10,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 0,
+          "美的": 9,
+          "霍曼": 1,
+          "鸟语花香": 0
+        },
+        "label_dist": {
+          "A": 40,
+          "C": 36,
+          "B": 65
+        }
+      },
+      {
+        "pain": "上班族/无人值守",
+        "n": 129,
+        "play_median": 496,
+        "interact_mean": 0.0286,
+        "fav_rate": 0.006,
+        "dm_rate": 7.11,
+        "creators": 101,
+        "cat_dist": {
+          "猫砂盆": 8,
+          "喂食器": 11,
+          "饮水机": 4,
+          "其他/泛宠物": 106
+        },
+        "brand_dist": {
+          "CATLINK": 1,
+          "petshy": 0,
+          "pidan": 1,
+          "小佩": 6,
+          "小米": 5,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 1,
+          "美的": 0,
+          "霍曼": 5,
+          "鸟语花香": 0
+        },
+        "label_dist": {
+          "A": 21,
+          "B": 15,
+          "C": 93
+        }
+      },
+      {
+        "pain": "清洁/维护麻烦",
+        "n": 116,
+        "play_median": 1729,
+        "interact_mean": 0.0176,
+        "fav_rate": 0.0075,
+        "dm_rate": 1.49,
+        "creators": 84,
+        "cat_dist": {
+          "猫砂盆": 54,
+          "饮水机": 16,
+          "烘干箱": 5,
+          "其他/泛宠物": 33,
+          "喂食器": 8
+        },
+        "brand_dist": {
+          "CATLINK": 15,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 28,
+          "小米": 3,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 1,
+          "美的": 1,
+          "霍曼": 6,
+          "鸟语花香": 1
+        },
+        "label_dist": {
+          "A": 76,
+          "B": 32,
+          "C": 8
+        }
+      },
+      {
+        "pain": "多猫/大猫适配",
+        "n": 94,
+        "play_median": 1416,
+        "interact_mean": 0.0308,
+        "fav_rate": 0.0061,
+        "dm_rate": 9.54,
+        "creators": 74,
+        "cat_dist": {
+          "猫砂盆": 39,
+          "其他/泛宠物": 33,
+          "饮水机": 7,
+          "喂食器": 9,
+          "烘干箱": 3,
+          "净化器": 3
+        },
+        "brand_dist": {
+          "CATLINK": 8,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 19,
+          "小米": 7,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 3,
+          "美的": 0,
+          "霍曼": 14,
+          "鸟语花香": 2
+        },
+        "label_dist": {
+          "A": 51,
+          "C": 23,
+          "B": 20
+        }
+      },
+      {
+        "pain": "智能互联/APP",
+        "n": 90,
+        "play_median": 2284,
+        "interact_mean": 0.0272,
+        "fav_rate": 0.0115,
+        "dm_rate": 1.93,
+        "creators": 77,
+        "cat_dist": {
+          "猫砂盆": 17,
+          "饮水机": 10,
+          "喂食器": 23,
+          "其他/泛宠物": 33,
+          "摄像头": 5,
+          "鱼缸": 1,
+          "烘干箱": 1
+        },
+        "brand_dist": {
+          "CATLINK": 16,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 12,
+          "小米": 13,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 0,
+          "美的": 1,
+          "霍曼": 4,
+          "鸟语花香": 2
+        },
+        "label_dist": {
+          "A": 72,
+          "C": 14,
+          "B": 4
+        }
+      },
+      {
+        "pain": "耗材/长期成本",
+        "n": 64,
+        "play_median": 4886,
+        "interact_mean": 0.0249,
+        "fav_rate": 0.0112,
+        "dm_rate": 0.8,
+        "creators": 50,
+        "cat_dist": {
+          "猫砂盆": 14,
+          "饮水机": 16,
+          "其他/泛宠物": 20,
+          "烘干箱": 5,
+          "喂食器": 3,
+          "净化器": 6
+        },
+        "brand_dist": {
+          "CATLINK": 4,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 12,
+          "小米": 3,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 0,
+          "美的": 2,
+          "霍曼": 2,
+          "鸟语花香": 0
+        },
+        "label_dist": {
+          "A": 41,
+          "B": 22,
+          "C": 1
+        }
+      },
+      {
+        "pain": "故障/安全风险",
+        "n": 59,
+        "play_median": 4719,
+        "interact_mean": 0.0247,
+        "fav_rate": 0.0069,
+        "dm_rate": 1.01,
+        "creators": 54,
+        "cat_dist": {
+          "猫砂盆": 25,
+          "饮水机": 5,
+          "其他/泛宠物": 24,
+          "喂食器": 1,
+          "摄像头": 3,
+          "净化器": 1
+        },
+        "brand_dist": {
+          "CATLINK": 6,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 9,
+          "小米": 0,
+          "有陪": 1,
+          "猫洁易": 0,
+          "糯雪": 1,
+          "美的": 0,
+          "霍曼": 1,
+          "鸟语花香": 1
+        },
+        "label_dist": {
+          "A": 37,
+          "B": 11,
+          "C": 11
+        }
+      },
+      {
+        "pain": "噪音",
+        "n": 33,
+        "play_median": 1708,
+        "interact_mean": 0.0312,
+        "fav_rate": 0.0149,
+        "dm_rate": 4.65,
+        "creators": 21,
+        "cat_dist": {
+          "饮水机": 14,
+          "烘干箱": 4,
+          "其他/泛宠物": 13,
+          "喂食器": 1,
+          "猫砂盆": 1
+        },
+        "brand_dist": {
+          "CATLINK": 2,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 4,
+          "小米": 2,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 0,
+          "美的": 0,
+          "霍曼": 2,
+          "鸟语花香": 0
+        },
+        "label_dist": {
+          "A": 22,
+          "B": 7,
+          "C": 4
+        }
+      },
+      {
+        "pain": "猫咪不接受",
+        "n": 19,
+        "play_median": 6482,
+        "interact_mean": 0.0408,
+        "fav_rate": 0.0079,
+        "dm_rate": 2.19,
+        "creators": 17,
+        "cat_dist": {
+          "猫砂盆": 5,
+          "饮水机": 1,
+          "烘干箱": 3,
+          "其他/泛宠物": 10
+        },
+        "brand_dist": {
+          "CATLINK": 0,
+          "petshy": 0,
+          "pidan": 0,
+          "小佩": 3,
+          "小米": 0,
+          "有陪": 0,
+          "猫洁易": 0,
+          "糯雪": 0,
+          "美的": 0,
+          "霍曼": 0,
+          "鸟语花香": 0
+        },
+        "label_dist": {
+          "A": 7,
+          "C": 12
+        }
+      }
+    ],
+    "pain_points_cross": {
+      "pain_by_format": {
+        "健康监测/泌尿": {
+          "横评/选购": {
+            "n": 15,
+            "interact_mean": 0.0418,
+            "fav_rate": 0.0083
+          },
+          "其他": {
+            "n": 128,
+            "interact_mean": 0.0261,
+            "fav_rate": 0.007
+          },
+          "教程/指南": {
+            "n": 14,
+            "interact_mean": 0.0476,
+            "fav_rate": 0.0239
+          },
+          "使用体验/吐槽": {
+            "n": 3,
+            "interact_mean": 0.025,
+            "fav_rate": 0.007
+          },
+          "开箱/上手": {
+            "n": 3,
+            "interact_mean": 0.0151,
+            "fav_rate": 0.0016
+          }
+        },
+        "异味/除臭": {
+          "横评/选购": {
+            "n": 49,
+            "interact_mean": 0.014,
+            "fav_rate": 0.0044
+          },
+          "开箱/上手": {
+            "n": 3,
+            "interact_mean": 0.0125,
+            "fav_rate": 0.0036
+          },
+          "其他": {
+            "n": 85,
+            "interact_mean": 0.0225,
+            "fav_rate": 0.007
+          },
+          "DIY/改装": {
+            "n": 8,
+            "interact_mean": 0.0317,
+            "fav_rate": 0.0084
+          },
+          "使用体验/吐槽": {
+            "n": 4,
+            "interact_mean": 0.017,
+            "fav_rate": 0.0061
+          },
+          "教程/指南": {
+            "n": 11,
+            "interact_mean": 0.0199,
+            "fav_rate": 0.0078
+          }
+        },
+        "价格/性价比": {
+          "横评/选购": {
+            "n": 42,
+            "interact_mean": 0.0216,
+            "fav_rate": 0.009
+          },
+          "其他": {
+            "n": 52,
+            "interact_mean": 0.033,
+            "fav_rate": 0.012
+          },
+          "使用体验/吐槽": {
+            "n": 41,
+            "interact_mean": 0.0258,
+            "fav_rate": 0.0069
+          },
+          "DIY/改装": {
+            "n": 4,
+            "interact_mean": 0.0457,
+            "fav_rate": 0.0153
+          },
+          "闲置/二手": {
+            "n": 1,
+            "interact_mean": 0.0276,
+            "fav_rate": 0.0192
+          },
+          "开箱/上手": {
+            "n": 2,
+            "interact_mean": 0.0017,
+            "fav_rate": 0.0002
+          },
+          "教程/指南": {
+            "n": 3,
+            "interact_mean": 0.0573,
+            "fav_rate": 0.0385
+          }
+        },
+        "猫毛/掉毛": {
+          "使用体验/吐槽": {
+            "n": 7,
+            "interact_mean": 0.0156,
+            "fav_rate": 0.0035
+          },
+          "横评/选购": {
+            "n": 28,
+            "interact_mean": 0.0277,
+            "fav_rate": 0.0161
+          },
+          "教程/指南": {
+            "n": 6,
+            "interact_mean": 0.0375,
+            "fav_rate": 0.0159
+          },
+          "其他": {
+            "n": 96,
+            "interact_mean": 0.026,
+            "fav_rate": 0.0053
+          },
+          "DIY/改装": {
+            "n": 3,
+            "interact_mean": 0.0278,
+            "fav_rate": 0.0086
+          },
+          "开箱/上手": {
+            "n": 1,
+            "interact_mean": 0.006,
+            "fav_rate": 0.0
+          }
+        },
+        "上班族/无人值守": {
+          "横评/选购": {
+            "n": 16,
+            "interact_mean": 0.0211,
+            "fav_rate": 0.007
+          },
+          "教程/指南": {
+            "n": 4,
+            "interact_mean": 0.0272,
+            "fav_rate": 0.0108
+          },
+          "其他": {
+            "n": 101,
+            "interact_mean": 0.029,
+            "fav_rate": 0.005
+          },
+          "使用体验/吐槽": {
+            "n": 2,
+            "interact_mean": 0.035,
+            "fav_rate": 0.0172
+          },
+          "开箱/上手": {
+            "n": 5,
+            "interact_mean": 0.0455,
+            "fav_rate": 0.0148
+          },
+          "DIY/改装": {
+            "n": 1,
+            "interact_mean": 0.009,
+            "fav_rate": 0.003
+          }
+        },
+        "清洁/维护麻烦": {
+          "横评/选购": {
+            "n": 36,
+            "interact_mean": 0.0188,
+            "fav_rate": 0.005
+          },
+          "其他": {
+            "n": 53,
+            "interact_mean": 0.0153,
+            "fav_rate": 0.0076
+          },
+          "DIY/改装": {
+            "n": 1,
+            "interact_mean": 0.0777,
+            "fav_rate": 0.0091
+          },
+          "教程/指南": {
+            "n": 23,
+            "interact_mean": 0.0198,
+            "fav_rate": 0.0119
+          },
+          "开箱/上手": {
+            "n": 2,
+            "interact_mean": 0.005,
+            "fav_rate": 0.0002
+          },
+          "使用体验/吐槽": {
+            "n": 1,
+            "interact_mean": 0.0063,
+            "fav_rate": 0.0016
+          }
+        },
+        "多猫/大猫适配": {
+          "横评/选购": {
+            "n": 40,
+            "interact_mean": 0.0222,
+            "fav_rate": 0.007
+          },
+          "教程/指南": {
+            "n": 2,
+            "interact_mean": 0.0275,
+            "fav_rate": 0.0118
+          },
+          "DIY/改装": {
+            "n": 3,
+            "interact_mean": 0.0663,
+            "fav_rate": 0.0057
+          },
+          "其他": {
+            "n": 41,
+            "interact_mean": 0.0382,
+            "fav_rate": 0.005
+          },
+          "开箱/上手": {
+            "n": 4,
+            "interact_mean": 0.0317,
+            "fav_rate": 0.0053
+          },
+          "使用体验/吐槽": {
+            "n": 4,
+            "interact_mean": 0.0154,
+            "fav_rate": 0.0064
+          }
+        },
+        "智能互联/APP": {
+          "DIY/改装": {
+            "n": 7,
+            "interact_mean": 0.0501,
+            "fav_rate": 0.0246
+          },
+          "其他": {
+            "n": 49,
+            "interact_mean": 0.0296,
+            "fav_rate": 0.0111
+          },
+          "横评/选购": {
+            "n": 18,
+            "interact_mean": 0.0177,
+            "fav_rate": 0.0083
+          },
+          "教程/指南": {
+            "n": 13,
+            "interact_mean": 0.0195,
+            "fav_rate": 0.0108
+          },
+          "使用体验/吐槽": {
+            "n": 1,
+            "interact_mean": 0.06,
+            "fav_rate": 0.0311
+          },
+          "开箱/上手": {
+            "n": 2,
+            "interact_mean": 0.0056,
+            "fav_rate": 0.0
+          }
+        },
+        "耗材/长期成本": {
+          "横评/选购": {
+            "n": 14,
+            "interact_mean": 0.0165,
+            "fav_rate": 0.0065
+          },
+          "其他": {
+            "n": 18,
+            "interact_mean": 0.0203,
+            "fav_rate": 0.0106
+          },
+          "DIY/改装": {
+            "n": 16,
+            "interact_mean": 0.0405,
+            "fav_rate": 0.0183
+          },
+          "教程/指南": {
+            "n": 11,
+            "interact_mean": 0.025,
+            "fav_rate": 0.0116
+          },
+          "使用体验/吐槽": {
+            "n": 3,
+            "interact_mean": 0.0219,
+            "fav_rate": 0.0038
+          },
+          "开箱/上手": {
+            "n": 2,
+            "interact_mean": 0.0029,
+            "fav_rate": 0.0011
+          }
+        },
+        "故障/安全风险": {
+          "横评/选购": {
+            "n": 18,
+            "interact_mean": 0.0154,
+            "fav_rate": 0.0049
+          },
+          "使用体验/吐槽": {
+            "n": 2,
+            "interact_mean": 0.0275,
+            "fav_rate": 0.0052
+          },
+          "其他": {
+            "n": 32,
+            "interact_mean": 0.0315,
+            "fav_rate": 0.0083
+          },
+          "教程/指南": {
+            "n": 4,
+            "interact_mean": 0.0127,
+            "fav_rate": 0.0035
+          },
+          "DIY/改装": {
+            "n": 3,
+            "interact_mean": 0.0225,
+            "fav_rate": 0.0092
+          }
+        },
+        "噪音": {
+          "横评/选购": {
+            "n": 11,
+            "interact_mean": 0.0278,
+            "fav_rate": 0.0203
+          },
+          "DIY/改装": {
+            "n": 2,
+            "interact_mean": 0.0284,
+            "fav_rate": 0.0183
+          },
+          "其他": {
+            "n": 17,
+            "interact_mean": 0.0333,
+            "fav_rate": 0.0103
+          },
+          "教程/指南": {
+            "n": 3,
+            "interact_mean": 0.0341,
+            "fav_rate": 0.0188
+          }
+        },
+        "猫咪不接受": {
+          "横评/选购": {
+            "n": 2,
+            "interact_mean": 0.0142,
+            "fav_rate": 0.0021
+          },
+          "教程/指南": {
+            "n": 1,
+            "interact_mean": 0.0492,
+            "fav_rate": 0.0167
+          },
+          "其他": {
+            "n": 14,
+            "interact_mean": 0.0456,
+            "fav_rate": 0.0075
+          },
+          "开箱/上手": {
+            "n": 1,
+            "interact_mean": 0.0118,
+            "fav_rate": 0.0029
+          },
+          "使用体验/吐槽": {
+            "n": 1,
+            "interact_mean": 0.0461,
+            "fav_rate": 0.0215
+          }
+        }
+      }
+    },
+    "by_format": {
+      "其他": {
+        "n": 956,
+        "play_median": 2450,
+        "play_mean": 46881,
+        "play_p90": 68770,
+        "interact_mean": 0.0228,
+        "interact_median": 0.0136,
+        "like_rate": 0.0163,
+        "fav_rate": 0.0065,
+        "dm_rate": 2.21,
+        "creators": 678
+      },
+      "横评/选购": {
+        "n": 607,
+        "play_median": 2630,
+        "play_mean": 30323,
+        "play_p90": 59195,
+        "interact_mean": 0.022,
+        "interact_median": 0.0131,
+        "like_rate": 0.0145,
+        "fav_rate": 0.0075,
+        "dm_rate": 4.22,
+        "creators": 397
+      },
+      "教程/指南": {
+        "n": 215,
+        "play_median": 4879,
+        "play_mean": 25364,
+        "play_p90": 39811,
+        "interact_mean": 0.0244,
+        "interact_median": 0.0142,
+        "like_rate": 0.0122,
+        "fav_rate": 0.0122,
+        "dm_rate": 0.4,
+        "creators": 101
+      },
+      "DIY/改装": {
+        "n": 130,
+        "play_median": 7234,
+        "play_mean": 22054,
+        "play_p90": 59524,
+        "interact_mean": 0.0393,
+        "interact_median": 0.0308,
+        "like_rate": 0.0256,
+        "fav_rate": 0.0138,
+        "dm_rate": 0.87,
+        "creators": 124
+      },
+      "使用体验/吐槽": {
+        "n": 93,
+        "play_median": 6761,
+        "play_mean": 83272,
+        "play_p90": 85394,
+        "interact_mean": 0.0222,
+        "interact_median": 0.0115,
+        "like_rate": 0.0171,
+        "fav_rate": 0.0051,
+        "dm_rate": 4.55,
+        "creators": 81
+      },
+      "开箱/上手": {
+        "n": 66,
+        "play_median": 2272,
+        "play_mean": 11642,
+        "play_p90": 29303,
+        "interact_mean": 0.0159,
+        "interact_median": 0.0091,
+        "like_rate": 0.0125,
+        "fav_rate": 0.0034,
+        "dm_rate": 1.98,
+        "creators": 63
+      },
+      "闲置/二手": {
+        "n": 2,
+        "play_median": 22298,
+        "play_mean": 22298,
+        "play_p90": 34302,
+        "interact_mean": 0.0352,
+        "interact_median": 0.0352,
+        "like_rate": 0.0176,
+        "fav_rate": 0.0175,
+        "dm_rate": 1.7,
+        "creators": 2
+      }
+    },
+    "by_format_cross": {
+      "by_duration": {
+        ">10min": {
+          "n": 201,
+          "play_median": 5110,
+          "play_mean": 61110,
+          "play_p90": 142075,
+          "interact_mean": 0.0346,
+          "interact_median": 0.0185,
+          "like_rate": 0.0188,
+          "fav_rate": 0.0158,
+          "dm_rate": 7.0,
+          "creators": 148
+        },
+        "1-3min": {
+          "n": 667,
+          "play_median": 2787,
+          "play_mean": 37994,
+          "play_p90": 48839,
+          "interact_mean": 0.0234,
+          "interact_median": 0.0136,
+          "like_rate": 0.0165,
+          "fav_rate": 0.0069,
+          "dm_rate": 1.19,
+          "creators": 473
+        },
+        "3-10min": {
+          "n": 621,
+          "play_median": 7598,
+          "play_mean": 51595,
+          "play_p90": 100484,
+          "interact_mean": 0.0282,
+          "interact_median": 0.0189,
+          "like_rate": 0.0187,
+          "fav_rate": 0.0095,
+          "dm_rate": 2.18,
+          "creators": 443
+        },
+        "<1min": {
+          "n": 580,
+          "play_median": 1041,
+          "play_mean": 17992,
+          "play_p90": 25205,
+          "interact_mean": 0.0149,
+          "interact_median": 0.0077,
+          "like_rate": 0.0112,
+          "fav_rate": 0.0037,
+          "dm_rate": 3.24,
+          "creators": 375
+        }
+      },
+      "duration_by_cat": {
+        "喂食器": {
+          ">10min": {
+            "n": 40,
+            "play_median": 2704,
+            "play_mean": 32990,
+            "play_p90": 57772,
+            "interact_mean": 0.0301,
+            "interact_median": 0.0175,
+            "like_rate": 0.0216,
+            "fav_rate": 0.0084,
+            "dm_rate": 17.55,
+            "creators": 39
+          },
+          "3-10min": {
+            "n": 62,
+            "play_median": 6857,
+            "play_mean": 16619,
+            "play_p90": 57046,
+            "interact_mean": 0.0331,
+            "interact_median": 0.0187,
+            "like_rate": 0.0227,
+            "fav_rate": 0.0104,
+            "dm_rate": 4.41,
+            "creators": 60
+          },
+          "1-3min": {
+            "n": 62,
+            "play_median": 8003,
+            "play_mean": 31084,
+            "play_p90": 65115,
+            "interact_mean": 0.026,
+            "interact_median": 0.0167,
+            "like_rate": 0.0185,
+            "fav_rate": 0.0075,
+            "dm_rate": 0.22,
+            "creators": 49
+          },
+          "<1min": {
+            "n": 44,
+            "play_median": 532,
+            "play_mean": 10519,
+            "play_p90": 28751,
+            "interact_mean": 0.0157,
+            "interact_median": 0.0073,
+            "like_rate": 0.0127,
+            "fav_rate": 0.003,
+            "dm_rate": 0.28,
+            "creators": 42
+          }
+        },
+        "净化器": {
+          ">10min": {
+            "n": 17,
+            "play_median": 14211,
+            "play_mean": 71703,
+            "play_p90": 210978,
+            "interact_mean": 0.0221,
+            "interact_median": 0.0119,
+            "like_rate": 0.0087,
+            "fav_rate": 0.0134,
+            "dm_rate": 2.31,
+            "creators": 17
+          },
+          "3-10min": {
+            "n": 17,
+            "play_median": 45498,
+            "play_mean": 81350,
+            "play_p90": 180663,
+            "interact_mean": 0.026,
+            "interact_median": 0.022,
+            "like_rate": 0.0199,
+            "fav_rate": 0.0061,
+            "dm_rate": 1.3,
+            "creators": 17
+          },
+          "1-3min": {
+            "n": 10,
+            "play_median": 7675,
+            "play_mean": 13055,
+            "play_p90": 26533,
+            "interact_mean": 0.0226,
+            "interact_median": 0.0138,
+            "like_rate": 0.0175,
+            "fav_rate": 0.0051,
+            "dm_rate": 0.13,
+            "creators": 9
+          },
+          "<1min": {
+            "n": 5,
+            "play_median": 184,
+            "play_mean": 207,
+            "play_p90": 304,
+            "interact_mean": 0.0378,
+            "interact_median": 0.008,
+            "like_rate": 0.0367,
+            "fav_rate": 0.0012,
+            "dm_rate": 0.0,
+            "creators": 2
+          }
+        },
+        "鱼缸": {
+          "1-3min": {
+            "n": 6,
+            "play_median": 31774,
+            "play_mean": 40372,
+            "play_p90": 71475,
+            "interact_mean": 0.0122,
+            "interact_median": 0.0113,
+            "like_rate": 0.007,
+            "fav_rate": 0.0052,
+            "dm_rate": 0.27,
+            "creators": 6
+          },
+          ">10min": {
+            "n": 2,
+            "play_median": 194244,
+            "play_mean": 194244,
+            "play_p90": 330921,
+            "interact_mean": 0.0148,
+            "interact_median": 0.0148,
+            "like_rate": 0.0101,
+            "fav_rate": 0.0047,
+            "dm_rate": 1.05,
+            "creators": 2
+          },
+          "<1min": {
+            "n": 2,
+            "play_median": 5538,
+            "play_mean": 5538,
+            "play_p90": 6301,
+            "interact_mean": 0.0037,
+            "interact_median": 0.0037,
+            "like_rate": 0.0015,
+            "fav_rate": 0.0022,
+            "dm_rate": 0.0,
+            "creators": 1
+          },
+          "3-10min": {
+            "n": 3,
+            "play_median": 29916,
+            "play_mean": 488706,
+            "play_p90": 1133676,
+            "interact_mean": 0.0341,
+            "interact_median": 0.0199,
+            "like_rate": 0.0274,
+            "fav_rate": 0.0067,
+            "dm_rate": 3.32,
+            "creators": 3
+          }
+        },
+        "猫砂盆": {
+          ">10min": {
+            "n": 47,
+            "play_median": 3057,
+            "play_mean": 12104,
+            "play_p90": 19015,
+            "interact_mean": 0.0515,
+            "interact_median": 0.0184,
+            "like_rate": 0.0246,
+            "fav_rate": 0.0268,
+            "dm_rate": 5.53,
+            "creators": 43
+          },
+          "1-3min": {
+            "n": 237,
+            "play_median": 1927,
+            "play_mean": 18966,
+            "play_p90": 22247,
+            "interact_mean": 0.0169,
+            "interact_median": 0.0094,
+            "like_rate": 0.0112,
+            "fav_rate": 0.0057,
+            "dm_rate": 0.59,
+            "creators": 158
+          },
+          "3-10min": {
+            "n": 199,
+            "play_median": 3880,
+            "play_mean": 27383,
+            "play_p90": 47025,
+            "interact_mean": 0.0195,
+            "interact_median": 0.015,
+            "like_rate": 0.0138,
+            "fav_rate": 0.0057,
+            "dm_rate": 1.77,
+            "creators": 124
+          },
+          "<1min": {
+            "n": 178,
+            "play_median": 725,
+            "play_mean": 10637,
+            "play_p90": 14712,
+            "interact_mean": 0.011,
+            "interact_median": 0.0063,
+            "like_rate": 0.0076,
+            "fav_rate": 0.0035,
+            "dm_rate": 2.79,
+            "creators": 122
+          }
+        },
+        "烘干箱": {
+          ">10min": {
+            "n": 18,
+            "play_median": 4303,
+            "play_mean": 6710,
+            "play_p90": 13516,
+            "interact_mean": 0.0277,
+            "interact_median": 0.0207,
+            "like_rate": 0.0128,
+            "fav_rate": 0.015,
+            "dm_rate": 8.19,
+            "creators": 16
+          },
+          "3-10min": {
+            "n": 50,
+            "play_median": 5146,
+            "play_mean": 13895,
+            "play_p90": 32266,
+            "interact_mean": 0.0235,
+            "interact_median": 0.0151,
+            "like_rate": 0.0186,
+            "fav_rate": 0.0049,
+            "dm_rate": 2.14,
+            "creators": 42
+          },
+          "1-3min": {
+            "n": 37,
+            "play_median": 1710,
+            "play_mean": 24025,
+            "play_p90": 25696,
+            "interact_mean": 0.027,
+            "interact_median": 0.0133,
+            "like_rate": 0.0193,
+            "fav_rate": 0.0077,
+            "dm_rate": 0.79,
+            "creators": 27
+          },
+          "<1min": {
+            "n": 34,
+            "play_median": 599,
+            "play_mean": 3662,
+            "play_p90": 12370,
+            "interact_mean": 0.0155,
+            "interact_median": 0.0065,
+            "like_rate": 0.0109,
+            "fav_rate": 0.0046,
+            "dm_rate": 0.19,
+            "creators": 29
+          }
+        },
+        "摄像头": {
+          ">10min": {
+            "n": 4,
+            "play_median": 2526,
+            "play_mean": 3870,
+            "play_p90": 7807,
+            "interact_mean": 0.0247,
+            "interact_median": 0.0136,
+            "like_rate": 0.0094,
+            "fav_rate": 0.0153,
+            "dm_rate": 1.44,
+            "creators": 4
+          },
+          "1-3min": {
+            "n": 4,
+            "play_median": 511,
+            "play_mean": 3747,
+            "play_p90": 9816,
+            "interact_mean": 0.0159,
+            "interact_median": 0.0085,
+            "like_rate": 0.0112,
+            "fav_rate": 0.0047,
+            "dm_rate": 1.49,
+            "creators": 4
+          },
+          "3-10min": {
+            "n": 4,
+            "play_median": 30382,
+            "play_mean": 31327,
+            "play_p90": 59301,
+            "interact_mean": 0.0146,
+            "interact_median": 0.0149,
+            "like_rate": 0.0079,
+            "fav_rate": 0.0067,
+            "dm_rate": 0.44,
+            "creators": 3
+          },
+          "<1min": {
+            "n": 1,
+            "play_median": 206,
+            "play_mean": 206,
+            "play_p90": 206,
+            "interact_mean": 0.0291,
+            "interact_median": 0.0291,
+            "like_rate": 0.0243,
+            "fav_rate": 0.0049,
+            "dm_rate": 0.0,
+            "creators": 1
+          }
+        },
+        "饮水机": {
+          ">10min": {
+            "n": 17,
+            "play_median": 2332,
+            "play_mean": 17479,
+            "play_p90": 39964,
+            "interact_mean": 0.0283,
+            "interact_median": 0.0099,
+            "like_rate": 0.0199,
+            "fav_rate": 0.0084,
+            "dm_rate": 9.27,
+            "creators": 17
+          },
+          "3-10min": {
+            "n": 54,
+            "play_median": 6623,
+            "play_mean": 25613,
+            "play_p90": 78124,
+            "interact_mean": 0.0218,
+            "interact_median": 0.0166,
+            "like_rate": 0.0157,
+            "fav_rate": 0.0061,
+            "dm_rate": 3.4,
+            "creators": 48
+          },
+          "1-3min": {
+            "n": 81,
+            "play_median": 7358,
+            "play_mean": 91047,
+            "play_p90": 90285,
+            "interact_mean": 0.023,
+            "interact_median": 0.0147,
+            "like_rate": 0.0178,
+            "fav_rate": 0.0051,
+            "dm_rate": 0.61,
+            "creators": 61
+          },
+          "<1min": {
+            "n": 110,
+            "play_median": 1846,
+            "play_mean": 28422,
+            "play_p90": 38512,
+            "interact_mean": 0.0178,
+            "interact_median": 0.0134,
+            "like_rate": 0.0134,
+            "fav_rate": 0.0045,
+            "dm_rate": 3.72,
+            "creators": 70
+          }
+        }
+      },
+      "by_keyword": [
+        {
+          "keyword": "智能猫砂盆",
+          "n": 132,
+          "play_median": 6011,
+          "interact_mean": 0.029,
+          "fav_rate": 0.0131
+        },
+        {
+          "keyword": "宠物饮水机",
+          "n": 105,
+          "play_median": 6943,
+          "interact_mean": 0.0225,
+          "fav_rate": 0.0063
+        },
+        {
+          "keyword": "养猫神器",
+          "n": 104,
+          "play_median": 22440,
+          "interact_mean": 0.0346,
+          "fav_rate": 0.0136
+        },
+        {
+          "keyword": "CATLINK",
+          "n": 100,
+          "play_median": 1784,
+          "interact_mean": 0.0123,
+          "fav_rate": 0.0065
+        },
+        {
+          "keyword": "养狗神器",
+          "n": 98,
+          "play_median": 2960,
+          "interact_mean": 0.0262,
+          "fav_rate": 0.0081
+        },
+        {
+          "keyword": "自动喂食器",
+          "n": 96,
+          "play_median": 9217,
+          "interact_mean": 0.0345,
+          "fav_rate": 0.009
+        },
+        {
+          "keyword": "宠物加热垫",
+          "n": 88,
+          "play_median": 8033,
+          "interact_mean": 0.0278,
+          "fav_rate": 0.0103
+        },
+        {
+          "keyword": "宠物烘干箱",
+          "n": 85,
+          "play_median": 4224,
+          "interact_mean": 0.0251,
+          "fav_rate": 0.008
+        },
+        {
+          "keyword": "猫砂盆推荐",
+          "n": 83,
+          "play_median": 1637,
+          "interact_mean": 0.0179,
+          "fav_rate": 0.0064
+        },
+        {
+          "keyword": "猫咪饮水机",
+          "n": 82,
+          "play_median": 12911,
+          "interact_mean": 0.0307,
+          "fav_rate": 0.0077
+        },
+        {
+          "keyword": "宠物喂食器",
+          "n": 78,
+          "play_median": 3737,
+          "interact_mean": 0.0297,
+          "fav_rate": 0.0101
+        },
+        {
+          "keyword": "猫砂盆测评",
+          "n": 77,
+          "play_median": 1540,
+          "interact_mean": 0.0167,
+          "fav_rate": 0.0048
+        },
+        {
+          "keyword": "智能猫窝",
+          "n": 75,
+          "play_median": 1141,
+          "interact_mean": 0.0354,
+          "fav_rate": 0.0097
+        },
+        {
+          "keyword": "自动猫砂盆",
+          "n": 69,
+          "play_median": 5699,
+          "interact_mean": 0.0203,
+          "fav_rate": 0.0053
+        },
+        {
+          "keyword": "宠物自动厕所",
+          "n": 61,
+          "play_median": 3883,
+          "interact_mean": 0.0185,
+          "fav_rate": 0.0058
+        },
+        {
+          "keyword": "PETKIT",
+          "n": 59,
+          "play_median": 722,
+          "interact_mean": 0.0114,
+          "fav_rate": 0.0058
+        },
+        {
+          "keyword": "猫砂盆异味",
+          "n": 56,
+          "play_median": 1624,
+          "interact_mean": 0.0261,
+          "fav_rate": 0.0101
+        },
+        {
+          "keyword": "自动铲屎机",
+          "n": 54,
+          "play_median": 2106,
+          "interact_mean": 0.017,
+          "fav_rate": 0.0041
+        },
+        {
+          "keyword": "猫砂盆怎么选",
+          "n": 54,
+          "play_median": 5515,
+          "interact_mean": 0.0227,
+          "fav_rate": 0.0072
+        },
+        {
+          "keyword": "霍曼宠物",
+          "n": 53,
+          "play_median": 429,
+          "interact_mean": 0.0188,
+          "fav_rate": 0.0042
+        },
+        {
+          "keyword": "猫泌尿",
+          "n": 46,
+          "play_median": 1190,
+          "interact_mean": 0.0207,
+          "fav_rate": 0.0037
+        },
+        {
+          "keyword": "小佩宠物",
+          "n": 45,
+          "play_median": 6492,
+          "interact_mean": 0.0134,
+          "fav_rate": 0.0051
+        },
+        {
+          "keyword": "小佩猫砂盆",
+          "n": 45,
+          "play_median": 811,
+          "interact_mean": 0.0173,
+          "fav_rate": 0.0056
+        },
+        {
+          "keyword": "catlink猫砂盆",
+          "n": 44,
+          "play_median": 1130,
+          "interact_mean": 0.0097,
+          "fav_rate": 0.0034
+        },
+        {
+          "keyword": "宠物烘干机",
+          "n": 42,
+          "play_median": 4616,
+          "interact_mean": 0.0252,
+          "fav_rate": 0.0076
+        },
+        {
+          "keyword": "猫毛满天飞",
+          "n": 40,
+          "play_median": 2221,
+          "interact_mean": 0.0158,
+          "fav_rate": 0.0049
+        },
+        {
+          "keyword": "宠物智能",
+          "n": 38,
+          "play_median": 3580,
+          "interact_mean": 0.0324,
+          "fav_rate": 0.0117
+        },
+        {
+          "keyword": "宠物摄像头",
+          "n": 37,
+          "play_median": 8816,
+          "interact_mean": 0.0204,
+          "fav_rate": 0.0062
+        },
+        {
+          "keyword": "宠物饮水机测评",
+          "n": 37,
+          "play_median": 868,
+          "interact_mean": 0.0179,
+          "fav_rate": 0.0041
+        },
+        {
+          "keyword": "宠物智能品牌",
+          "n": 31,
+          "play_median": 918,
+          "interact_mean": 0.0228,
+          "fav_rate": 0.0067
+        },
+        {
+          "keyword": "小米宠物",
+          "n": 20,
+          "play_median": 26085,
+          "interact_mean": 0.0202,
+          "fav_rate": 0.0085
+        },
+        {
+          "keyword": "猫咪不喝水",
+          "n": 14,
+          "play_median": 1070,
+          "interact_mean": 0.018,
+          "fav_rate": 0.0036
+        },
+        {
+          "keyword": "上班族养猫",
+          "n": 13,
+          "play_median": 333,
+          "interact_mean": 0.0243,
+          "fav_rate": 0.0061
+        },
+        {
+          "keyword": "宠物拆家",
+          "n": 5,
+          "play_median": 1899,
+          "interact_mean": 0.0467,
+          "fav_rate": 0.0029
+        },
+        {
+          "keyword": "出差喂猫",
+          "n": 3,
+          "play_median": 278,
+          "interact_mean": 0.0373,
+          "fav_rate": 0.002
+        }
+      ],
+      "by_tier": {
+        "腰部(10-40%)": {
+          "n": 621,
+          "play_median": 15349,
+          "play_mean": 19818,
+          "play_p90": 41562,
+          "interact_mean": 0.0277,
+          "interact_median": 0.0181,
+          "like_rate": 0.0185,
+          "fav_rate": 0.0091,
+          "dm_rate": 1.46,
+          "creators": 429
+        },
+        "长尾(40-100%)": {
+          "n": 1241,
+          "play_median": 874,
+          "play_mean": 1474,
+          "play_p90": 3989,
+          "interact_mean": 0.0194,
+          "interact_median": 0.0108,
+          "like_rate": 0.0129,
+          "fav_rate": 0.0065,
+          "dm_rate": 3.4,
+          "creators": 835
+        },
+        "头部(播放前10%)": {
+          "n": 207,
+          "play_median": 146837,
+          "play_mean": 318675,
+          "play_p90": 538440,
+          "interact_mean": 0.0356,
+          "interact_median": 0.0238,
+          "like_rate": 0.0253,
+          "fav_rate": 0.0102,
+          "dm_rate": 1.48,
+          "creators": 161
+        }
+      }
+    },
+    "by_scene": {
+      "未标注场景": {
+        "n": 2998,
+        "play_median": 5925,
+        "play_mean": 111031,
+        "play_p90": 204829,
+        "interact_mean": 0.034,
+        "interact_median": 0.0197,
+        "like_rate": 0.0256,
+        "fav_rate": 0.0084,
+        "dm_rate": 1.98,
+        "creators": 2102
+      },
+      "新手养猫": {
+        "n": 297,
+        "play_median": 5044,
+        "play_mean": 38523,
+        "play_p90": 84922,
+        "interact_mean": 0.0307,
+        "interact_median": 0.0199,
+        "like_rate": 0.0178,
+        "fav_rate": 0.0129,
+        "dm_rate": 1.96,
+        "creators": 188
+      },
+      "上班族/白天独处": {
+        "n": 97,
+        "play_median": 852,
+        "play_mean": 19665,
+        "play_p90": 36303,
+        "interact_mean": 0.0269,
+        "interact_median": 0.02,
+        "like_rate": 0.0208,
+        "fav_rate": 0.0061,
+        "dm_rate": 2.66,
+        "creators": 71
+      },
+      "多猫家庭": {
+        "n": 71,
+        "play_median": 2554,
+        "play_mean": 66272,
+        "play_p90": 57837,
+        "interact_mean": 0.0305,
+        "interact_median": 0.0238,
+        "like_rate": 0.0243,
+        "fav_rate": 0.0063,
+        "dm_rate": 3.42,
+        "creators": 55
+      },
+      "出差/旅行在外": {
+        "n": 44,
+        "play_median": 327,
+        "play_mean": 31379,
+        "play_p90": 37262,
+        "interact_mean": 0.0395,
+        "interact_median": 0.0256,
+        "like_rate": 0.0335,
+        "fav_rate": 0.0061,
+        "dm_rate": 15.55,
+        "creators": 42
+      },
+      "预算敏感/学生党": {
+        "n": 38,
+        "play_median": 7189,
+        "play_mean": 96017,
+        "play_p90": 341559,
+        "interact_mean": 0.0241,
+        "interact_median": 0.0113,
+        "like_rate": 0.0131,
+        "fav_rate": 0.0111,
+        "dm_rate": 1.64,
+        "creators": 36
+      }
+    },
+    "by_scene_cross": {
+      "top_videos": {
+        "喂食器": [
+          {
+            "play": 524690,
+            "like": 37228,
+            "fav": 7859,
+            "dm": 76,
+            "interact": 0.0859,
+            "fmt": "其他",
+            "title": "15斤的小猫正在减肥期，每天定时定量，饿的不行了，听见喂食器一响，激动的把猫窝踹烂了。",
+            "author": "花艺工坊",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 418409,
+            "like": 11002,
+            "fav": 5462,
+            "dm": 266,
+            "interact": 0.0393,
+            "fmt": "其他",
+            "title": "当家里买了猫咪喂食器",
+            "author": "笑料加工厂",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 413670,
+            "like": 14575,
+            "fav": 3215,
+            "dm": 1954,
+            "interact": 0.043,
+            "fmt": "横评/选购",
+            "title": "出门不在家！主子要吃饭！10 款自动喂食器横评 | 宠物 猫粮",
+            "author": "先看评测",
+            "brands": "小米",
+            "pains": "健康监测/泌尿"
+          },
+          {
+            "play": 342174,
+            "like": 4277,
+            "fav": 593,
+            "dm": 135,
+            "interact": 0.0142,
+            "fmt": "其他",
+            "title": "【比格犬】自动喂食器已经被狗当成了自助点餐机",
+            "author": "比格犬受害者联盟本盟",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 332886,
+            "like": 3208,
+            "fav": 1347,
+            "dm": 94,
+            "interact": 0.0137,
+            "fmt": "横评/选购",
+            "title": "2026宠物自动喂食器选购指南！究竟谁才是最有性价比的哈基米食堂？",
+            "author": "顾得养宠研究社",
+            "brands": "",
+            "pains": "价格/性价比"
+          },
+          {
+            "play": 284664,
+            "like": 4921,
+            "fav": 741,
+            "dm": 2012,
+            "interact": 0.0199,
+            "fmt": "其他",
+            "title": "宠物自动喂食器管用吗_小佩MINI宠物自动喂食器【值不值得买第339期】",
+            "author": "TESTV官方频道",
+            "brands": "小佩",
+            "pains": "价格/性价比"
+          },
+          {
+            "play": 228734,
+            "like": 512,
+            "fav": 867,
+            "dm": 0,
+            "interact": 0.006,
+            "fmt": "教程/指南",
+            "title": "小佩智能喂食器SOLO可视版 安装视频",
+            "author": "PETKIT小佩宠物",
+            "brands": "小佩",
+            "pains": ""
+          },
+          {
+            "play": 149575,
+            "like": 388,
+            "fav": 749,
+            "dm": 0,
+            "interact": 0.0076,
+            "fmt": "其他",
+            "title": "小佩智能双子星喂食器可视版 安装视频",
+            "author": "PETKIT小佩宠物",
+            "brands": "小佩",
+            "pains": ""
+          }
+        ],
+        "净化器": [
+          {
+            "play": 423612,
+            "like": 33304,
+            "fav": 3221,
+            "dm": 607,
+            "interact": 0.0862,
+            "fmt": "其他",
+            "title": "110亩猫咪林地生活了多少只小猫～",
+            "author": "五月妈院儿里的小流浪",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 364694,
+            "like": 2176,
+            "fav": 1017,
+            "dm": 186,
+            "interact": 0.0088,
+            "fmt": "横评/选购",
+            "title": "【净化器】2026年八款宠物空气净化器真实猫猫体验横向测评！全网独家，猫猫甄选~ 小米丨美的丨树新风丨莱克丨追觅丨霍尼韦",
+            "author": "家电侦探平雪",
+            "brands": "小米/美的",
+            "pains": ""
+          },
+          {
+            "play": 256912,
+            "like": 1347,
+            "fav": 1059,
+            "dm": 39,
+            "interact": 0.0094,
+            "fmt": "横评/选购",
+            "title": "极端测试宠物空气净化器U7pro，能否成功除毛除味！",
+            "author": "咽气诺",
+            "brands": "",
+            "pains": "猫毛/掉毛"
+          },
+          {
+            "play": 228951,
+            "like": 1740,
+            "fav": 559,
+            "dm": 168,
+            "interact": 0.01,
+            "fmt": "其他",
+            "title": "你真的会选宠物空气净化器吗？我们用巨量猫毛+“最臭”污渍，替你提前踩雷！IAM|霍尼韦尔|小米|舒乐式",
+            "author": "深入了解PreInsight",
+            "brands": "小米",
+            "pains": "异味/除臭/猫毛/掉毛"
+          },
+          {
+            "play": 198996,
+            "like": 1775,
+            "fav": 592,
+            "dm": 135,
+            "interact": 0.0119,
+            "fmt": "横评/选购",
+            "title": "【机皇榜】2025双11&amp;国补空气净化器推荐TOP10榜单，2k到6k + 全价位推荐， 美的/树新风 /小米等",
+            "author": "陶阳家电实验室",
+            "brands": "小米/美的",
+            "pains": ""
+          },
+          {
+            "play": 181118,
+            "like": 486,
+            "fav": 1065,
+            "dm": 103,
+            "interact": 0.0086,
+            "fmt": "横评/选购",
+            "title": "千元宠物净化器横评！美的PET600、米家、追觅AP10实测：吸毛、除菌、甲醛、氨气、智控谁更强",
+            "author": "快闪评测",
+            "brands": "小米/美的",
+            "pains": "猫毛/掉毛"
+          },
+          {
+            "play": 180361,
+            "like": 3914,
+            "fav": 150,
+            "dm": 81,
+            "interact": 0.0225,
+            "fmt": "横评/选购",
+            "title": "不同人群的空气净化器怎么选？附美的、352、舒乐氏、霍尼韦尔、小米、IMA、奥尔格林产品推荐",
+            "author": "本质研究所-",
+            "brands": "小米/美的",
+            "pains": ""
+          },
+          {
+            "play": 177835,
+            "like": 837,
+            "fav": 2332,
+            "dm": 86,
+            "interact": 0.0178,
+            "fmt": "横评/选购",
+            "title": "【618指南针】空气净化器四大天坑，2026年的净化器怎么选？美的|小米|树新风，看完618不踩坑",
+            "author": "家电夏洛克",
+            "brands": "小米/美的",
+            "pains": ""
+          }
+        ],
+        "其他/泛宠物": [
+          {
+            "play": 7742325,
+            "like": 100581,
+            "fav": 38424,
+            "dm": 929,
+            "interact": 0.018,
+            "fmt": "其他",
+            "title": "我寻思一只猫拆家能有多厉害，直到我看到了他家沙发！",
+            "author": "萌宠指南",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 6580709,
+            "like": 24200,
+            "fav": 65228,
+            "dm": 719,
+            "interact": 0.0136,
+            "fmt": "其他",
+            "title": "一只来自广西的中华田园犬！",
+            "author": "阿东乐园",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 5668775,
+            "like": 32119,
+            "fav": 40666,
+            "dm": 904,
+            "interact": 0.0128,
+            "fmt": "其他",
+            "title": "能吸引猫咪的声音，百试百灵",
+            "author": "Lucky金渐层猫舍",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 5084469,
+            "like": 44911,
+            "fav": 35597,
+            "dm": 2999,
+            "interact": 0.0158,
+            "fmt": "其他",
+            "title": "把猫亲到生气后给它猫薄荷！会发生什么？",
+            "author": "泰哥是只小暖猫",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 5020828,
+            "like": 12701,
+            "fav": 53003,
+            "dm": 176,
+            "interact": 0.0131,
+            "fmt": "其他",
+            "title": "天天被催更的小饭桌，我们来啦！",
+            "author": "团团和园园的麻麻",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 4947626,
+            "like": 14059,
+            "fav": 36809,
+            "dm": 195,
+            "interact": 0.0103,
+            "fmt": "其他",
+            "title": "俗话说虎毒不食子，今天来了一只不但咬人而且连自己小孩都咬的恶犬。",
+            "author": "于大仙的农村生活",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 4752789,
+            "like": 308146,
+            "fav": 37106,
+            "dm": 13302,
+            "interact": 0.0726,
+            "fmt": "其他",
+            "title": "那个满眼满心都是我的小猫，去世了！",
+            "author": "泰哥是只小暖猫",
+            "brands": "",
+            "pains": "健康监测/泌尿"
+          },
+          {
+            "play": 4239919,
+            "like": 274805,
+            "fav": 98189,
+            "dm": 5433,
+            "interact": 0.088,
+            "fmt": "其他",
+            "title": "几百只流浪猫猫搬到70,000平的林地，开启新生活。",
+            "author": "五月妈院儿里的小流浪",
+            "brands": "",
+            "pains": ""
+          }
+        ],
+        "鱼缸": [
+          {
+            "play": 1409617,
+            "like": 93479,
+            "fav": 15724,
+            "dm": 4611,
+            "interact": 0.0775,
+            "fmt": "其他",
+            "title": "自从我把猫水碗改成了鱼缸，猫咪就爱上了喝水！一天喝一缸！",
+            "author": "蒂姆嘟嘟Tim",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 365091,
+            "like": 3630,
+            "fav": 866,
+            "dm": 473,
+            "interact": 0.0123,
+            "fmt": "横评/选购",
+            "title": "【大家测】懒人养鱼 从入门到嫌弃... 299元米家桌面鱼缸是否值得购买？实测“半年没换水”对比前代米家鱼缸各自有何优缺",
+            "author": "大家测",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 143331,
+            "like": 354,
+            "fav": 388,
+            "dm": 18,
+            "interact": 0.0052,
+            "fmt": "其他",
+            "title": "【初一】小米鱼缸一年不换水，翻缸养奶茶雷龙",
+            "author": "初一爱玩水",
+            "brands": "小米",
+            "pains": ""
+          },
+          {
+            "play": 132335,
+            "like": 312,
+            "fav": 595,
+            "dm": 441,
+            "interact": 0.0069,
+            "fmt": "其他",
+            "title": "老年人养生-自家的小米虾 换了神灯就是不一样~",
+            "author": "鼠头猫",
+            "brands": "小米",
+            "pains": ""
+          },
+          {
+            "play": 101854,
+            "like": 584,
+            "fav": 1156,
+            "dm": 32,
+            "interact": 0.0171,
+            "fmt": "DIY/改装",
+            "title": "米家智能鱼缸改造完结篇",
+            "author": "至少我不是猪",
+            "brands": "小米",
+            "pains": ""
+          },
+          {
+            "play": 41097,
+            "like": 598,
+            "fav": 203,
+            "dm": 24,
+            "interact": 0.0195,
+            "fmt": "其他",
+            "title": "新款小米鱼缸2Pro，再无短板，养鱼老手看了真的心动",
+            "author": "小马玩水族",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 35227,
+            "like": 205,
+            "fav": 166,
+            "dm": 6,
+            "interact": 0.0105,
+            "fmt": "其他",
+            "title": "天冷了要给观赏鱼加温啦，今天说下加热棒如何正确使用，现在加热棒你们开了吗？",
+            "author": "入水族坑的阿忠",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 29916,
+            "like": 352,
+            "fav": 242,
+            "dm": 35,
+            "interact": 0.0199,
+            "fmt": "横评/选购",
+            "title": "新手养鱼别当大冤种！选鱼缸加热棒之前先看避坑指南 #新手养鱼 #养鱼避坑指南 #鱼缸加热棒测评  #鱼缸加热棒 #养鱼知",
+            "author": "司柠家水族杨老板",
+            "brands": "",
+            "pains": ""
+          }
+        ],
+        "猫砂盆": [
+          {
+            "play": 1614964,
+            "like": 111016,
+            "fav": 18068,
+            "dm": 392,
+            "interact": 0.0799,
+            "fmt": "其他",
+            "title": "猫砂盆届的yyds",
+            "author": "喵君是个大聪明",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 708117,
+            "like": 12997,
+            "fav": 8214,
+            "dm": 635,
+            "interact": 0.03,
+            "fmt": "其他",
+            "title": "【小茶日常】如何教小猫咪用猫砂盆/上猫厕所",
+            "author": "雪山古茶",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 618016,
+            "like": 12308,
+            "fav": 2421,
+            "dm": 1582,
+            "interact": 0.0238,
+            "fmt": "其他",
+            "title": "5000元的自动铲屎器 有了它我都快忘记猫屎的味道了",
+            "author": "蒂姆嘟嘟Tim",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 540390,
+            "like": 9729,
+            "fav": 3829,
+            "dm": 83,
+            "interact": 0.0251,
+            "fmt": "其他",
+            "title": "家里多放一个猫砂盆，会让你的猫更幸福",
+            "author": "萌宠指南",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 537766,
+            "like": 5047,
+            "fav": 2634,
+            "dm": 221,
+            "interact": 0.0143,
+            "fmt": "其他",
+            "title": "我敢说，市面上的猫砂盆一个能打的都没有！",
+            "author": "饭团小夫妻",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 532164,
+            "like": 1216,
+            "fav": 2255,
+            "dm": 0,
+            "interact": 0.0065,
+            "fmt": "教程/指南",
+            "title": "小佩智能全自动猫厕所MAX安装使用视频",
+            "author": "PETKIT小佩宠物",
+            "brands": "小佩",
+            "pains": ""
+          },
+          {
+            "play": 528115,
+            "like": 39761,
+            "fav": 1697,
+            "dm": 354,
+            "interact": 0.0785,
+            "fmt": "其他",
+            "title": "今天做一个超级无敌大猫砂盆",
+            "author": "猫子柒来了",
+            "brands": "",
+            "pains": "多猫/大猫适配"
+          },
+          {
+            "play": 501287,
+            "like": 2619,
+            "fav": 1340,
+            "dm": 385,
+            "interact": 0.0079,
+            "fmt": "其他",
+            "title": "心疼！自动猫砂盆卡住猫咪脑袋，叫声听的人心都在抖",
+            "author": "今天想喝西瓜椰椰",
+            "brands": "",
+            "pains": "故障/安全风险"
+          }
+        ],
+        "烘干箱": [
+          {
+            "play": 527985,
+            "like": 42226,
+            "fav": 19842,
+            "dm": 170,
+            "interact": 0.1176,
+            "fmt": "其他",
+            "title": "¥70平替千元宠物烘干机",
+            "author": "阿梨梨的动物园",
+            "brands": "",
+            "pains": "价格/性价比"
+          },
+          {
+            "play": 174823,
+            "like": 8778,
+            "fav": 1071,
+            "dm": 161,
+            "interact": 0.0563,
+            "fmt": "横评/选购",
+            "title": "为了让猫猫爱上洗澡，我钻进了烘干箱里【千万不要买】",
+            "author": "千万不要买",
+            "brands": "霍曼",
+            "pains": ""
+          },
+          {
+            "play": 144337,
+            "like": 14690,
+            "fav": 701,
+            "dm": 456,
+            "interact": 0.1066,
+            "fmt": "其他",
+            "title": "开宠物店7年了 我终于拥有了一台宠物烘干箱 这个价划算吗",
+            "author": "欣琪的生活录",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 75198,
+            "like": 710,
+            "fav": 124,
+            "dm": 16,
+            "interact": 0.0111,
+            "fmt": "其他",
+            "title": "小猫咪洗澡后，被主人放进宠物烘干箱，猫咪的反应让人哭笑不得",
+            "author": "小美动物汇",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 66540,
+            "like": 2075,
+            "fav": 512,
+            "dm": 52,
+            "interact": 0.0389,
+            "fmt": "横评/选购",
+            "title": "史上最全，真香的宠物烘干箱能买吗？5款热门烘干箱深度横评！",
+            "author": "哟哟测",
+            "brands": "",
+            "pains": "清洁/维护麻烦"
+          },
+          {
+            "play": 47467,
+            "like": 206,
+            "fav": 22,
+            "dm": 27,
+            "interact": 0.0048,
+            "fmt": "使用体验/吐槽",
+            "title": "养猫专业户避坑指南-智商税之猫咪烘干机",
+            "author": "花程er",
+            "brands": "",
+            "pains": "价格/性价比"
+          },
+          {
+            "play": 44207,
+            "like": 712,
+            "fav": 209,
+            "dm": 11,
+            "interact": 0.0208,
+            "fmt": "横评/选购",
+            "title": "霍曼，松下，德妈，聚宠，鸟语花香等五个品牌的宠物烘干箱测评",
+            "author": "狗头测评官",
+            "brands": "霍曼/鸟语花香",
+            "pains": ""
+          },
+          {
+            "play": 38750,
+            "like": 583,
+            "fav": 36,
+            "dm": 31,
+            "interact": 0.016,
+            "fmt": "其他",
+            "title": "狗狗被宠物店放在烘干箱1小时活活烤死？涉事门店已歇业，主人：对方曾谎称是中暑",
+            "author": "掌闻视讯",
+            "brands": "",
+            "pains": ""
+          }
+        ],
+        "摄像头": [
+          {
+            "play": 61763,
+            "like": 520,
+            "fav": 322,
+            "dm": 15,
+            "interact": 0.0136,
+            "fmt": "横评/选购",
+            "title": "宠物摄像头好用吗？enabot ebo se诚实测评",
+            "author": "一只大肥咩丶",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 53558,
+            "like": 2,
+            "fav": 427,
+            "dm": 55,
+            "interact": 0.008,
+            "fmt": "横评/选购",
+            "title": "养宠别乱买宠物摄像头！这几个坑千万别踩",
+            "author": "拿破柠",
+            "brands": "",
+            "pains": "智能互联/APP"
+          },
+          {
+            "play": 13776,
+            "like": 523,
+            "fav": 119,
+            "dm": 82,
+            "interact": 0.0466,
+            "fmt": "其他",
+            "title": "Enabot发布宠物旗舰新品 ROLA PetPal一诺宠物陪伴机器人",
+            "author": "enabot",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 9722,
+            "like": 81,
+            "fav": 64,
+            "dm": 53,
+            "interact": 0.0149,
+            "fmt": "横评/选购",
+            "title": "【自费无广】2026年宠物摄像头怎么选？宠物识别摄像头/360度全屋移动监控机器人横评推荐，小白速成老司机！小米/华为/",
+            "author": "科技小飞虾V",
+            "brands": "小米",
+            "pains": ""
+          },
+          {
+            "play": 7207,
+            "like": 72,
+            "fav": 45,
+            "dm": 1,
+            "interact": 0.0162,
+            "fmt": "其他",
+            "title": "无广纯测！这6款能移动的宠物摄像头，远程看娃到底好不好用？看完全知道！",
+            "author": "关关宠物测评",
+            "brands": "",
+            "pains": "智能互联/APP"
+          },
+          {
+            "play": 6025,
+            "like": 1070,
+            "fav": 404,
+            "dm": 3,
+            "interact": 0.2446,
+            "fmt": "其他",
+            "title": "[Bae裴真率]当你打开家里的宠物摄像头",
+            "author": "Hap纱瑜允贝志冬粼",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 3340,
+            "like": 20,
+            "fav": 21,
+            "dm": 1,
+            "interact": 0.0123,
+            "fmt": "横评/选购",
+            "title": "【宠物监控器】200-900元宠物移动摄像头选购指南！智能识别宠物远程激光逗宠AI陪伴宠物监控机器人，无线遥控长续航高清",
+            "author": "像素锅仔",
+            "brands": "",
+            "pains": "智能互联/APP"
+          },
+          {
+            "play": 2781,
+            "like": 37,
+            "fav": 20,
+            "dm": 1,
+            "interact": 0.0205,
+            "fmt": "横评/选购",
+            "title": "新手养宠必看！4款高价移动摄像头横评，少走弯路不踩坑",
+            "author": "关关宠物测评",
+            "brands": "",
+            "pains": ""
+          }
+        ],
+        "饮水机": [
+          {
+            "play": 5030816,
+            "like": 1015,
+            "fav": 8368,
+            "dm": 19,
+            "interact": 0.0019,
+            "fmt": "其他",
+            "title": "千万别给狗狗用这种饮水器，“我谢谢你啊”",
+            "author": "柯基刘美丽",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 1529770,
+            "like": 56177,
+            "fav": 8901,
+            "dm": 126,
+            "interact": 0.0425,
+            "fmt": "使用体验/吐槽",
+            "title": "宠物饮水机都是智商税？",
+            "author": "首席饲养员啊",
+            "brands": "",
+            "pains": "价格/性价比"
+          },
+          {
+            "play": 578011,
+            "like": 17006,
+            "fav": 6904,
+            "dm": 1202,
+            "interact": 0.0414,
+            "fmt": "其他",
+            "title": "猫：我是一个没有感情的喝水机器！",
+            "author": "国际吸猫协会",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 476437,
+            "like": 13541,
+            "fav": 1889,
+            "dm": 43,
+            "interact": 0.0324,
+            "fmt": "其他",
+            "title": "这一波属于猫咪饮水机的反向广告",
+            "author": "萌宠ook",
+            "brands": "",
+            "pains": ""
+          },
+          {
+            "play": 458559,
+            "like": 4640,
+            "fav": 2420,
+            "dm": 248,
+            "interact": 0.0154,
+            "fmt": "横评/选购",
+            "title": "沉浸式养狗Vlog！34岁月入2W高能量互联网打工人上班前2h能有多忙！？",
+            "author": "金不拉毛抱抱",
+            "brands": "",
+            "pains": "上班族/无人值守/智能互联/APP"
+          },
+          {
+            "play": 303375,
+            "like": 1477,
+            "fav": 391,
+            "dm": 214,
+            "interact": 0.0062,
+            "fmt": "横评/选购",
+            "title": "米家智能宠物饮水机2，真的还不错",
+            "author": "评物测评",
+            "brands": "小米",
+            "pains": ""
+          },
+          {
+            "play": 286110,
+            "like": 4947,
+            "fav": 2220,
+            "dm": 20,
+            "interact": 0.025,
+            "fmt": "其他",
+            "title": "触摸开关 制作小型饮水机 宠物自动喂食",
+            "author": "江枫编程",
+            "brands": "",
+            "pains": "智能互联/APP"
+          },
+          {
+            "play": 200639,
+            "like": 15358,
+            "fav": 5964,
+            "dm": 230,
+            "interact": 0.1063,
+            "fmt": "其他",
+            "title": "当我把流浪猫养了180天…我家被拆了…",
+            "author": "在逃许师傅",
+            "brands": "",
+            "pains": "智能互联/APP"
+          }
+        ]
+      }
+    }
+  }
+}

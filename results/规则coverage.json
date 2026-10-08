@@ -1,0 +1,138 @@
+{
+  "LF_NOISE": {
+    "n": 4375,
+    "voted": 129,
+    "by_class": {
+      "N": 129
+    },
+    "coverage": 0.0295
+  },
+  "LF_GAME": {
+    "n": 4375,
+    "voted": 37,
+    "by_class": {
+      "N": 37
+    },
+    "coverage": 0.0085
+  },
+  "LF_SECURITY": {
+    "n": 4375,
+    "voted": 31,
+    "by_class": {
+      "N": 31
+    },
+    "coverage": 0.0071
+  },
+  "LF_BRAND": {
+    "n": 4375,
+    "voted": 0,
+    "by_class": {},
+    "coverage": 0.0
+  },
+  "LF_HW": {
+    "n": 4375,
+    "voted": 0,
+    "by_class": {},
+    "coverage": 0.0
+  },
+  "LF_PET": {
+    "n": 4375,
+    "voted": 0,
+    "by_class": {},
+    "coverage": 0.0
+  },
+  "LF_SMART": {
+    "n": 4375,
+    "voted": 0,
+    "by_class": {},
+    "coverage": 0.0
+  },
+  "LF_PLAIN": {
+    "n": 4375,
+    "voted": 0,
+    "by_class": {},
+    "coverage": 0.0
+  },
+  "LF_AUTO_SMART": {
+    "n": 4375,
+    "voted": 0,
+    "by_class": {},
+    "coverage": 0.0
+  },
+  "LF_PRODUCT_FOCUS": {
+    "n": 4375,
+    "voted": 0,
+    "by_class": {},
+    "coverage": 0.0
+  },
+  "LF_PET_BEHAVIOR": {
+    "n": 4375,
+    "voted": 0,
+    "by_class": {},
+    "coverage": 0.0
+  },
+  "LF_SUPPLY": {
+    "n": 4375,
+    "voted": 222,
+    "by_class": {
+      "B": 222
+    },
+    "coverage": 0.0507
+  },
+  "LF_HEALTH": {
+    "n": 4375,
+    "voted": 202,
+    "by_class": {
+      "C": 202
+    },
+    "coverage": 0.0462
+  },
+  "LF_A_BRAND_HW": {
+    "n": 4375,
+    "voted": 528,
+    "by_class": {
+      "A": 528
+    },
+    "coverage": 0.1207
+  },
+  "LF_A_PET_HW_SMART": {
+    "n": 4375,
+    "voted": 1092,
+    "by_class": {
+      "A": 1092
+    },
+    "coverage": 0.2496
+  },
+  "LF_B_PET_HW_PLAIN": {
+    "n": 4375,
+    "voted": 453,
+    "by_class": {
+      "B": 453
+    },
+    "coverage": 0.1035
+  },
+  "LF_A_PRODUCT_FOCUS": {
+    "n": 4375,
+    "voted": 773,
+    "by_class": {
+      "A": 773
+    },
+    "coverage": 0.1767
+  },
+  "LF_C_PET_ONLY": {
+    "n": 4375,
+    "voted": 2272,
+    "by_class": {
+      "C": 2272
+    },
+    "coverage": 0.5193
+  },
+  "LF_C_PET_BEHAVIOR": {
+    "n": 4375,
+    "voted": 1202,
+    "by_class": {
+      "C": 1202
+    },
+    "coverage": 0.2747
+  }
+}

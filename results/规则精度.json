@@ -1,0 +1,106 @@
+{
+  "all300": {
+    "LF_A_PET_HW_SMART": {
+      "voted": 67,
+      "correct": 59,
+      "precision": 0.8806
+    },
+    "LF_A_PRODUCT_FOCUS": {
+      "voted": 40,
+      "correct": 34,
+      "precision": 0.85
+    },
+    "LF_B_PET_HW_PLAIN": {
+      "voted": 34,
+      "correct": 8,
+      "precision": 0.2353
+    },
+    "LF_NOISE": {
+      "voted": 7,
+      "correct": 1,
+      "precision": 0.1429
+    },
+    "LF_C_PET_BEHAVIOR": {
+      "voted": 90,
+      "correct": 63,
+      "precision": 0.7
+    },
+    "LF_HEALTH": {
+      "voted": 76,
+      "correct": 73,
+      "precision": 0.9605
+    },
+    "LF_A_BRAND_HW": {
+      "voted": 34,
+      "correct": 31,
+      "precision": 0.9118
+    },
+    "LF_SUPPLY": {
+      "voted": 10,
+      "correct": 3,
+      "precision": 0.3
+    },
+    "LF_C_PET_ONLY": {
+      "voted": 172,
+      "correct": 135,
+      "precision": 0.7849
+    },
+    "LF_SECURITY": {
+      "voted": 1,
+      "correct": 1,
+      "precision": 1.0
+    }
+  },
+  "random200": {
+    "LF_A_PET_HW_SMART": {
+      "voted": 61,
+      "correct": 55,
+      "precision": 0.9016
+    },
+    "LF_A_PRODUCT_FOCUS": {
+      "voted": 35,
+      "correct": 30,
+      "precision": 0.8571
+    },
+    "LF_B_PET_HW_PLAIN": {
+      "voted": 18,
+      "correct": 8,
+      "precision": 0.4444
+    },
+    "LF_NOISE": {
+      "voted": 7,
+      "correct": 1,
+      "precision": 0.1429
+    },
+    "LF_C_PET_BEHAVIOR": {
+      "voted": 59,
+      "correct": 41,
+      "precision": 0.6949
+    },
+    "LF_HEALTH": {
+      "voted": 13,
+      "correct": 10,
+      "precision": 0.7692
+    },
+    "LF_A_BRAND_HW": {
+      "voted": 33,
+      "correct": 31,
+      "precision": 0.9394
+    },
+    "LF_SUPPLY": {
+      "voted": 7,
+      "correct": 3,
+      "precision": 0.4286
+    },
+    "LF_C_PET_ONLY": {
+      "voted": 107,
+      "correct": 72,
+      "precision": 0.6729
+    },
+    "LF_SECURITY": {
+      "voted": 1,
+      "correct": 1,
+      "precision": 1.0
+    }
+  }
+}

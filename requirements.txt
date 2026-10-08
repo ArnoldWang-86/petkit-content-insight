@@ -1,0 +1,14 @@
+# 运行本项目所需的最小依赖（Python 3.10+，实测 3.13.15）
+requests>=2.31          # 调用 DeepSeek API 做标注与生成运营方案
+plotly>=5.18            # 生成交互式看板（单文件 HTML）
+python-docx>=1.1        # Markdown -> Word（中文需显式设置 eastAsia 字体）
+
+# 可选：进一步做统计分析/出图时安装
+# pandas>=2.0
+# numpy>=1.26
+# scipy>=1.11
+# statsmodels>=0.14
+# matplotlib>=3.8
+# seaborn>=0.13
+# jieba>=0.42
+# wordcloud>=1.9

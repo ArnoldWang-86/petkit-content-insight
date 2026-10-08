@@ -1,0 +1,14 @@
+# 密钥文件，绝不提交
+.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Office 临时文件
+~$*
+
+# 系统文件
+Thumbs.db
+desktop.ini

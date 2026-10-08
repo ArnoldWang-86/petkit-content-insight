@@ -84,6 +84,7 @@ tbody tr:nth-child(even){background:#FAFCFF}
         <input id="key" type="password" placeholder="sk-...（不填也能用，只是覆盖面小一些）">
       </div>
       <div id="err" class="err" style="display:none"></div>
+      <div id="jserr" class="err" style="display:none"></div>
     </section>
 
     <section class="card">
@@ -704,19 +705,34 @@ async function matchByLLM(text, apiKey) {
   sys.push("- 标签层：A / B / C / N（A=智能硬件本体，B=耗材日用，C=健康养护日常，N=非宠物）");
   sys.push("");
   sys.push('只输出一行 JSON，形如 {"op":"pl_rank","params":{"metric":"interact","order":"desc"},"reason":"..."}');
+  sys.push('如果这个问题**无法用上面任何一个操作回答**（比如问的是时间序列、财务数据、站外信息），');
+  sys.push('就返回 {"op":"none","reason":"为什么答不了"}，不要硬凑一个操作。');
   sys.push("不要输出任何解释文字或代码块标记。");
 
-  var r = await fetch("https://api.deepseek.com/chat/completions", {
-    method: "POST",
-    headers: { "Content-Type": "application/json", "Authorization": "Bearer " + apiKey },
-    body: JSON.stringify({ model: "deepseek-chat", temperature: 0, max_tokens: 400,
-      messages: [{ role: "system", content: sys.join("\n") }, { role: "user", content: text }] })
-  });
-  if (!r.ok) throw new Error("DeepSeek HTTP " + r.status);
+  // 必须加超时：网络或代理不通时 fetch 会一直挂着，界面会永远停在「运行中」
+  var ctrl = (typeof AbortController !== "undefined") ? new AbortController() : null;
+  var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 15000) : null;
+  var r;
+  try {
+    r = await fetch("https://api.deepseek.com/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer " + apiKey },
+      body: JSON.stringify({ model: "deepseek-chat", temperature: 0, max_tokens: 400,
+        messages: [{ role: "system", content: sys.join("\n") }, { role: "user", content: text }] }),
+      signal: ctrl ? ctrl.signal : undefined
+    });
+  } catch (e) {
+    if (e && e.name === "AbortError") throw new Error("请求超时（15 秒未响应）");
+    throw new Error("网络不可达：" + String((e && e.message) || e));
+  } finally {
+    if (timer) clearTimeout(timer);
+  }
+  if (!r.ok) throw new Error("DeepSeek 返回 HTTP " + r.status);
   var j = await r.json();
   var raw = ((j.choices && j.choices[0] && j.choices[0].message.content) || "").trim();
   var cleaned = raw.replace(/^```(?:json)?/i, "").replace(/```$/, "").trim();
   var parsed = JSON.parse(cleaned);
+  if (parsed.op === "none") throw new Error("模型判断这个问题超出数据集范围：" + (parsed.reason || "无法用现有操作回答"));
   var found = null;
   for (var m = 0; m < OPS.length; m++) if (OPS[m].id === parsed.op) found = OPS[m];
   if (!found) throw new Error("模型返回了未知操作：" + parsed.op);
@@ -819,24 +835,41 @@ async function run() {
     var rule = matchByRules(text);
     var chosen = null, how = "", reason = "", hits = [];
 
+    var llErr = "", llOutOfScope = false;
+    function stage1Pending(msg) {
+      var bd = document.getElementById("bd0");
+      if (bd) bd.innerHTML = kv([["用户输入", text.replace(/</g, "&lt;")], ["进度", msg]]);
+    }
     if (useCache) {
       chosen = findOp(useCache.op); how = "预置问题命中（离线兜底）"; reason = useCache.q;
     } else if (rule && rule.score >= 2) {
-      chosen = rule.op; how = "规则匹配"; hits = rule.hits;
+      chosen = rule.op; how = "规则匹配（得分 " + rule.score + "）"; hits = rule.hits;
     } else if (key) {
+      stage1Pending("规则只拿到 " + (rule ? rule.score : 0) + " 分，正在请求大模型做意图识别（最多等 15 秒）…");
       try {
         var ll = await matchByLLM(text, key);
         chosen = ll.op; how = "大模型路由（规则未命中）"; reason = ll.reason;
       } catch (e) {
-        chosen = rule ? rule.op : null; how = "大模型调用失败，回退到规则匹配";
+        llErr = String((e && e.message) || e);
+        llOutOfScope = llErr.indexOf("超出数据集范围") >= 0;
+        if (rule) { chosen = rule.op; how = "大模型没能路由，已回退到规则匹配（得分 " + rule.score + "）"; hits = rule.hits; }
       }
     } else if (rule) {
-      chosen = rule.op; how = "规则匹配（弱命中）"; hits = rule.hits;
+      chosen = rule.op; how = "规则匹配（弱命中，得分 " + rule.score + "）"; hits = rule.hits;
     }
     if (!chosen) {
-      stageEnd(0, Date.now() - t0, kv([["识别方式", "未命中"], ["说明", "没有一个操作的关键词被命中"]]) +
-        why("可以换一种说法，或填入 DeepSeek API Key 让大模型做意图识别。"));
-      throw new Error("没能识别出要执行哪个操作。试试点上面的示例问题，或者填入 API Key。");
+      var tips = "";
+      for (var oi = 0; oi < OPS.length; oi++) tips += "· " + OPS[oi].name + " —— " + OPS[oi].desc + "<br>";
+      stageEnd(0, Date.now() - t0,
+        kv([["识别方式", "未命中"],
+            ["原因", llErr ? llErr : "没有任何操作的关键词被命中"]]) +
+        why((llErr ? "<b>" + (llOutOfScope ? "这个问题超出了数据范围：" : "大模型没能完成路由：") + "</b>" +
+                      llErr.replace(/^模型判断这个问题超出数据集范围：/, "") + "<br>" : "") +
+            "<b>Agent 目前能回答这些类型的问题：</b><br>" + tips));
+      throw new Error(llOutOfScope
+        ? ("这个问题超出了数据集范围 —— " + llErr.replace(/^模型判断这个问题超出数据集范围：/, "") +
+           "（本数据只覆盖 B站 宠物智能硬件内容，没有财务/时间序列数据）")
+        : ("没能识别出要执行哪个操作。" + (llErr ? "（" + llErr + "）" : "") + " 建议直接点上面的示例问题，或换一种说法。"));
     }
     stageEnd(0, Date.now() - t0, kv([
       ["用户输入", text.replace(/</g, "&lt;")],
@@ -895,9 +928,10 @@ async function run() {
       why("点右下角按钮可以把明细表导成 CSV，用 Excel 直接打开。"));
 
   } catch (e) {
+    var msg = (e && e.message) ? e.message : String(e);
     errBox.style.display = "block";
-    errBox.textContent = String(e.message || e);
-    document.getElementById("result").innerHTML = '<div class="empty">' + String(e.message || e) + "</div>";
+    errBox.textContent = msg;
+    document.getElementById("result").innerHTML = '<div class="empty">' + msg.replace(/</g, "&lt;") + "</div>";
   } finally {
     document.getElementById("run").disabled = false;
   }
@@ -1038,6 +1072,16 @@ function downloadCsv(name, tb) {
   };
   document.getElementById("q").addEventListener("keydown", function (e) {
     if (e.ctrlKey && e.key === "Enter") run();
+  });
+  // 兜底：任何未捕获的错误都显示出来，避免"点了没反应"
+  window.addEventListener("error", function (ev) {
+    var b = document.getElementById("jserr");
+    if (b) { b.style.display = "block"; b.textContent = "页面脚本出错：" + (ev.message || ev.error) + "（第 " + ev.lineno + " 行）"; }
+  });
+  window.addEventListener("unhandledrejection", function (ev) {
+    var b = document.getElementById("jserr");
+    var m = (ev.reason && ev.reason.message) ? ev.reason.message : String(ev.reason);
+    if (b) { b.style.display = "block"; b.textContent = "异步错误：" + m; }
   });
 })();
 </script>

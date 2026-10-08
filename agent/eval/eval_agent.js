@@ -25,7 +25,9 @@ function el() { return { innerHTML: "", textContent: "", style: {}, dataset: {},
 global.document = { getElementById: () => el(), querySelectorAll: () => [], createElement: () => el() };
 global.window = global; global.Plotly = { newPlot() {} };
 global.navigator = { clipboard: { writeText() {} } };
-global.Blob = class {}; global.URL = { createObjectURL: () => "b" };
+global.Blob = class {};
+global.URL.createObjectURL = () => "blob:x";   // 注意：不要覆盖 URL 本身，否则 fetch 会解析不了地址
+global.addEventListener = function () {};       // 页面里注册了 error / unhandledrejection 兜底
 
 eval(dataBlock);
 eval(appBlock);
